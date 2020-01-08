@@ -21,9 +21,23 @@ function loadRallyTables(RallyID){
     let stages = contest.rallies[RallyID].stages
 
     for(let i = 0; i< stages.length; i++){
-        let newTitle = document.createElement('h2')
+        let divStage = document.createElement('div')
+        divStage.className = "divStage"
+
+        let divTitleImage = document.createElement('div')
+        divTitleImage.className = "divTitleImage"
+
+        let newTitle = document.createElement('h4')
         newTitle.innerHTML = stages[i].name
-        tables.appendChild(newTitle)
+        divTitleImage.appendChild(newTitle)
+
+        let newImage = document.createElement("img")
+        newImage.src = stages[i].imageURL
+        newImage.className = "mapImage"
+        divTitleImage.appendChild(newImage)
+        
+        divStage.appendChild(divTitleImage)
+
         let newTable = document.createElement('table')
         newTable.setAttribute("class", "table")
         newTable.innerHTML = 
@@ -50,7 +64,9 @@ function loadRallyTables(RallyID){
             `
         }
         newTable.innerHTML+= `</tbody>`
-        tables.appendChild(newTable)
+        
+        divStage.appendChild(newTable)
+        tables.appendChild(divStage)
     }
 }
 
