@@ -6,7 +6,36 @@ body{
 
 @font-face{
     font-family: "rcFont";
-    src: url('../rcfont.ttf');
+    src: url('../resources/rcfont.ttf');
+}
+
+#title{
+    font-family: "rcFont";
+}
+
+#nav{
+    margin: 0px 150px;
+}
+
+#nav ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-around;
+    padding-bottom: 0;
+}
+
+#nav span{
+    display: inline-block;
+    vertical-align: middle;
+    height: 29px;
+    padding-top: 2px;
+    background-image: url('../resources/navmid.png');
+    background-size: contain;
+    font-family: "rcFont";
+    text-decoration: none;
+    color: yellow;
 }
 
 #tables{
@@ -57,10 +86,6 @@ body{
 h1, h2, h3, h4, h5, h6{
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-
-#title{
-    font-family: "rcFont";
 }
 
 .divTitleImage{

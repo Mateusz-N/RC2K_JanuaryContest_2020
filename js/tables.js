@@ -53,7 +53,7 @@ class Participant{
 }
 
 function contestData(){
-    let contest  = new Contest("Rally Championship January 2020 Contest")
+    let contest  = new Contest("BRC: Milestone Rumble")
     let participantsNames = ["SpartaX","Redchili385","Linotrix","SpartaRemixer"]
     let participants = []
     for(let i = 0; i<participantsNames.length; i++){
