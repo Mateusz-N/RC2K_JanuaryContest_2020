@@ -102,7 +102,7 @@ function loadRallyTables(RallyID){
                 <th scope="row">`+(j+1)+`</th>
                 <td>`+ records[j].participant.name +`</td>
                 <td>`+ records[j].time + `</td>
-                <td>`+ (9-j)+`</td>
+                <td>`+ (8-j)+`</td>
             </tr>
             `
         }
