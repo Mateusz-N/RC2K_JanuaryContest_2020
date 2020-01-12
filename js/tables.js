@@ -74,17 +74,11 @@ function contestData(){
 
         stage = new Stage("Clocaenog Mid");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/3/3f/20181105_134049.png/revision/latest/scale-to-width-down/1000?cb=20181105214042"
-        stage.AddRecord(SpartaX,"01:02:13")
-        stage.AddRecord(Redchili385,"01:01:57")
-        stage.AddRecord(Linotrix,"01:02:22")
-        stage.AddRecord(SpartaRemixer,"01:45:89")
+        //stage.AddRecord(SpartaX,"01:02:13")
         rally.stages[0] = stage
         
         stage = new Stage("Penmachno South");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/d/de/20181023_124545.png/revision/latest/scale-to-width-down/1000?cb=20181024165338"
-        stage.AddRecord(SpartaX,"01:24:08")
-        stage.AddRecord(SpartaRemixer,"01:21:58")
-        stage.AddRecord(Linotrix,"01:18:15")
         rally.stages[1] = stage
 
         stage = new Stage("Myherin");

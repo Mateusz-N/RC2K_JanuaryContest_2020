@@ -1,7 +1,8 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    background-color: gray;
+    background: linear-gradient(to bottom right, #778, #BBC), blue;
+    min-height: 100vh;
 }
 
 @font-face{
@@ -9,12 +10,15 @@ body{
     src: url('../resources/rcfont.ttf');
 }
 
-#title{
-    font-family: "rcFont";
-}
-
 #nav{
     margin: 0px 150px;
+}
+
+#title{
+    font-family: "rcFont";
+    padding: 10px 0 10px 0;
+    text-shadow: 5px 5px black;
+    font-size: 300%;
 }
 
 #nav ul{
@@ -36,6 +40,26 @@ body{
     font-family: "rcFont";
     text-decoration: none;
     color: yellow;
+}
+
+#main h1{
+    background-color: #606060;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    font-family: "rcFont";
+    font-size: 220%;
+}
+
+#main p, #main li{
+    padding: 0 12px 0 12px;
+    text-align: justify;
+    font-family: "Verdana";
+    font-size: 110%;
+}
+
+#main a{
+    color: #224;
+    text-decoration: underline;
 }
 
 #tables{

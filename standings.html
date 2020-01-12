@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>BRC: Milestone Rumble | Contest details and results</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1 id="title"></h1>
+        <div id="nav">
+            <ul>
+                <li onmouseover="turnButtonRed1()" onmouseout="turnButtonWhite1()"><a href="index.html"><img id="leftArrow1" src='resources/navleft.png'><span id="overview">Overview</span><img id="rightArrow1" src='resources/navright.png'></a></li>
+                
+                <li onmouseover="turnButtonRed2()" onmouseout="turnButtonWhite2()"><a href="entries.html"><img id="leftArrow2" src='resources/navleft.png'><span id="entries">Entry list</span><img id="rightArrow2" src='resources/navright.png'></a></li>
+                
+                <li onmouseover="turnButtonRed3()" onmouseout="turnButtonWhite3()"><a href="standings.html"><img id="leftArrow3" src='resources/navleft.png'><span id="standings">Standings</span><img id="rightArrow3" src='resources/navright.png'></a></li>
+                
+                <li onmouseover="turnButtonRed4()" onmouseout="turnButtonWhite4()"><a href="summaries.html"><img id="leftArrow4" src='resources/navleft.png'><span id="summaries">Rally summaries</span><img id="rightArrow4" src='resources/navright.png'></a></li>
+            </ul>
+        </div>
+        <div id="buttons"></div>
+        <div id="tables"></div>
+        <script type="text/javascript" src=js/tables.js></script>
+        <script type="text/javascript" src=js/script.js></script>
+        <link rel="stylesheet" href="css/style.css"> 
+    </body>
+</html>
