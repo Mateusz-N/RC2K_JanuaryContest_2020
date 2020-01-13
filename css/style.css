@@ -92,6 +92,10 @@ body{
     padding: 10px 0;
 }
 
+#entrylist table tr td:first-child{
+    font-weight: 600;
+}
+
 #buttons{
     margin: 0 150px 10px 150px;
     display: flex;
@@ -126,6 +130,10 @@ body{
     border: 0px;
 }
 
+#tables table td, #tables table th{
+    vertical-align: middle;
+}
+
 #tables table tr:hover, #entrylist table tr:hover{
     background-color: #DDD;
 }
@@ -147,6 +155,8 @@ h1, h2, h3, h4, h5, h6{
     width: 30%;
     display: inline-block;
     padding: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
     font-style: italic;
 }
 

@@ -89,7 +89,9 @@ function loadRallyTables(RallyID){
                     <th scope="col">Ranking</th>
                     <th scope="col">Driver</th>
                     <th scope="col">Time</th>
-                    <th scope="col">Points</th>
+                    <th scope="col">Penalty</th>
+                    <th scope="col">Time (+Penalty)</th>
+                    <th scope="col">Verified?</th>
                 </tr>
             </thead>
             <tbody>`
@@ -102,7 +104,9 @@ function loadRallyTables(RallyID){
                 <th scope="row">`+(j+1)+`</th>
                 <td>`+ records[j].participant.name +`</td>
                 <td>`+ records[j].time + `</td>
-                <td>`+ (8-j)+`</td>
+                <td>`+ records[j].penalty +`</td>
+                <td>`+ records[j].timePenalty +`</td>
+                <td>`+ records[j].verified +`</td>
             </tr>
             `
         }
