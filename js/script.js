@@ -5,48 +5,18 @@ console.log(contest)
 
 document.getElementById("title").innerHTML = contest.name
 
-function turnButtonRed1(){
-    document.getElementById("leftArrow1").src = "resources/navlefthover.png";
-    document.getElementById("rightArrow1").src = "resources/navrighthover.png";
-    document.getElementById("overview").style.color = "red";
+function turnButtonRed(button){
+    button.getElementsByClassName("leftArrow")[0].src = "resources/navlefthover.png";
+    button.getElementsByClassName("rightArrow")[0].src = "resources/navrighthover.png";
+    button.getElementsByTagName("span")[0].style.color = 'red';
 }
-function turnButtonRed2(){
-    document.getElementById("leftArrow2").src = "resources/navlefthover.png";
-    document.getElementById("rightArrow2").src = "resources/navrighthover.png";
-    document.getElementById("entries").style.color = "red";
+
+function turnButtonWhite(button){
+    button.getElementsByClassName("leftArrow")[0].src = "resources/navleft.png";
+    button.getElementsByClassName("rightArrow")[0].src = "resources/navright.png";
+    button.getElementsByTagName("span")[0].style.color = 'yellow';
 }
-function turnButtonRed3(){
-    document.getElementById("rightArrow3").src = "resources/navrighthover.png";
-    document.getElementById("leftArrow3").src = "resources/navlefthover.png";
-    document.getElementById("standings").style.color = "red";
-}
-function turnButtonRed4(){
-    document.getElementById("leftArrow4").src = "resources/navlefthover.png";
-    document.getElementById("rightArrow4").src = "resources/navrighthover.png";
-    document.getElementById("summaries").style.color = "red";
-}    
-function turnButtonWhite1(){
-    document.getElementById("leftArrow1").src = "resources/navleft.png";
-    document.getElementById("rightArrow1").src = "resources/navright.png";
-    document.getElementById("overview").style.color = "yellow";
-}
-function turnButtonWhite2(){
-    document.getElementById("leftArrow2").src = "resources/navleft.png";
-    document.getElementById("rightArrow2").src = "resources/navright.png";
-    document.getElementById("entries").style.color = "yellow";
-}
-function turnButtonWhite3(){
-    document.getElementById("leftArrow3").src = "resources/navleft.png";
-    document.getElementById("rightArrow3").src = "resources/navright.png";
-    document.getElementById("standings").style.color = "yellow";
-    
-}
-function turnButtonWhite4(){
-    document.getElementById("rightArrow4").src = "resources/navright.png";
-    document.getElementById("leftArrow4").src = "resources/navleft.png";
-    document.getElementById("summaries").style.color = "yellow";
-}
-    
+
 
 let buttonSpace = document.getElementById("buttons")
 for(let i=0; i< contest.rallies.length; i++){
@@ -72,6 +42,7 @@ function loadRallyTables(RallyID){
 
         let newTitle = document.createElement('h4')
         newTitle.innerHTML = stages[i].name
+        newTitle.className = "stageName"
         divTitleImage.appendChild(newTitle)
 
         let newImage = document.createElement("img")

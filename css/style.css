@@ -35,7 +35,6 @@ body{
     display: inline-block;
     vertical-align: middle;
     height: 29px;
-    padding-top: 2px;
     background-image: url('../resources/navmid.png');
     background-size: contain;
     font-family: "rcFont";
@@ -106,6 +105,7 @@ body{
 
 #buttons button{
     font-weight: 600;
+    margin: 0px 3px;
     background: linear-gradient(45deg, white 33.3%, #DDD 66.7%, #BBB 100%);
 }
 
@@ -114,10 +114,11 @@ body{
 }
 
 #tables{
-    margin: 0px 150px;
-    padding: 20px 30px;
+    margin: 0px 10%;
+    padding: 2% 3%;
     background-color: #606060;
-    border: 3px solid black;
+    border: 0.3vw solid black;
+    font-size: 1vw;
 }
 
 #tables table{
@@ -142,8 +143,9 @@ body{
     vertical-align: top;
     display: inline-flex;
     background: #343a40;
-    padding: 0 10px 10px 10px;
+    padding: 0 1em 1em 1em;
     margin: 5px 0px;
+    width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -151,10 +153,14 @@ h1, h2, h3, h4, h5, h6{
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+.stageName{
+    font-size: 1.7em;
+}
+
 .divTitleImage{
     width: 30%;
     display: inline-block;
-    padding: 10px;
+    padding: 1vw;
     margin-top: auto;
     margin-bottom: auto;
     font-style: italic;
