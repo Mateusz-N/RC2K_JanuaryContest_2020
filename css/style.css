@@ -113,12 +113,19 @@ body{
     background: linear-gradient(45deg, #BBB 33.3%, #DDD 66.7%, white 100%);
 }
 
-#tables{
-    margin: 0px 10%;
+#tables, #rallyboards{
     padding: 2% 3%;
     background-color: #606060;
     border: 0.3vw solid black;
     font-size: 1vw;
+}
+
+#tables{
+    margin: 0px 10% 1% 10%;
+}
+
+#rallyboards{
+    margin: 0px 10% 1% 10%;
 }
 
 #tables table{
