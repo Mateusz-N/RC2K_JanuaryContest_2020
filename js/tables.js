@@ -81,7 +81,7 @@ function contestData(){
 
         stage = new Stage("Clocaenog Mid");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/3/3f/20181105_134049.png/revision/latest/scale-to-width-down/1000?cb=20181105214042"
-        stage.AddRecord(Migger,"08:00.14","00:10.00","Yes")
+        //stage.AddRecord(Migger,"08:00.14","00:10.00","Yes")
         rally.stages[0] = stage
         
         stage = new Stage("Penmachno South");
