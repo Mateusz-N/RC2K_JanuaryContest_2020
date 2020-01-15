@@ -103,6 +103,7 @@ function contestData(){
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/8/88/20181023_124729.png/revision/latest/scale-to-width-down/1000?cb=20181024165520"
         stage.AddRecord(SpartaX18,"12:38.44","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"12:49.63","00:00.00","No")
+        stage.AddRecord(datsun,"12:56.54","00:00.00","No")
         stage.AddRecord(Migger,"12:56.65","00:00.00","No")
         rally.stages[2] = stage;
 
@@ -110,6 +111,7 @@ function contestData(){
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/a/a9/20181023_133833.png/revision/latest/scale-to-width-down/1000?cb=20181024165638"
         stage.AddRecord(SpartaX18,"14:01.55","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"14:13.30","00:00.00","No")
+        stage.AddRecord(datsun,"14:15.59","00:00.00","No")
         stage.AddRecord(Migger,"14:20.88","00:00.00","No")
         rally.stages[3] = stage;
 
