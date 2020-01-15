@@ -38,6 +38,10 @@ class Stage{
     }
 }
 
+function tp() {
+    
+}
+
 class Record{
     constructor(participant, time, penalty, verified){
         this.participant = participant;
@@ -111,10 +115,12 @@ function contestData(){
 
         stage = new Stage("Dyfi");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/4/47/20181023_133956.png/revision/latest/scale-to-width-down/1000?cb=20181024170159"
+        stage.AddRecord(SpartaX18,"15:36.78","00:00.00","No")
         rally.stages[4] = stage;
 
         stage = new Stage("Gartheiniog");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/c/cb/20181023_134059.png/revision/latest/scale-to-width-down/1000?cb=20181024170338"
+        stage.AddRecord(SpartaX18,"12:23.89","00:00.00","No")
         rally.stages[5] = stage;
 
         rallies[0] = rally
