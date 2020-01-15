@@ -36,6 +36,9 @@ class Stage{
     AddRecord(participant, time, penalty, verified){
         this.records.push(new Record(participant,time,penalty,verified))
     }
+    RecordsSorted(){
+        return this.records.sort((a,b) => a.centiseconds - b.centiseconds)
+    }
 }
 
 function tp() {
@@ -48,7 +51,11 @@ class Record{
         this.time = time;
         this.penalty = penalty;
         this.timePenalty = (parseInt(time.slice(0,2)) + parseInt(penalty.slice(0,2))) + ":" + (parseInt(time.slice(3,5)) + parseInt(penalty.slice(3,5))) + "." + (parseInt(time.slice(6,8)) + parseInt(penalty.slice(6,8)));
+        this.centiseconds = this.TimeToCentiseconds(this.timePenalty)
         this.verified = verified;
+    }
+    TimeToCentiseconds(time){   //string to int
+        return (parseInt(time.slice(0,2))*60 + parseInt(time.slice(3,5)))*100 + parseInt(time.slice(6,8))
     }
 }
 

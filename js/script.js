@@ -66,7 +66,7 @@ function loadRallyTables(RallyID){
                 </tr>
             </thead>
             <tbody>`
-        let records = stages[i].records
+        let records = stages[i].RecordsSorted()
         for(let j = 0; j< records.length; j++)
         {
             newTable.innerHTML+= 
