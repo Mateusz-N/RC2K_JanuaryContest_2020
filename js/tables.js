@@ -50,12 +50,27 @@ class Record{
         this.participant = participant;
         this.time = time;
         this.penalty = penalty;
-        this.timePenalty = (parseInt(time.slice(0,2)) + parseInt(penalty.slice(0,2))) + ":" + (parseInt(time.slice(3,5)) + parseInt(penalty.slice(3,5))) + "." + (parseInt(time.slice(6,8)) + parseInt(penalty.slice(6,8)));
-        this.centiseconds = this.TimeToCentiseconds(this.timePenalty)
+        this.centiseconds = this.TimeToCentiseconds(this.time) + this.TimeToCentiseconds(this.penalty);
+        this.timePenalty = this.CentisecondsToTime(this.centiseconds);
         this.verified = verified;
     }
     TimeToCentiseconds(time){   //string to int
         return (parseInt(time.slice(0,2))*60 + parseInt(time.slice(3,5)))*100 + parseInt(time.slice(6,8))
+    }
+    CentisecondsToTime(centiseconds){
+        let number_string = "";
+        number_string += this.addZero(~~(centiseconds/(100*60))) + ":";
+        centiseconds %= 100*60;
+        number_string += this.addZero(~~(centiseconds/100))+".";
+        centiseconds %= 100;
+        number_string += this.addZero(centiseconds);
+        return number_string 
+    }
+    addZero(number){  //int 5 turns string "05"
+        if(number < 10){
+            return "0" + number
+        }
+        return ""+number
     }
 }
 
