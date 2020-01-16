@@ -132,6 +132,7 @@ function contestData(){
         stage.AddRecord(XsaraTorrada,"14:48.14","00:00.00","No")
         stage.AddRecord(SpartaX18,"15:36.78","00:00.00","No")
         stage.AddRecord(Juraj,"17:19.04","00:00.00","No")
+        stage.AddRecord(Migger,"14:31.78","00:00.00","No")
         rally.stages[4] = stage;
 
         stage = new Stage("Gartheiniog");
@@ -149,6 +150,7 @@ function contestData(){
         stage = new Stage("Chirdonhead");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/b/b7/20181023_152615.png/revision/latest/scale-to-width-down/1000?cb=20181024170442"
         stage.AddRecord(Juraj,"22:01.24","00:00.00","No")
+        stage.AddRecord(SpartaX18,"19:47.29","00:00.00","No")
         rally.stages[0] = stage;
 
         stage = new Stage("Falstone");
