@@ -142,6 +142,7 @@ function contestData(){
         stage.AddRecord(XsaraTorrada,"12:46.96","00:00.00","No")
         stage.AddRecord(Juraj,"14:27.48","00:00.00","No")
         stage.AddRecord(Migger,"12:38.73","00:00.00","No")
+        stage.AddRecord(datsun,"12:40.31","00:00.00","No")
         rally.stages[5] = stage;
 
         rallies[0] = rally
