@@ -110,9 +110,10 @@ function contestData(){
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/3/3f/20181105_134049.png/revision/latest/scale-to-width-down/1000?cb=20181105214042"
         stage.AddRecord(SpartaX18,"09:54.33","00:00.00","No")
         stage.AddRecord(datsun,"10:15.39","00:00.00","No")
-        stage.AddRecord(XsaraTorrada,"10:15.86","00:00.00","No")
+        stage.AddRecord(XsaraTorrada,"10:15.86","00:00.00","Yes")
         stage.AddRecord(Migger,"10:15.98","00:00.00","No")
         stage.AddRecord(Juraj,"10:41.30","00:00.00","No")
+        stage.AddRecord(Erwto,"10:38.90","00:00.00","No")
         rally.stages[0] = stage
         
         stage = new Stage("Penmachno South");
@@ -122,6 +123,7 @@ function contestData(){
         stage.AddRecord(datsun,"08:54.49","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"09:01.83","00:00.00","No")
         stage.AddRecord(Juraj,"10:33.95","00:00.00","No")
+        stage.AddRecord(Erwto,"09:23.22","00:00.00","No")
         rally.stages[1] = stage
 
         stage = new Stage("Myherin");
@@ -131,6 +133,7 @@ function contestData(){
         stage.AddRecord(datsun,"12:56.54","00:00.00","No")
         stage.AddRecord(Migger,"12:56.65","00:00.00","No")
         stage.AddRecord(Juraj,"16:13.36","00:00.00","No")
+        stage.AddRecord(Erwto,"13:53.37","00:00.00","No")
         rally.stages[2] = stage;
 
         stage = new Stage("Hafren");
@@ -140,6 +143,7 @@ function contestData(){
         stage.AddRecord(datsun,"14:15.59","00:00.00","No")
         stage.AddRecord(Migger,"14:20.88","00:00.00","No")
         stage.AddRecord(Juraj,"16:24.15","00:00.00","No")
+        stage.AddRecord(Erwto,"14:38.10","00:00.00","No")
         rally.stages[3] = stage;
 
         stage = new Stage("Dyfi");
@@ -149,15 +153,17 @@ function contestData(){
         stage.AddRecord(Juraj,"17:19.04","00:00.00","No")
         stage.AddRecord(Migger,"14:31.78","00:00.00","No")
         stage.AddRecord(datsun,"14:45.85","00:00.00","No")
+        stage.AddRecord(Erwto,"15:00.44","00:00.00","No")
         rally.stages[4] = stage;
 
         stage = new Stage("Gartheiniog");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/c/cb/20181023_134059.png/revision/latest/scale-to-width-down/1000?cb=20181024170338"
         stage.AddRecord(SpartaX18,"12:23.89","00:00.00","No")
-        stage.AddRecord(XsaraTorrada,"12:46.96","00:00.00","No")
+        stage.AddRecord(XsaraTorrada,"12:46.96","00:00.00","Yes")
         stage.AddRecord(Juraj,"14:27.48","00:00.00","No")
         stage.AddRecord(Migger,"12:38.73","00:00.00","No")
         stage.AddRecord(datsun,"12:40.31","00:00.00","No")
+        stage.AddRecord(Erwto,"13:06.06","00:00.00","No")
         rally.stages[5] = stage;
 
         rallies[0] = rally
@@ -170,7 +176,7 @@ function contestData(){
         stage.AddRecord(Juraj,"22:01.24","00:00.00","No")
         stage.AddRecord(SpartaX18,"19:47.29","00:00.00","No")
         stage.AddRecord(Migger,"20:06.05","00:00.00","No")
-        stage.AddRecord(XsaraTorrada,"20:03.15","00:00.00","No")
+        stage.AddRecord(XsaraTorrada,"20:03.15","00:00.00","Yes")
         stage.AddRecord(datsun,"20:42.18","00:00.00","No")
         rally.stages[0] = stage;
 
@@ -183,6 +189,7 @@ function contestData(){
         stage = new Stage("Kershope");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/f/ff/20181025_190653.png/revision/latest/scale-to-width-down/1000?cb=20181025190937"
         stage.AddRecord(Juraj,"17:43.39","00:00.00","No")
+        stage.AddRecord(SpartaX18,"14:11.92","00:00.00","No")
         rally.stages[2] = stage;
 
         stage = new Stage("Pundershaw");
