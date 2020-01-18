@@ -113,36 +113,33 @@ body{
     background: linear-gradient(45deg, #BBB 33.3%, #DDD 66.7%, white 100%);
 }
 
-#tables, #rallyboards{
+.tables{
     padding: 2% 3%;
     background-color: #606060;
     border: 0.3vw solid black;
     font-size: 1vw;
 }
 
-#tables{
+.tables{
     margin: 0px 10% 1% 10%;
 }
 
-#rallyboards{
-    margin: 0px 10% 1% 10%;
-}
 
-#tables table{
+.tables table{
     background-color: #FFF;
     margin-bottom: 0px;
     padding-right: 10px;
 }
 
-#tables table tr th{
+.tables table tr th{
     border: 0px;
 }
 
-#tables table td, #tables table th{
+.tables table td, #tables table th{
     vertical-align: middle;
 }
 
-#tables table tr:hover, #entrylist table tr:hover{
+.tables table tr:hover, #entrylist table tr:hover{
     background-color: #DDD;
 }
 

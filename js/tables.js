@@ -4,14 +4,15 @@ class Contest{
         this.participants = []
         this.rallies = []
     }
-    AddRecord(RallyID, StageID, participantName, time){
-        
+    AddRally(rally){
+        rally.id = this.rallies.length;
+        this.rallies.push(rally);
     }
     GetParticipantIDByName(name){
         function checkName(participant){
             if(participant.name == name)
                 return true
-            false
+            return false
         }
         return this.participants.findIndex(checkName)
     }
@@ -24,6 +25,42 @@ class Rally{
     constructor(name){
         this.name = name
         this.stages = []
+    }
+    generateSummary(){
+        this.summary = new Stage(this.name + " Summary");
+        this.summary.imageURL = "resources/rally" + this.id + ".PNG";
+        let participants = []  //name to participant object
+        let centiseconds_initial_hash = []
+        let penalty_hash = []
+        let verified_hash = []
+        let number_hash = []  //number of stages completed [participant_name]
+        for(let i = 0; i< this.stages.length; i++){
+            let stage = this.stages[i];
+            for(let j = 0; j< stage.records.length; j++){
+                let record = stage.records[j];
+                let name = record.participant.name;
+                if(!participants[name]){
+                    participants[name] = record.participant;
+                    centiseconds_initial_hash[name] = record.centiseconds_initial;
+                    penalty_hash[name] = record.centiseconds_penalty;
+                    verified_hash[name] = record.verified
+                    number_hash[name] = 1;
+                }
+                else{
+                    centiseconds_initial_hash[name] += record.centiseconds_initial;
+                    penalty_hash[name] += record.centiseconds_penalty;
+                    if(record.verified == "No"){verified_hash[name] = "No"}
+                    number_hash[name] += 1;
+                }
+            }
+        }
+        for(let key in centiseconds_initial_hash){
+            if(number_hash[key] == 6){
+                let participant = participants[key];
+                this.summary.AddRecord(participant,centiseconds_initial_hash[key],penalty_hash[key],verified_hash[key])
+            }
+        }
+        return this.summary;
     }
 }
 
@@ -39,6 +76,59 @@ class Stage{
     RecordsSorted(){
         return this.records.sort((a,b) => a.centiseconds - b.centiseconds)
     }
+    CreateStageTable(div){  //div = space for the table
+        let divStage = document.createElement('div')
+        divStage.className = "divStage"
+
+        let divTitleImage = document.createElement('div')
+        divTitleImage.className = "divTitleImage"
+
+        let newTitle = document.createElement('h4')
+        newTitle.innerHTML = this.name
+        newTitle.className = "stageName"
+        divTitleImage.appendChild(newTitle)
+
+        let newImage = document.createElement("img")
+        newImage.src = this.imageURL
+        newImage.className = "mapImage"
+        divTitleImage.appendChild(newImage)
+        
+        divStage.appendChild(divTitleImage)
+
+        let newTable = document.createElement('table')
+        newTable.setAttribute("class", "table")
+        newTable.innerHTML = 
+            `<thead class="thead-dark">
+                <tr>
+                    <th scope="col">Ranking</th>
+                    <th scope="col">Driver</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Penalty</th>
+                    <th scope="col">Time (+Penalty)</th>
+                    <th scope="col">Verified?</th>
+                </tr>
+            </thead>
+            <tbody>`
+        let records = this.RecordsSorted()
+        for(let j = 0; j< records.length; j++)
+        {
+            newTable.innerHTML+= 
+            `
+            <tr>
+                <th scope="row">`+(j+1)+`</th>
+                <td>`+ records[j].participant.name +`</td>
+                <td>`+ records[j].time + `</td>
+                <td>`+ records[j].penalty +`</td>
+                <td>`+ records[j].timePenalty +`</td>
+                <td>`+ records[j].verified +`</td>
+            </tr>
+            `
+        }
+        newTable.innerHTML+= `</tbody>`
+        
+        divStage.appendChild(newTable)
+        div.appendChild(divStage)
+    }
 }
 
 function tp() {
@@ -48,10 +138,24 @@ function tp() {
 class Record{
     constructor(participant, time, penalty, verified){
         this.participant = participant;
-        this.time = time;
-        this.penalty = penalty;
-        this.centiseconds = this.TimeToCentiseconds(this.time) + this.TimeToCentiseconds(this.penalty);
-        this.timePenalty = this.CentisecondsToTime(this.centiseconds);
+        if(typeof(time) == "number"){
+            this.centiseconds_initial = time;
+            this.time = this.CentisecondsToTime(this.centiseconds_initial);
+        }
+        else{
+            this.time = time; //string
+            this.centiseconds_initial = this.TimeToCentiseconds(this.time);  //int
+        }
+        if(typeof(penalty) == "number"){
+            this.centiseconds_penalty = penalty;
+            this.penalty = this.CentisecondsToTime(this.centiseconds_penalty);
+        }
+        else{
+            this.penalty = penalty; //string
+            this.centiseconds_penalty = this.TimeToCentiseconds(this.penalty);  //int
+        }
+        this.centiseconds = this.centiseconds_initial + this.centiseconds_penalty; //int
+        this.timePenalty = this.CentisecondsToTime(this.centiseconds);  //string
         this.verified = verified;
     }
     TimeToCentiseconds(time){   //string to int
@@ -166,7 +270,8 @@ function contestData(){
         stage.AddRecord(Erwto,"13:06.06","00:00.00","No")
         rally.stages[5] = stage;
 
-        rallies[0] = rally
+        rally.generateSummary()
+        contest.AddRally(rally)
     }
     {
         rally = new Rally("Pirelli International Rally")
@@ -208,7 +313,7 @@ function contestData(){
         stage.AddRecord(Juraj,"16:32.31","00:00.00","No")
         rally.stages[5] = stage;
 
-        rallies[1] = rally
+        contest.AddRally(rally)
     }
     {
         rally = new Rally("RSAC Scottish Rally")
@@ -237,7 +342,7 @@ function contestData(){
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/5/52/20181029_121409.png/revision/latest/scale-to-width-down/1000?cb=20181030151727"
         rally.stages[5] = stage;
 
-        rallies[2] = rally
+        contest.AddRally(rally)
     }
     {
         rally = new Rally("Seat Jim Clark Memorial Rally")
@@ -266,7 +371,7 @@ function contestData(){
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/d/d1/20181029_132242.png/revision/latest/scale-to-width-down/1000?cb=20181030153917"
         rally.stages[5] = stage;
 
-        rallies[3] = rally
+        contest.AddRally(rally)
     }
     {
         rally = new Rally("Stena Line Ulster Rally")
@@ -295,7 +400,7 @@ function contestData(){
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/8/87/20181102_164414.png/revision/latest/scale-to-width-down/1000?cb=20181102154703"
         rally.stages[5] = stage;
 
-        rallies[4] = rally
+        contest.AddRally(rally)
     }
     {
         rally = new Rally("Sony Manx International Rally")
@@ -324,10 +429,8 @@ function contestData(){
         stage.imageURL="https://vignette.wikia.nocookie.net/rc2000/images/3/3d/20181105_084909.png/revision/latest/scale-to-width-down/1000?cb=20181126175355"
         rally.stages[5] = stage;
 
-        rallies[5] = rally
+        contest.AddRally(rally)
     }
-
-    contest.rallies = rallies
 
     return contest
 }
