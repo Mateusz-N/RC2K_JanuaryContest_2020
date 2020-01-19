@@ -76,10 +76,16 @@ class Stage{
     RecordsSorted(){
         return this.records.sort((a,b) => a.centiseconds - b.centiseconds)
     }
-    CreateStageTable(div){  //div = space for the table
+    CreateStageTable(div, nParticipants){  //div = space for the table
+        let isFinal;
+        if(typeof(nParticipants) == "undefined"){
+            isFinal = false;
+        }
+        else{
+            isFinal = true;
+        }
         let divStage = document.createElement('div')
         divStage.className = "divStage"
-
         let divTitleImage = document.createElement('div')
         divTitleImage.className = "divTitleImage"
 
@@ -97,6 +103,7 @@ class Stage{
 
         let newTable = document.createElement('table')
         newTable.setAttribute("class", "table")
+        let string_lastColumn = !isFinal? "Verified?":"Points"
         newTable.innerHTML = 
             `<thead class="thead-dark">
                 <tr>
@@ -105,13 +112,14 @@ class Stage{
                     <th scope="col">Time</th>
                     <th scope="col">Penalty</th>
                     <th scope="col">Time (+Penalty)</th>
-                    <th scope="col">Verified?</th>
+                    <th scope="col">`+string_lastColumn+`</th>
                 </tr>
             </thead>
             <tbody>`
         let records = this.RecordsSorted()
         for(let j = 0; j< records.length; j++)
         {
+            let value_lastColumn = !isFinal? records[j].verified:(nParticipants-j)
             newTable.innerHTML+= 
             `
             <tr>
@@ -120,7 +128,7 @@ class Stage{
                 <td>`+ records[j].time + `</td>
                 <td>`+ records[j].penalty +`</td>
                 <td>`+ records[j].timePenalty +`</td>
-                <td>`+ records[j].verified +`</td>
+                <td>`+ value_lastColumn +`</td>
             </tr>
             `
         }

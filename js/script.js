@@ -38,7 +38,7 @@ function loadRallyTables(RallyID){
     }
     let summaryDiv = document.getElementById("rallyboards")
     summaryDiv.innerHTML = "";
-    contest.rallies[RallyID].generateSummary().CreateStageTable(summaryDiv)
+    contest.rallies[RallyID].generateSummary().CreateStageTable(summaryDiv, contest.participants.length)
 }
 
 
