@@ -314,11 +314,13 @@ function contestData(){
         stage = new Stage("Riccarton");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/1/12/20181025_192252.png/revision/latest/scale-to-width-down/1000?cb=20181025191823"
         stage.AddRecord(Juraj,"08:12.34","00:00.00","No")
+        stage.AddRecord(SpartaX18,"07:17.94","00:00.00","No")
         rally.stages[4] = stage;
 
         stage = new Stage("Newcastleton");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/0/04/20181025_192426.png/revision/latest/scale-to-width-down/1000?cb=20181025192203"
         stage.AddRecord(Juraj,"16:32.31","00:00.00","No")
+        stage.AddRecord(SpartaX18,"14:53.87","00:00.00","No")
         rally.stages[5] = stage;
 
         contest.AddRally(rally)
