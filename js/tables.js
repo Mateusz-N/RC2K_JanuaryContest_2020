@@ -336,14 +336,17 @@ function contestData(){
 
         stage = new Stage("Twiglees");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/0/03/20181028_011942.png/revision/latest/scale-to-width-down/1000?cb=20181027232048"
+        stage.AddRecord(SpartaX18,"08:20.05","00:00.00","No")
         rally.stages[0] = stage;
 
         stage = new Stage("Yair");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/d/d4/20181028_125844.png/revision/latest/scale-to-width-down/1000?cb=20181028115940"
+        stage.AddRecord(SpartaX18,"04:50.32","00:00.00","No")
         rally.stages[1] = stage;
 
         stage = new Stage("Cardrona");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/7/79/20181029_115018.png/revision/latest/scale-to-width-down/1000?cb=20181030151339"
+        stage.AddRecord(SpartaX18,"05:36.00","00:00.00","No")
         rally.stages[2] = stage;
 
         stage = new Stage("Black loch");
