@@ -226,6 +226,7 @@ function contestData(){
         stage.AddRecord(Migger,"10:15.98","00:00.00","No")
         stage.AddRecord(Juraj,"10:41.30","00:00.00","No")
         stage.AddRecord(Erwto,"10:38.90","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"10:10.00","00:00.00","Yes")
         rally.stages[0] = stage
         
         stage = new Stage("Penmachno South");
@@ -236,6 +237,7 @@ function contestData(){
         stage.AddRecord(XsaraTorrada,"09:01.83","00:00.00","No")
         stage.AddRecord(Juraj,"10:33.95","00:00.00","No")
         stage.AddRecord(Erwto,"09:23.22","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"08:54.39","00:00.00","No")
         rally.stages[1] = stage
 
         stage = new Stage("Myherin");
@@ -246,6 +248,7 @@ function contestData(){
         stage.AddRecord(Migger,"12:56.65","00:00.00","No")
         stage.AddRecord(Juraj,"16:13.36","00:00.00","No")
         stage.AddRecord(Erwto,"13:53.37","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"13:13.00","00:00.00","No")
         rally.stages[2] = stage;
 
         stage = new Stage("Hafren");
@@ -256,6 +259,7 @@ function contestData(){
         stage.AddRecord(Migger,"14:20.88","00:00.00","No")
         stage.AddRecord(Juraj,"16:24.15","00:00.00","No")
         stage.AddRecord(Erwto,"14:38.10","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"14:03.33","00:00.00","No")
         rally.stages[3] = stage;
 
         stage = new Stage("Dyfi");
@@ -266,6 +270,7 @@ function contestData(){
         stage.AddRecord(Migger,"14:31.78","00:00.00","No")
         stage.AddRecord(datsun,"14:45.85","00:00.00","No")
         stage.AddRecord(Erwto,"15:00.44","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"15:02.05","00:00.00","No")
         rally.stages[4] = stage;
 
         stage = new Stage("Gartheiniog");
@@ -276,6 +281,7 @@ function contestData(){
         stage.AddRecord(Migger,"12:38.73","00:00.00","No")
         stage.AddRecord(datsun,"12:40.31","00:00.00","No")
         stage.AddRecord(Erwto,"13:06.06","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"12:49.16","00:00.00","Yes")
         rally.stages[5] = stage;
 
         rally.generateSummary()
