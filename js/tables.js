@@ -363,10 +363,12 @@ function contestData(){
 
         stage = new Stage("Black loch");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/f/f1/20181029_115542.png/revision/latest/scale-to-width-down/1000?cb=20181030151437"
+        stage.AddRecord(SpartaX18,"06:20.25","00:00.00","No")
         rally.stages[3] = stage;
 
         stage = new Stage("Glentrool");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/6/61/20181029_120643.png/revision/latest/scale-to-width-down/1000?cb=20181030151634"
+        stage.AddRecord(SpartaX18,"16:07.89","00:00.00","No")
         rally.stages[4] = stage;
 
         stage = new Stage("Ae");
