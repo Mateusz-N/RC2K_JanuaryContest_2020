@@ -396,6 +396,7 @@ function contestData(){
         stage = new Stage("Ae");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/5/52/20181029_121409.png/revision/latest/scale-to-width-down/1000?cb=20181030151727"
         stage.AddRecord(Juraj,"22:59.23","00:00.00","No")
+        stage.AddRecord(SpartaX18,"17:20.71","00:00.00","No")
         rally.stages[5] = stage;
 
         contest.AddRally(rally)
@@ -405,26 +406,32 @@ function contestData(){
 
         stage = new Stage("Moon and star");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/1/1f/20181029_124141.png/revision/latest/scale-to-width-down/1000?cb=20181030151936"
+        stage.AddRecord(Juraj,"03:58.49","00:00.00","No")
         rally.stages[0] = stage;
 
         stage = new Stage("Bothwell");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/f/f1/IMG_20181029_125523.png/revision/latest/scale-to-width-down/1000?cb=20181030152101"
+        stage.AddRecord(Juraj,"06:33.71","00:00.00","No")
         rally.stages[1] = stage;
 
         stage = new Stage("Whitchester");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/9/9c/20181029_130316.png/revision/latest/scale-to-width-down/1000?cb=20181030152209"
+        stage.AddRecord(Juraj,"05:32.56","00:00.00","No")
         rally.stages[2] = stage;
 
         stage = new Stage("Eccles");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/5/5f/20181029_131113.png/revision/latest/scale-to-width-down/1000?cb=20181030152651"
+        stage.AddRecord(Juraj,"05:54.61","00:00.00","No")
         rally.stages[3] = stage;
 
         stage = new Stage("Langton");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/2/22/20181029_131731.png/revision/latest/scale-to-width-down/1000?cb=20181030153714"
+        stage.AddRecord(Juraj,"02:06.22","00:00.00","No")
         rally.stages[4] = stage;
 
         stage = new Stage("Fogo");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/d/d1/20181029_132242.png/revision/latest/scale-to-width-down/1000?cb=20181030153917"
+        stage.AddRecord(Juraj,"06:19.02","00:00.00","No")
         rally.stages[5] = stage;
 
         contest.AddRally(rally)
