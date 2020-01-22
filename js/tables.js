@@ -324,6 +324,7 @@ function contestData(){
         stage.AddRecord(Migger,"15:05.12","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"14:46.36","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"15:06.75","00:00.00","Yes")
+        stage.AddRecord(datsun,"16:08.32","00:00.00","No")
         rally.stages[2] = stage;
 
         stage = new Stage("Pundershaw");
@@ -333,6 +334,7 @@ function contestData(){
         stage.AddRecord(Migger,"18:18.64","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"17:54.53","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"17:56.57","00:00.00","Yes")
+        stage.AddRecord(datsun,"18:44.27","00:00.00","No")
         rally.stages[3] = stage;
 
         stage = new Stage("Riccarton");
