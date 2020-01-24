@@ -465,26 +465,32 @@ function contestData(){
 
         stage = new Stage("Hamilton's Folly");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/5/59/20181031_124043.png/revision/latest/scale-to-width-down/1000?cb=20181031143937"
+        stage.AddRecord(SpartaX18,"08:15.26","00:00.00","No")
         rally.stages[0] = stage;
 
         stage = new Stage("Tyrones Ditches");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/5/52/20181102_110833.png/revision/latest/scale-to-width-down/1000?cb=20181102100921"
+        stage.AddRecord(SpartaX18,"10:12.28","00:00.00","No")
         rally.stages[1] = stage;
 
         stage = new Stage("Feeney");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/6/6a/20181102_112205.png/revision/latest/scale-to-width-down/1000?cb=20181102102233"
+        stage.AddRecord(SpartaX18,"09:44.48","00:00.00","No")
         rally.stages[2] = stage;
 
         stage = new Stage("Parkanaur");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/c/c4/20181102_113015.png/revision/latest/scale-to-width-down/1000?cb=20181102103054"
+        stage.AddRecord(SpartaX18,"10:06.36","00:00.00","No")
         rally.stages[3] = stage;
 
         stage = new Stage("Lisnamuck");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/a/aa/20181102_162558.png/revision/latest/scale-to-width-down/1000?cb=20181102154611"
+        stage.AddRecord(SpartaX18,"07:49.34","00:00.00","No")
         rally.stages[4] = stage;
 
         stage = new Stage("Tardree");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/8/87/20181102_164414.png/revision/latest/scale-to-width-down/1000?cb=20181102154703"
+        stage.AddRecord(SpartaX18,"07:41.01","00:00.00","No")
         rally.stages[5] = stage;
 
         contest.AddRally(rally)
