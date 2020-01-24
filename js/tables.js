@@ -499,6 +499,7 @@ function contestData(){
         stage.AddRecord(SpartaX18,"06:07.04","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"05:59.56","00:00.00","No")
         stage.AddRecord(Tornado,"05:57.08","00:00.00","No")
+        stage.AddRecord(Migger,"06:25.72","00:00.00","No")
         rally.stages[5] = stage;
 
         contest.AddRally(rally)
