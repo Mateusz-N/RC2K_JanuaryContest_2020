@@ -599,6 +599,7 @@ function contestData(){
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/5/56/20181104_162834.png/revision/latest/scale-to-width-down/1000?cb=20181104152904"
         stage.AddRecord(Juraj,"04:06.20","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"03:39.07","00:00.00","No")
+        stage.AddRecord(SpartaX18,"03:36.22","00:00.00","No")
         rally.stages[3] = stage;
 
         stage = new Stage("Injerbreck");
