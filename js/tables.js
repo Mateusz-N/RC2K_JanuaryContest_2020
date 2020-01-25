@@ -578,18 +578,21 @@ function contestData(){
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/9/9e/20181103_130705.png/revision/latest/scale-to-width-down/1000?cb=20181103120822"
         stage.AddRecord(Juraj,"04:47.89","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"04:43.77","00:00.00","No")
+        stage.AddRecord(SpartaX18,"04:46.79","00:00.00","No")
         rally.stages[0] = stage;
 
         stage = new Stage("Ballagyr");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/8/8a/20181103_132646.png/revision/latest/scale-to-width-down/1000?cb=20181103122735"
         stage.AddRecord(Juraj,"07:55.81","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"07:08.15","00:00.00","No")
+        stage.AddRecord(SpartaX18,"07:11.87","00:00.00","No")
         rally.stages[1] = stage;
 
         stage = new Stage("Curraghs");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/9/9b/20181103_185003.png/revision/latest/scale-to-width-down/1000?cb=20181103175253"
         stage.AddRecord(Juraj,"10:50.37","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"09:55.11","00:00.00","No")
+        stage.AddRecord(SpartaX18,"09:49.42","00:00.00","No")
         rally.stages[2] = stage;
 
         stage = new Stage("Tholt-y-will");
