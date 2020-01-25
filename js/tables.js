@@ -613,6 +613,7 @@ function contestData(){
         stage.imageURL="https://vignette.wikia.nocookie.net/rc2000/images/3/3d/20181105_084909.png/revision/latest/scale-to-width-down/1000?cb=20181126175355"
         stage.AddRecord(Juraj,"11:41.78","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"10:26.68","00:00.00","No")
+        stage.AddRecord(SpartaX18,"10:16.83","00:00.00","No")
         rally.stages[5] = stage;
 
         contest.AddRally(rally)
