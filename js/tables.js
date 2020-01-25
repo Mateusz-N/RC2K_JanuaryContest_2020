@@ -606,6 +606,7 @@ function contestData(){
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/0/0c/20181105_084329.png/revision/latest/scale-to-width-down/1000?cb=20181126175459"
         stage.AddRecord(Juraj,"10:26.32","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"09:15.21","00:00.00","No")
+        stage.AddRecord(SpartaX18,"08:56.50","00:00.00","No")
         rally.stages[4] = stage;
 
         stage = new Stage("Cringle");
