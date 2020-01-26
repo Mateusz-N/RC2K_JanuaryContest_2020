@@ -61,18 +61,29 @@ class Rally{
                     }
                 }
                 else{
-                    centiseconds_initial_hash[name] += record.centiseconds_initial;
-                    penalty_hash[name] += record.centiseconds_penalty;
-                    if(record.verified == "No"){verified_hash[name] = "No"}
-                    number_hash[name] += 1;
-                    if(typeof(record.points) !== "undefined"){
-                        points_hash[name] += record.points;
+                    if(record.centiseconds_initial < 0){
+                        if(this.id !== 6){
+                            centiseconds_initial_hash[name] = -1
+                            penalty_hash[name] = -1
+                            points_hash[name] = 0;
+                        }
+                        verified_hash[name] = "DNF"
+                        number_hash[name] += 1;   
+                    }
+                    else{
+                        centiseconds_initial_hash[name] += record.centiseconds_initial;
+                        penalty_hash[name] += record.centiseconds_penalty;
+                        if(record.verified == "No"){verified_hash[name] = "No"}
+                        number_hash[name] += 1;
+                        if(typeof(record.points) !== "undefined"){
+                            points_hash[name] += record.points;
+                        }
                     }
                 }
             }
         }
         for(let key in centiseconds_initial_hash){
-            if(number_hash[key] == 6){
+            if(number_hash[key] == 6 || this.id == 6){
                 let participant = participants[key];
                 this.summary.AddRecord(participant,centiseconds_initial_hash[key],penalty_hash[key],verified_hash[key])
             }
@@ -104,7 +115,13 @@ class Stage{
         return newRecord;
     }
     RecordsSorted_Centiseconds(){  //compare centiseconds
-        return this.records.sort((a,b) => a.centiseconds - b.centiseconds)
+        return this.records.sort(function (a,b){
+            if(a.centiseconds < 0)
+                return Number.POSITIVE_INFINITY
+            if(b.centiseconds < 0)
+                return Number.NEGATIVE_INFINITY
+            return (a.centiseconds - b.centiseconds)
+        })
     }
     RecordsSorted_Points(){
         return this.records.sort((a,b) => b.points - a.points)
@@ -189,10 +206,31 @@ class Record{
         this.verified = verified;
     }
     TimeToCentiseconds(time){   //string to int
-        return (parseInt(time.slice(0,2))*60 + parseInt(time.slice(3,5)))*100 + parseInt(time.slice(6,8))
+        if(time == "DNF")
+            return -1
+        let centiseconds = 0;
+        let index = time.lastIndexOf('.')
+        centiseconds += parseInt(time.slice(index+1,index+3))
+        time = time.slice(0,index)
+        index = time.lastIndexOf(':')
+        centiseconds += 100 * parseInt(time.slice(index+1, time.length))   //seconds
+        time = time.slice(0,index)
+        index = time.lastIndexOf(':')
+        centiseconds += 60 * 100 * parseInt(time.slice(index+1, time.length)) //minutes
+        if(index === -1) return centiseconds;
+        time = time.slice(0, index)
+        centiseconds += 60 * 60 * 100 * parseInt(time.slice) //hours
+        return centiseconds
     }
     CentisecondsToTime(centiseconds){
+        if(centiseconds < 0)
+            return "DNF"
         let number_string = "";
+        let hours = ~~(centiseconds/(100*60*60))
+        if(hours > 0){
+            number_string += this.addZero(hours) + ":";
+            centiseconds %= 100*60*60;
+        }
         number_string += this.addZero(~~(centiseconds/(100*60))) + ":";
         centiseconds %= 100*60;
         number_string += this.addZero(~~(centiseconds/100))+".";
