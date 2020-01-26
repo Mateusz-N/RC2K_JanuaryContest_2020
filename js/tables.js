@@ -163,7 +163,12 @@ class Record{
             this.centiseconds_penalty = this.TimeToCentiseconds(this.penalty);  //int
         }
         this.centiseconds = this.centiseconds_initial + this.centiseconds_penalty; //int
-        this.timePenalty = this.CentisecondsToTime(this.centiseconds);  //string
+        if(time === "DNF") {
+            this.timePenalty = "DNF";
+        }
+        else{
+            this.timePenalty = this.CentisecondsToTime(this.centiseconds);  //string
+        }
         this.verified = verified;
     }
     TimeToCentiseconds(time){   //string to int
@@ -176,7 +181,7 @@ class Record{
         number_string += this.addZero(~~(centiseconds/100))+".";
         centiseconds %= 100;
         number_string += this.addZero(centiseconds);
-        return number_string 
+        return number_string
     }
     addZero(number){  //int 5 turns string "05"
         if(number < 10){
@@ -532,6 +537,7 @@ function contestData(){
         stage.AddRecord(SpartaX18,"08:15.26","00:00.00","No")
         stage.AddRecord(Juraj,"09:41.70","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"08:16.33","00:00.00","No")
+        stage.AddRecord(datsun,"08:46.45","00:00.00","No")
         rally.stages[0] = stage;
 
         stage = new Stage("Tyrones Ditches");
@@ -539,6 +545,7 @@ function contestData(){
         stage.AddRecord(SpartaX18,"10:12.28","00:00.00","No")
         stage.AddRecord(Juraj,"11:59.45","00:00.00","No")
         stage.AddRecord(SpartaRemixer,"10:17.28","00:00.00","No")
+        stage.AddRecord(datsun,"DNF","DNF","DNF")
         rally.stages[1] = stage;
 
         stage = new Stage("Feeney");
