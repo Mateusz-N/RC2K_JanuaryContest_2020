@@ -258,7 +258,7 @@ function contestData(){
     let participantsNames = ["Erwto","MidnightRunner","Migger","SpartaX18","Škoda Favorit GLX SilverLine","Tornado","XsaraTorrada","SpartaRemixer","Juraj Damjanovic"]
     let participants = []
     for(let i = 0; i<participantsNames.length; i++){
-        participants.push(new Participant(participantsNames[i], "#880000"))
+        participants.push(new Participant(participantsNames[i], '#'+(Math.random()*0xFFFFFF<<0).toString(16)))
     }
     contest.participants = participants
 

@@ -114,14 +114,11 @@ body{
 }
 
 .tables{
-    padding: 2% 3%;
+    padding: 2% 3% !important;
     background-color: #606060;
     border: 0.3vw solid black;
     font-size: 1vw;
-}
-
-.tables{
-    margin: 0px 10% 1% 10%;
+    margin: 0px 10% 1% 10% !important;
 }
 
 
@@ -172,4 +169,10 @@ h1, h2, h3, h4, h5, h6{
 
 .mapImage{
     width: 100%;
+}
+
+canvas.tables{
+    width: 80% !important;
+    display: initial !important;
+    background-color: white;
 }
