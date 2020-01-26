@@ -19,6 +19,16 @@ class Contest{
     GetParticipantByName(name){
         return this.participants[this.GetParticipantIDByName(name)]
     }
+    generateFinalSummary(){
+        this.summaryRally = new Rally("Final")
+        for(let i = 0; i< this.rallies.length; i++){
+            let rally = this.rallies[i];
+            this.summaryRally.stages.push(rally.generateSummary(this.participants.length))
+        }
+        //let summary = this.summaryRally.generateSummary()
+        //summary.imageURL = "resources/final.jpg";
+        //return summary;
+    }
 }
 
 class Rally{
@@ -26,7 +36,7 @@ class Rally{
         this.name = name
         this.stages = []
     }
-    generateSummary(){
+    generateSummary(nParticipants, stages = this.stages){
         this.summary = new Stage(this.name + " Summary");
         this.summary.imageURL = "resources/rally" + this.id + ".PNG";
         let participants = []  //name to participant object
@@ -34,8 +44,9 @@ class Rally{
         let penalty_hash = []
         let verified_hash = []
         let number_hash = []  //number of stages completed [participant_name]
-        for(let i = 0; i< this.stages.length; i++){
-            let stage = this.stages[i];
+        let points_hash = []
+        for(let i = 0; i< stages.length; i++){
+            let stage = stages[i];
             for(let j = 0; j< stage.records.length; j++){
                 let record = stage.records[j];
                 let name = record.participant.name;
@@ -45,12 +56,18 @@ class Rally{
                     penalty_hash[name] = record.centiseconds_penalty;
                     verified_hash[name] = record.verified
                     number_hash[name] = 1;
+                    if(typeof(record.points) !== "undefined"){
+                        points_hash[name] = record.points;
+                    }
                 }
                 else{
                     centiseconds_initial_hash[name] += record.centiseconds_initial;
                     penalty_hash[name] += record.centiseconds_penalty;
                     if(record.verified == "No"){verified_hash[name] = "No"}
                     number_hash[name] += 1;
+                    if(typeof(record.points) !== "undefined"){
+                        points_hash[name] += record.points;
+                    }
                 }
             }
         }
@@ -58,6 +75,17 @@ class Rally{
             if(number_hash[key] == 6){
                 let participant = participants[key];
                 this.summary.AddRecord(participant,centiseconds_initial_hash[key],penalty_hash[key],verified_hash[key])
+            }
+        }
+        this.summary.RecordsSorted_Centiseconds()
+        for(let i = 0; i< this.summary.records.length; i++){
+            let record = this.summary.records[i];
+            let key = record.participant.name;
+            if(typeof(points_hash[key]) !== "undefined"){
+                record.points = points_hash[key]
+            }
+            else{
+                record.points = nParticipants - i;
             }
         }
         return this.summary;
@@ -71,19 +99,17 @@ class Stage{
         this.imageURL = "";
     }
     AddRecord(participant, time, penalty, verified){
-        this.records.push(new Record(participant,time,penalty,verified))
+        let newRecord = new Record(participant,time,penalty,verified)
+        this.records.push(newRecord)
+        return newRecord;
     }
-    RecordsSorted(){
+    RecordsSorted_Centiseconds(){  //compare centiseconds
         return this.records.sort((a,b) => a.centiseconds - b.centiseconds)
     }
-    CreateStageTable(div, nParticipants){  //div = space for the table
-        let isFinal;
-        if(typeof(nParticipants) == "undefined"){
-            isFinal = false;
-        }
-        else{
-            isFinal = true;
-        }
+    RecordsSorted_Points(){
+        return this.records.sort((a,b) => b.points - a.points)
+    }
+    CreateStageTable(div, finalLevel){  //div = space for the table  //finalLevel 0: Normal Stages, 1: RallySummaries, 2:Final Contest Summary
         let divStage = document.createElement('div')
         divStage.className = "divStage"
         let divTitleImage = document.createElement('div')
@@ -103,7 +129,7 @@ class Stage{
 
         let newTable = document.createElement('table')
         newTable.setAttribute("class", "table")
-        let string_lastColumn = !isFinal? "Verified?":"Points"
+        let string_lastColumn = finalLevel==0 ? "Verified?":"Points"
         newTable.innerHTML = 
             `<thead class="thead-dark">
                 <tr>
@@ -116,10 +142,10 @@ class Stage{
                 </tr>
             </thead>
             <tbody>`
-        let records = this.RecordsSorted()
+        let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
         for(let j = 0; j< records.length; j++)
         {
-            let value_lastColumn = !isFinal? records[j].verified:(nParticipants-j)
+            let value_lastColumn = finalLevel==0? records[j].verified:records[j].points
             newTable.innerHTML+= 
             `
             <tr>
@@ -137,10 +163,6 @@ class Stage{
         divStage.appendChild(newTable)
         div.appendChild(divStage)
     }
-}
-
-function tp() {
-    
 }
 
 class Record{
@@ -301,7 +323,6 @@ function contestData(){
         stage.AddRecord(Tornado,"12:32.43","00:00.00","No")
         rally.stages[5] = stage;
 
-        rally.generateSummary()
         contest.AddRally(rally)
     }
     {

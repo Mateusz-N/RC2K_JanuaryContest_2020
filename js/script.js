@@ -19,26 +19,47 @@ function turnButtonWhite(button){
 
 
 let buttonSpace = document.getElementById("buttons")
-for(let i=0; i< contest.rallies.length; i++){
-    let button = document.createElement("button")
-    button.setAttribute("onclick","loadRallyTables("+ i +")");
-    button.innerHTML = contest.rallies[i].name;
-    buttonSpace.appendChild(button);
+
+if(buttonSpace){
+    for(let i=0; i< contest.rallies.length; i++){
+        let button = document.createElement("button")
+        button.setAttribute("onclick","loadRallyTables("+ i +")");
+        button.innerHTML = contest.rallies[i].name;
+        buttonSpace.appendChild(button);
+    }
+    loadRallyTables(0)
+}
+else{
+    contest.generateFinalSummary()
+    contest.AddRally(contest.summaryRally);
+    console.log("FinalSummary")
+    loadRallyTables(6);
 }
 
-loadRallyTables(0)
 
 function loadRallyTables(RallyID){
     let tables = document.getElementById("tables")
     tables.innerHTML = "";
     let stages = contest.rallies[RallyID].stages
+    let nParticipants = contest.participants.length
 
-    for(let i = 0; i< stages.length; i++){
-        stages[i].CreateStageTable(tables)
-    }
     let summaryDiv = document.getElementById("rallyboards")
     summaryDiv.innerHTML = "";
-    contest.rallies[RallyID].generateSummary().CreateStageTable(summaryDiv, contest.participants.length)
-}
 
+    
+
+    if(RallyID !== 6){
+        for(let i = 0; i< stages.length; i++){
+            stages[i].CreateStageTable(tables, 0) 
+        }
+        contest.rallies[RallyID].generateSummary(nParticipants).CreateStageTable(summaryDiv, 1)
+    }
+    else{
+        for(let i = 0; i< stages.length; i++){
+            stages[i].CreateStageTable(tables,1)
+        }
+        contest.rallies[RallyID].generateSummary(nParticipants).CreateStageTable(summaryDiv, 2)
+    }
+       
+}
 
