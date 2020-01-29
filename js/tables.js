@@ -656,6 +656,7 @@ function contestData(){
         stage.AddRecord(Migger,"08:36.55","00:00.00","No")
         stage.AddRecord(MidnightRunner,"07:50.94","00:00.00","No")
         stage.AddRecord(Erwto,"09:02.58","00:00.00","No")
+        stage.AddRecord(Tornado,"08:11.35","00:00.00","No")
         stage.AddWorldRecord("06:49.86","06:45.22")
         rally.stages[0] = stage;
 
@@ -669,6 +670,7 @@ function contestData(){
         stage.AddRecord(Migger,"10:39.14","00:00.00","No")
         stage.AddRecord(MidnightRunner,"09:41.75","00:00.00","No")
         stage.AddRecord(Erwto,"15:29.13","00:00.00","No")
+        stage.AddRecord(Tornado,"10:09.11","00:00.00","No")
         stage.AddWorldRecord("08:24.41","08:15.25")
         rally.stages[1] = stage;
 
@@ -682,6 +684,7 @@ function contestData(){
         stage.AddRecord(MidnightRunner,"09:35.12","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"09:55.99","00:00.00","Yes")
         stage.AddRecord(Erwto,"10:09.77","00:00.00","No")
+        stage.AddRecord(Tornado,"09:37.37","00:00.00","No")
         stage.AddWorldRecord("08:06.96","07:57.61")
         rally.stages[2] = stage;
 
@@ -695,6 +698,7 @@ function contestData(){
         stage.AddRecord(MidnightRunner,"10:12.92","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"10:21.96","00:00.00","Yes")
         stage.AddRecord(Erwto,"10:28.36","00:00.00","No")
+        stage.AddRecord(Tornado,"10:25.69","00:00.00","No")
         stage.AddWorldRecord("08:05.61","07:53.05")
         rally.stages[3] = stage;
 
@@ -708,6 +712,7 @@ function contestData(){
         stage.AddRecord(MidnightRunner,"07:39.78","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"07:55.07","00:00.00","Yes")
         stage.AddRecord(Erwto,"08:05.08","00:00.00","No")
+        stage.AddRecord(Tornado,"07:54.02","00:00.00","No")
         stage.AddWorldRecord("06:30.09","06:23.29")
         rally.stages[4] = stage;
 
@@ -721,6 +726,7 @@ function contestData(){
         stage.AddRecord(MidnightRunner,"07:08.46","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"07:54.16","00:00.00","Yes")
         stage.AddRecord(Erwto,"07:48.08","00:00.00","No")
+        stage.AddRecord(Tornado,"07:38.34","00:00.00","No")
         stage.AddWorldRecord("06:24.53","06:17.34")
         rally.stages[5] = stage;
 
