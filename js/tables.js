@@ -477,7 +477,7 @@ function contestData(){
         stage.AddRecord(datsun,"08:51.96","00:00.00","No")
         stage.AddRecord(Tornado,"08:21.20","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"08:33.62","00:00.00","Yes")
-        stage.AddRecord(MidnightRunner,"08:22.79","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"08:30.44","00:00.00","No")
         stage.AddRecord(Erwto,"08:17.12","00:00.00","No")
         stage.AddWorldRecord("06:47.23","06:48.73")
         rally.stages[0] = stage;
@@ -491,7 +491,7 @@ function contestData(){
         stage.AddRecord(Tornado,"04:54.38","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"05:09.27","00:00.00","Yes")
         stage.AddRecord(datsun,"04:55.93","00:00.00","No")
-        stage.AddRecord(MidnightRunner,"04:48.74","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"04:50.98","00:00.00","No")
         stage.AddRecord(Erwto,"05:11.79","00:00.00","No")
         stage.AddWorldRecord("03:50.48","03:43.72")
         rally.stages[1] = stage;
@@ -505,7 +505,7 @@ function contestData(){
         stage.AddRecord(Tornado,"05:24.21","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"05:42.42","00:00.00","Yes")
         stage.AddRecord(datsun,"05:31.85","00:00.00","No")
-        stage.AddRecord(MidnightRunner,"05:21.13","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"05:24.49","00:00.00","No")
         stage.AddRecord(Erwto,"05:36.95","00:00.00","No")
         stage.AddWorldRecord("04:17.17","04:17.15")
         rally.stages[2] = stage;
@@ -519,7 +519,7 @@ function contestData(){
         stage.AddRecord(Tornado,"06:35.71","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"06:39.32","00:00.00","Yes")
         stage.AddRecord(datsun,"06:30.25","00:00.00","No")
-        stage.AddRecord(MidnightRunner,"06:30.37","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"06:37.81","00:00.00","No")
         stage.AddRecord(Erwto,"06:40.08","00:00.00","No")
         stage.AddWorldRecord("05:10.41","05:16.84")
         rally.stages[3] = stage;
@@ -533,7 +533,7 @@ function contestData(){
         stage.AddRecord(Tornado,"16:21.97","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"16:53.91","00:00.00","Yes")
         stage.AddRecord(datsun,"16:52.00","00:00.00","No")
-        stage.AddRecord(MidnightRunner,"16:30.03","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"16:40.15","00:00.00","No")
         stage.AddRecord(Erwto,"16:59.57","00:00.00","No")
         stage.AddWorldRecord("13:18.71","13:19.30")
         rally.stages[4] = stage;
@@ -547,7 +547,7 @@ function contestData(){
         stage.AddRecord(Tornado,"17:18.04","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"18:34.58","00:00.00","Yes")
         stage.AddRecord(datsun,"19:18.93","00:00.00","No")
-        stage.AddRecord(MidnightRunner,"17:39.55","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"17:34.21","00:00.00","No")
         stage.AddRecord(Erwto,"18:35.82","00:00.00","No")
         stage.AddWorldRecord("14:44.29","14:30.94")
         rally.stages[5] = stage;
@@ -566,7 +566,7 @@ function contestData(){
         stage.AddRecord(Migger,"03:32.40","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"03:22.08","00:00.00","Yes")
         stage.AddRecord(datsun,"03:17.48","00:00.00","No")
-        stage.AddRecord(MidnightRunner,"03:15.56","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"03:27.12","00:00.00","No")
         stage.AddRecord(Erwto,"03:25.48","00:00.00","No")
         stage.AddWorldRecord("02:45.38","02:44.86")
         rally.stages[0] = stage;
@@ -580,7 +580,7 @@ function contestData(){
         stage.AddRecord(XsaraTorrada,"05:37.41","00:00.00","Yes")
         stage.AddRecord(Migger,"06:23.53","00:00.00","No")
         stage.AddRecord(datsun,"05:28.97","00:00.00","No")
-        stage.AddRecord(MidnightRunner,"05:24.25","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"05:32.11","00:00.00","No")
         stage.AddRecord(Erwto,"05:54.21","00:00.00","No")
         stage.AddWorldRecord("04:32.66","04:28.47")
         rally.stages[1] = stage;
@@ -594,7 +594,7 @@ function contestData(){
         stage.AddRecord(XsaraTorrada,"04:59.51","00:00.00","Yes")
         stage.AddRecord(Migger,"05:55.91","00:00.00","No")
         stage.AddRecord(datsun,"05:00.18","00:00.00","No")
-        stage.AddRecord(MidnightRunner,"04:44.15","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"04:56.57","00:00.00","No")
         stage.AddRecord(Erwto,"05:00.93","00:00.00","No")
         stage.AddWorldRecord("04:06.50","04:06.48")
         rally.stages[2] = stage;
@@ -608,7 +608,7 @@ function contestData(){
         stage.AddRecord(Migger,"06:44.99","00:00.00","No")
         stage.AddRecord(datsun,"05:31.00","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"05:07.87","00:00.00","Yes")
-        stage.AddRecord(MidnightRunner,"05:01.74","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"05:18.41","00:00.00","No")
         stage.AddRecord(Erwto,"05:14.78","00:00.00","No")
         stage.AddWorldRecord("04:23.68","04:17.49")
         rally.stages[3] = stage;
@@ -622,7 +622,7 @@ function contestData(){
         stage.AddRecord(Migger,"01:52.96","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"01:42.94","00:00.00","Yes")
         stage.AddRecord(datsun,"01:44.37","00:00.00","No")
-        stage.AddRecord(MidnightRunner,"01:44.95","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"01:47.85","00:00.00","No")
         stage.AddRecord(Erwto,"01:45.28","00:00.00","No")
         stage.AddWorldRecord("01:22.60","01:24.08")
         rally.stages[4] = stage;
@@ -636,7 +636,7 @@ function contestData(){
         stage.AddRecord(Migger,"06:25.72","00:00.00","No")
         stage.AddRecord(XsaraTorrada,"05:48.31","00:00.00","Yes")
         stage.AddRecord(datsun,"06:01.26","00:00.00","No")
-        stage.AddRecord(MidnightRunner,"05:32.61","00:00.00","No")
+        stage.AddRecord(MidnightRunner,"05:47.47","00:00.00","No")
         stage.AddRecord(Erwto,"05:52.92","00:00.00","No")
         stage.AddWorldRecord("04:56.07","04:54.89")
         rally.stages[5] = stage;
