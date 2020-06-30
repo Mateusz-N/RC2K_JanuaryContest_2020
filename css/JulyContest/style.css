@@ -1,13 +1,13 @@
 body{
     font-family: "Verdana", Arial, Helvetica, sans-serif;
     text-align: center;
-    background: linear-gradient(to bottom right, #778, #BBC);
+    background: linear-gradient(to bottom right, #700000, #000000);
     min-height: 100vh;
 }
 
 @font-face{
     font-family: "rcFont";
-    src: url('../resources/rcfont.ttf');
+    src: url('../../resources/rcfont.ttf');
 }
 
 #nav{
@@ -35,7 +35,7 @@ body{
     display: inline-block;
     vertical-align: middle;
     height: 29px;
-    background-image: url('../resources/navmid.png');
+    background-image: url('../../resources/navmid.png');
     background-size: contain;
     font-family: "rcFont";
     text-decoration: none;
