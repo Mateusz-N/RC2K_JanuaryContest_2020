@@ -171,21 +171,26 @@ class Stage{
                 </tr>
             </thead>
             <tbody>`
-        let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
-        for(let j = 0; j< records.length; j++)
-        {
-            let value_lastColumn = finalLevel==0? records[j].verified:records[j].points
-            newTable.innerHTML+= 
-            `
-            <tr>
-                <th scope="row">`+(j+1)+`</th>
-                <td>`+ records[j].participant.name +`</td>
-                <td>`+ records[j].time + `</td>
-                <td>`+ records[j].penalty +`</td>
-                <td>`+ records[j].timePenalty +`</td>
-                <td>`+ value_lastColumn +`</td>
-            </tr>
-            `
+        if (this.records.length === 0) { // Fills empty tables with a "Check back later" message.
+            newTable.innerHTML+=`<tr><td style="color: gray; height: 100%;" colspan="100%">The results aren't complete yet. Please check back later.</td></tr>`;
+        }
+        else {
+            let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
+            for(let j = 0; j< records.length; j++)
+            {
+                let value_lastColumn = finalLevel==0? records[j].verified:records[j].points
+                newTable.innerHTML+= 
+                `
+                <tr>
+                    <th scope="row">`+(j+1)+`</th>
+                    <td>`+ records[j].participant.name +`</td>
+                    <td>`+ records[j].time + `</td>
+                    <td>`+ records[j].penalty +`</td>
+                    <td>`+ records[j].timePenalty +`</td>
+                    <td>`+ value_lastColumn +`</td>
+                </tr>
+                `
+            }
         }
         newTable.innerHTML+= `</tbody>`
         
