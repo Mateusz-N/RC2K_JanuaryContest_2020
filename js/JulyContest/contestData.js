@@ -12,8 +12,9 @@ function contestData(){
     let Twajlot = new Participant('Twajlot', participantColor, "Subaru Impreza WRC");
     let sBinnala = new Participant('sBinnala', participantColor, "Subaru Impreza WRC");
     let Linotrix = new Participant('Linotrix', participantColor, "Peugeot 206 WRC");
+    let SpartaRemixer = new Participant('SpartaRemixer', participantColor, "Subaru Impreza WRC");
     
-    participants.push(Erwto, Migger, SpartaX18, XsaraTorrada, Lewsys, Twajlot, sBinnala, Linotrix);
+    participants.push(Erwto, Migger, SpartaX18, XsaraTorrada, Lewsys, Twajlot, sBinnala, Linotrix, SpartaRemixer);
     
     let rallies = []
 
