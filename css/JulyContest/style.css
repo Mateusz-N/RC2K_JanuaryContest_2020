@@ -1,7 +1,7 @@
 body{
     font-family: "Verdana", Arial, Helvetica, sans-serif;
     text-align: center;
-    background: linear-gradient(to bottom right, #700000, #000000);
+    background: repeating-linear-gradient(45deg, #363da7, #000841 10px);
     min-height: 100vh;
 }
 
@@ -19,6 +19,7 @@ body{
     padding: 10px 0 10px 0;
     text-shadow: 5px 5px black;
     font-size: 300%;
+    color: gold;
 }
 
 #nav ul{
@@ -43,7 +44,7 @@ body{
 }
 
 #main h1{
-    background-color: #606060;
+    background: repeating-linear-gradient(60deg, goldenrod, #987316 20%, goldenrod 30%, #987316 50%, goldenrod 60%, #987316 80%, goldenrod 90%, #987316 100%);
     border-top: 5px solid black;
     border-bottom: 5px solid black;
     font-family: "rcFont";
