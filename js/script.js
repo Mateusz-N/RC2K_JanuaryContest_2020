@@ -5,6 +5,19 @@ console.log(contest)
 
 document.getElementById("title").innerHTML = contest.name
 
+// Entry list generator (START)
+let generateEntries = document.getElementById("generateEntries");
+
+    for(let i=0; i<contest.participants.length; i++) {
+        if (generateEntries) {
+            generateEntries.innerHTML += 
+            `<tr>
+                <td>${contest.participants[i].name}</td>
+                <td>${contest.participants[i].car}</td>
+            </tr>`
+        }
+    }
+// Entry list generator (END)
 
 let buttonSpace = document.getElementById("buttons")
 

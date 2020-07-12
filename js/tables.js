@@ -264,8 +264,9 @@ class Record{
 }
 
 class Participant{
-    constructor(name, color){
+    constructor(name, color, car){
         this.name = name
         this.color = color
+        this.car = car
     }
 }

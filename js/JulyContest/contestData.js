@@ -1,19 +1,19 @@
 function contestData(){
     let contest  = new Contest("Magnetic Fields Memorial Invitational 2020")
-    let participantsNames = ["Erwto","Migger","SpartaX18","XsaraTorrada","Lewsys","Twajlot","sBinalla"]
     let participants = []
-    for(let i = 0; i<participantsNames.length; i++){
-        participants.push(new Participant(participantsNames[i], '#'+(Math.random()*0xFFFFFF<<0).toString(16)))
-    }
     contest.participants = participants
 
-    let Erwto = contest.GetParticipantByName(participantsNames[0]);
-    let Migger = contest.GetParticipantByName(participantsNames[1]);
-    let SpartaX18 = contest.GetParticipantByName(participantsNames[2]);
-    let XsaraTorrada = contest.GetParticipantByName(participantsNames[3]);
-    let Lewsys = contest.GetParticipantByName(participantsNames[4]);
-    let Twajlot = contest.GetParticipantByName(participantsNames[5]);
-    let sBinalla = contest.GetParticipantByName(participantsNames[6]);
+    let participantColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+    let Erwto = new Participant('Erwto', participantColor, "Mitsubishi Lancer Evo V");
+    let Migger = new Participant('Migger', participantColor, "Subaru Impreza WRC");
+    let SpartaX18 = new Participant('SpartaX18', participantColor, "Mitsubishi Lancer Evo V");
+    let XsaraTorrada = new Participant('XsaraTorrada', participantColor, "Peugeot 206 WRC");
+    let Lewsys = new Participant('Lewsys', participantColor, "Subaru Impreza WRC");
+    let Twajlot = new Participant('Twajlot', participantColor, "Subaru Impreza WRC");
+    let sBinnala = new Participant('sBinnala', participantColor, "Subaru Impreza WRC");
+    let Linotrix = new Participant('Linotrix', participantColor, "Peugeot 206 WRC");
+    
+    participants.push(Erwto, Migger, SpartaX18, XsaraTorrada, Lewsys, Twajlot, sBinnala, Linotrix);
     
     let rallies = []
 
@@ -23,7 +23,7 @@ function contestData(){
 
         stage = new Stage("Clocaenog Mid");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/3/3f/20181105_134049.png/revision/latest/scale-to-width-down/1000?cb=20181105214042"
-        //stage.AddRecord(SpartaX18,"09:54.33","00:00.00","No")
+        //stage.AddRecord(Erwto,"09:54.33","00:00.00","No")
         stage.AddWorldRecord("07:49.93","07:50.26")
         rally.stages[0] = stage
         
