@@ -5,11 +5,11 @@ function contestData(){
 
     let participantColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
     let Erwto = new Participant('Erwto', participantColor, "Mitsubishi Lancer Evo V");
-    let Migger = new Participant('Migger', participantColor, "Subaru Impreza WRC");
+    let Migger = new Participant('Migger', participantColor, "Peugeot 206 WRC");
     let SpartaX18 = new Participant('SpartaX18', participantColor, "Mitsubishi Lancer Evo V");
     let XsaraTorrada = new Participant('XsaraTorrada', participantColor, "Peugeot 206 WRC");
     let Lewsys = new Participant('Lewsys', participantColor, "Subaru Impreza WRC");
-    let Twajlot = new Participant('Twajlot', participantColor, "Subaru Impreza WRC");
+    let Twajlot = new Participant('Twajlot', participantColor, "Mitsubishi Lancer Evo IV");
     let sBinnala = new Participant('sBinnala', participantColor, "Subaru Impreza WRC");
     let Linotrix = new Participant('Linotrix', participantColor, "Peugeot 206 WRC");
     let SpartaRemixer = new Participant('SpartaRemixer', participantColor, "Subaru Impreza WRC");

@@ -172,7 +172,7 @@ class Stage{
             </thead>
             <tbody>`
         if (this.records.length === 0) { // Fills empty tables with a "Check back later" message.
-            newTable.innerHTML+=`<tr><td style="color: gray; height: 100%;" colspan="100%">The results aren't complete yet. Please check back later.</td></tr>`;
+            newTable.innerHTML+=`<tr><td style="color: gray;" colspan="100%" rowspan="2">The results aren't complete yet. Please check back later.</td></tr>`;
         }
         else {
             let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
