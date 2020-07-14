@@ -39,6 +39,10 @@ body{
     width: 6vw
 }
 
+#title_icon:hover {
+    opacity: 0.85;
+}
+
 #nav ul{
     list-style: none;
     display: flex;
