@@ -2,17 +2,17 @@ function contestData(){
     let contest  = new Contest("Magnetic Fields Memorial Invitational 2020")
     let participants = []
     contest.participants = participants
-
+    
     let participantColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
-    let Erwto = new Participant('Erwto', participantColor, "Mitsubishi Lancer Evo V");
-    let Migger = new Participant('Migger', participantColor, "Peugeot 206 WRC");
-    let SpartaX18 = new Participant('SpartaX18', participantColor, "Mitsubishi Lancer Evo V");
-    let XsaraTorrada = new Participant('XsaraTorrada', participantColor, "Peugeot 206 WRC");
-    let Lewsys = new Participant('Lewsys', participantColor, "Subaru Impreza WRC");
-    let Twajlot = new Participant('Twajlot', participantColor, "Mitsubishi Lancer Evo IV");
-    let sBinnala = new Participant('sBinnala', participantColor, "Subaru Impreza WRC");
-    let Linotrix = new Participant('Linotrix', participantColor, "Peugeot 206 WRC");
-    let SpartaRemixer = new Participant('SpartaRemixer', participantColor, "Subaru Impreza WRC");
+    let Erwto = new Participant('Erwto', participantColor, "Mitsubishi Lancer Evo V", "pl");
+    let Migger = new Participant('Migger', participantColor, "Peugeot 206 WRC", "pl");
+    let SpartaX18 = new Participant('SpartaX18', participantColor, "Mitsubishi Lancer Evo V", "pl");
+    let XsaraTorrada = new Participant('XsaraTorrada', participantColor, "Peugeot 206 WRC", "pt");
+    let Lewsys = new Participant('Lewsys', participantColor, "Subaru Impreza WRC", "br");
+    let Twajlot = new Participant('Twajlot', participantColor, "Mitsubishi Lancer Evo IV", "pl");
+    let sBinnala = new Participant('sBinnala', participantColor, "Subaru Impreza WRC", "pl");
+    let Linotrix = new Participant('Linotrix', participantColor, "Peugeot 206 WRC", "hr");
+    let SpartaRemixer = new Participant('SpartaRemixer', participantColor, "Subaru Impreza WRC", "pl");
     
     participants.push(Erwto, Migger, SpartaX18, XsaraTorrada, Lewsys, Twajlot, sBinnala, Linotrix, SpartaRemixer);
     
@@ -30,31 +30,26 @@ function contestData(){
         
         stage = new Stage("Penmachno South");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/d/de/20181023_124545.png/revision/latest/scale-to-width-down/1000?cb=20181024165338"
-        //stage.AddRecord(SpartaX18,"08:50.58","00:00.00","No")
         stage.AddWorldRecord("06:58.59","06:57.59")
         rally.stages[1] = stage
 
         stage = new Stage("Myherin");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/8/88/20181023_124729.png/revision/latest/scale-to-width-down/1000?cb=20181024165520"
-        //stage.AddRecord(SpartaX18,"12:38.44","00:00.00","No")
         stage.AddWorldRecord("10:29.81","10:21.16")
         rally.stages[2] = stage;
 
         stage = new Stage("Hafren");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/a/a9/20181023_133833.png/revision/latest/scale-to-width-down/1000?cb=20181024165638"
-        //stage.AddRecord(SpartaX18,"14:01.55","00:00.00","No")
         stage.AddWorldRecord("10:45.47","10:48.33")
         rally.stages[3] = stage;
 
         stage = new Stage("Dyfi");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/4/47/20181023_133956.png/revision/latest/scale-to-width-down/1000?cb=20181024170159"
-        //stage.AddRecord(SpartaX18,"15:36.78","00:00.00","No")
         stage.AddWorldRecord("11:39.81","11:46.72")
         rally.stages[4] = stage;
 
         stage = new Stage("Gartheiniog");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/c/cb/20181023_134059.png/revision/latest/scale-to-width-down/1000?cb=20181024170338"
-        //stage.AddRecord(SpartaX18,"12:23.89","00:00.00","No")
         stage.AddWorldRecord("09:31.70","09:35.20")
         rally.stages[5] = stage;
 

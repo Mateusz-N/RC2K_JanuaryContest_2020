@@ -178,12 +178,13 @@ class Stage{
             let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
             for(let j = 0; j< records.length; j++)
             {
+                let flagImg = `<img src="../../resources/flag_${records[j].participant.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
                 let value_lastColumn = finalLevel==0? records[j].verified:records[j].points
                 newTable.innerHTML+= 
                 `
                 <tr>
                     <th scope="row">`+(j+1)+`</th>
-                    <td>`+ records[j].participant.name +`</td>
+                    <td>${flagImg} `+ records[j].participant.name +` ${flagImg}</td>
                     <td>`+ records[j].time + `</td>
                     <td>`+ records[j].penalty +`</td>
                     <td>`+ records[j].timePenalty +`</td>
@@ -264,9 +265,10 @@ class Record{
 }
 
 class Participant{
-    constructor(name, color, car){
+    constructor(name, color, car, country){
         this.name = name
         this.color = color
         this.car = car
+        this.country = country
     }
 }
