@@ -178,7 +178,7 @@ class Stage{
             let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
             for(let j = 0; j< records.length; j++)
             {
-                let flagImg = `<img src="../../resources/flag_${records[j].participant.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
+                let flagImg = `<img src="../resources/flag_${records[j].participant.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
                 let value_lastColumn = finalLevel==0? records[j].verified:records[j].points
                 newTable.innerHTML+= 
                 `
