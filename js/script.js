@@ -9,7 +9,7 @@ document.getElementById("title").innerHTML = contest.name
 let generateEntries = document.getElementById("generateEntries");
 
     for(let i=0; i<contest.participants.length; i++) {
-        let flagImg = `<img src="../resources/flag_${contest.participants[i].country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
+        let flagImg = `<img src="../../resources/flag_${contest.participants[i].country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
         if (generateEntries) {
             generateEntries.innerHTML += 
             `<tr>
