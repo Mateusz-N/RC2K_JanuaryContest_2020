@@ -23,7 +23,7 @@ function contestData(){
         rally = contest.rallies[0];  //Vauxall
 
         stage = rally.stages[0]; //Clocaenog
-        stage.AddRecord(Erwto,"09:54.33","00:00.00","No").proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/643160503861903361/unknown.png";
+        //stage.AddRecord(Erwto,"09:54.33","00:00.00","No").proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/643160503861903361/unknown.png";
         
         stage = rally.stages[1]; //Penmachno
         stage = rally.stages[2]; //Myherin
