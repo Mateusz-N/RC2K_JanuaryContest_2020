@@ -61,6 +61,12 @@ body{
     color: yellow;
 }
 
+#nav button{
+    padding: 0;
+    border: none;
+    background: none;
+}
+
 #main h1{
     background-color: #606060;
     border-top: 5px solid black;

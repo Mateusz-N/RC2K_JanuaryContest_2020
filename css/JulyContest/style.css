@@ -64,6 +64,12 @@ body{
     color: yellow;
 }
 
+#nav button{
+    padding: 0;
+    border: none;
+    background: none;
+}
+
 #main h1{
     background: repeating-linear-gradient(60deg, goldenrod, #987316 20%, goldenrod 30%, #987316 50%, goldenrod 60%, #987316 80%, goldenrod 90%, #987316 100%);
     border-top: 5px solid black;

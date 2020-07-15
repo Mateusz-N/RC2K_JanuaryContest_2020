@@ -19,40 +19,61 @@ function websiteData(){
         new User('MidnightRunner', "")
     );
 
+    let Spartax = website.GetUserByName("SpartaX18");
+    let Linotrix = website.GetUserByName("Linotrix"); 
+
     game = website.game;
 
-    let rally, stage
+    let rally, stage, wr
     {
         rally = new Rally("Vauxhall Rally of Wales")
 
         stage = new Stage("Clocaenog Mid");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/3/3f/20181105_134049.png/revision/latest/scale-to-width-down/1000?cb=20181105214042"
-        stage.AddWorldRecord("07:49.93","07:50.26")
+        wr = stage.AddArcadeWorldRecord(Spartax, "07:49.93", "Mitsubishi Lancer Evo V");  //default carName: Mitsubishi Lancer Evo V
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/643160503861903361/unknown.png"
+        wr = stage.AddSimulationWorldRecord(Spartax, "07:50.26");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/642842956159647797/unknown.png"
         rally.stages[0] = stage
         
         stage = new Stage("Penmachno South");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/d/de/20181023_124545.png/revision/latest/scale-to-width-down/1000?cb=20181024165338"
-        stage.AddWorldRecord("06:58.59","06:57.59")
+        wr = stage.AddArcadeWorldRecord(Spartax, "06:58.59");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/602937913344524288/ral_2019-07-22_20-59-22-32.png"
+        wr = stage.AddSimulationWorldRecord(Spartax, "06:57.59");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/665576938819158026/unknown.png"
         rally.stages[1] = stage
 
         stage = new Stage("Myherin");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/8/88/20181023_124729.png/revision/latest/scale-to-width-down/1000?cb=20181024165520"
-        stage.AddWorldRecord("10:29.81","10:21.16")
+        wr = stage.AddArcadeWorldRecord(Spartax, "10:29.81");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/602495347415187466/ral_2019-07-21_15-39-22-43.png"
+        wr = stage.AddSimulationWorldRecord(Spartax, "10:21.16");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/590959187173965833/ral_2019-06-19_19-39-53-30.png"
         rally.stages[2] = stage;
 
         stage = new Stage("Hafren");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/a/a9/20181023_133833.png/revision/latest/scale-to-width-down/1000?cb=20181024165638"
-        stage.AddWorldRecord("10:45.47","10:48.33")
+        wr = stage.AddArcadeWorldRecord(Spartax, "10:45.47");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/563069692659367946/RAL_2019-04-03_20-36-57-74.png"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "10:48.33");
+        wr.proofs["image"] = "https://imgur.com/TW4ps9v"
         rally.stages[3] = stage;
 
         stage = new Stage("Dyfi");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/4/47/20181023_133956.png/revision/latest/scale-to-width-down/1000?cb=20181024170159"
-        stage.AddWorldRecord("11:39.81","11:46.72")
+        wr = stage.AddArcadeWorldRecord(Spartax, "11:39.81");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/563386838488711219/RAL_2019-04-04_17-37-24-15.png"
+        wr = stage.AddSimulationWorldRecord(Spartax, "11:46.72");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/722877023889915996/732334192779591832/unknown.png"
         rally.stages[4] = stage;
 
         stage = new Stage("Gartheiniog");
         stage.imageURL = "https://vignette.wikia.nocookie.net/rc2000/images/c/cb/20181023_134059.png/revision/latest/scale-to-width-down/1000?cb=20181024170338"
-        stage.AddWorldRecord("09:31.70","09:35.20")
+        wr = stage.AddArcadeWorldRecord(Spartax, "09:31.70");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/643461655648534529/unknown.png"
+        wr = stage.AddSimulationWorldRecord(Spartax, "09:35.20");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/593132745585197097/ral_2019-06-25_19-36-49-83.png"
         rally.stages[5] = stage;
 
         game.AddRally(rally)

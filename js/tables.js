@@ -178,6 +178,16 @@ class Stage{
             this.wr["simulation"].push(new Record(new Participant(new User("RecordHolder", ""), "#000000",""), SimulationTime,"00:00.00", "yes"));
         }
     }
+    AddArcadeWorldRecord(user, time, carName = "Mitsubishi Lancer Evo V"){
+        let record = new Record(new Participant(user, "#000000",carName), time,"00:00.00", "yes")
+        this.wr["arcade"].push(record);
+        return record;
+    }
+    AddSimulationWorldRecord(user, time, carName = "Mitsubishi Lancer Evo V"){
+        let record = new Record(new Participant(user, "#000000",carName), time,"00:00.00", "yes")
+        this.wr["simulation"].push(record);
+        return record;
+    }
     RecordsSorted_Centiseconds(){  //compare centiseconds
         return this.records.sort(function (a,b){
             if(a.centiseconds < 0)
@@ -193,8 +203,8 @@ class Stage{
     CreateContestEntireStageTable(div, finalLevel){
         this.CreateContestStageTable(this.CreateStageTable(div), finalLevel);
     }
-    CreateWorldRecordEntireStageTable(div){
-        this.CreateWorldRecordStageTable(this.CreateStageTable(div));
+    CreateWorldRecordEntireStageTable(div, direction){
+        this.CreateWorldRecordStageTable(this.CreateStageTable(div), direction);
     }
     CreateStageTable(div){  //div = space for the table  //finalLevel 0: Normal Stages, 1: RallySummaries, 2:Final Contest Summary
         let divStage = document.createElement('div')
@@ -222,6 +232,7 @@ class Stage{
         let newTable = document.createElement('table')
         newTable.setAttribute("class", "table")
         let string_lastColumn = finalLevel==0 ? "Verified?":"Points"
+        let proofColumn = finalLevel==0?`<th scope="col">Proofs</th>`:``
         newTable.innerHTML = 
             `<thead class="thead-dark">
                 <tr>
@@ -231,6 +242,7 @@ class Stage{
                     <th scope="col">Penalty</th>
                     <th scope="col">Time (+Penalty)</th>
                     <th scope="col">`+string_lastColumn+`</th>
+                    ${proofColumn}
                 </tr>
             </thead>
             <tbody>`
@@ -243,6 +255,7 @@ class Stage{
             {
                 let flagImg = `<img src="../../resources/flag_${records[j].participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
                 let value_lastColumn = finalLevel==0? records[j].verified:records[j].points
+                let proofRow = finalLevel==0?`<td>${this.proofsToDiv(records[j].proofs)}</td>`:``
                 newTable.innerHTML+= 
                 `
                 <tr>
@@ -252,6 +265,7 @@ class Stage{
                     <td>`+ records[j].penalty +`</td>
                     <td>`+ records[j].timePenalty +`</td>
                     <td>`+ value_lastColumn +`</td>
+                    ${proofRow}
                 </tr>
                 `
             }
@@ -260,7 +274,7 @@ class Stage{
         
         divStage.appendChild(newTable);
     }
-    CreateWorldRecordStageTable(divStage){
+    CreateWorldRecordStageTable(divStage, direction){
         let newTable = document.createElement('table');
         newTable.setAttribute("class", "table");
         newTable.innerHTML = 
@@ -269,25 +283,37 @@ class Stage{
                     <th scope="col">Ranking</th>
                     <th scope="col">Driver</th>
                     <th scope="col">Time</th>
+                    <th scope="col">Car</th>
+                    <th scope="col">Proofs</th>
                 </tr>
             </thead>
             <tbody>`
-        let records = this.wr["arcade"];
+        let records = this.wr[direction];
         for(let j = 0; j< records.length; j++)
         {
             let flagImg = `<img src="../../resources/flag_${records[j].participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
+            
             newTable.innerHTML+= 
             `
             <tr>
                 <th scope="row">`+(j+1)+`</th>
                 <td>${flagImg} `+ records[j].participant.user.name +` ${flagImg}</td>
                 <td>`+ records[j].time + `</td>
+                <td>`+ records[j].participant.car + `</td>
+                <td>`+ this.proofsToDiv(records[j].proofs) + `</td>
             </tr>
             `
         }
         newTable.innerHTML+= `</tbody>`
         
         divStage.appendChild(newTable);
+    }
+    proofsToDiv(proofs){
+        let proofsImages = "";
+        proofs.youtube !== null ? proofsImages += `<a href=${proofs.youtube}><img src="../../resources/youtube_icon.png" style="height: 16px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.image !== null ? proofsImages += `<a href=${proofs.image}><img src="../../resources/image_icon.png" style="height: 16px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.replay !== null ? proofsImages += `<a href=${proofs.replay}><img src="../../resources/replay_icon.png" style="height: 16px; border: 1px solid #CCC;"></img></a>`: null;
+        return proofsImages;
     }
 }
 
@@ -313,6 +339,11 @@ class Record{
         this.centiseconds = this.centiseconds_initial + this.centiseconds_penalty; //int
         this.timePenalty = this.CentisecondsToTime(this.centiseconds);  //string
         this.verified = verified;
+        this.proofs = {
+            "youtube": null,
+            "image": null,
+            "replay": null
+        }
     }
     TimeToCentiseconds(time){   //string to int
         if(time == "DNF")

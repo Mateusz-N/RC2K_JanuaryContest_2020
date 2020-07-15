@@ -18,9 +18,14 @@
             </a>
             <h1 id="title"></h1>
         </div>
+        <div id="nav">
+            <ul>
+                <li onmouseover="turnButtonRed(this)" onmouseout="turnButtonWhite(this)"><button onclick="setCurrentWrSide('arcade')"><img class="leftArrow" src='../../resources/navleft.png'><span id="overview">Arcade</span><img class="rightArrow" src='../../resources/navright.png'></a></li>              
+                <li onmouseover="turnButtonRed(this)" onmouseout="turnButtonWhite(this)"><button onclick="setCurrentWrSide('simulation')"><img class="leftArrow" src='../../resources/navleft.png'><span id="entries">Simulation</span><img class="rightArrow" src='../../resources/navright.png'></a></li>
+            </ul>
+        </div>
         <div id="buttons"></div>
         <div id="tables" class="tables"></div>
-
         <link rel="stylesheet" href="../../css/JulyContest/style.css">
         <script type="text/javascript" src=../../js/websiteData.js></script>
         <script type="text/javascript" src=../../js/JulyContest/contestData.js></script>
