@@ -9,18 +9,19 @@ document.getElementById("title").innerHTML = contest.name
 let generateEntries = document.getElementById("generateEntries");
 
     for(let i=0; i<contest.participants.length; i++) {
-        let flagImg = `<img src="../../resources/flag_${contest.participants[i].country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
+        let participant = contest.participants[i];
+        let flagImg = `<img src="../../resources/flag_${participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
         if (generateEntries) {
             generateEntries.innerHTML += 
             `<tr>
-                <td>${flagImg} ${contest.participants[i].name} ${flagImg}</td>
-                <td>${contest.participants[i].car}</td>
+                <td>${flagImg} ${participant.user.name} ${flagImg}</td>
+                <td>${participant.car}</td>
             </tr>`
         }
     }
 // Entry list generator (END)
 
-let buttonSpace = document.getElementById("buttons")
+let buttonSpace = document.getElementById("buttons");
 
 if(buttonSpace){
     for(let i=0; i< contest.rallies.length; i++){
@@ -62,20 +63,20 @@ function loadRallyTables(RallyID){
     graphDiv.innerHTML = "";
     
     let graphDiv_record = document.getElementById('myChart_record')
-    graphDiv.innerHTML = "";
+    graphDiv_record.innerHTML = "";
 
 
     if(RallyID !== 6){
         for(let i = 0; i< stages.length; i++){
-            stages[i].CreateStageTable(tables, 0) 
+            stages[i].CreateContestEntireStageTable(tables, 0) 
         }
-        contest.rallies[RallyID].generateSummary(nParticipants).CreateStageTable(summaryDiv, 1)
+        contest.rallies[RallyID].generateSummary(nParticipants).CreateContestEntireStageTable(summaryDiv, 1)
     }
     else{
         for(let i = 0; i< stages.length; i++){
-            stages[i].CreateStageTable(tables,1)
+            stages[i].CreateContestEntireStageTable(tables,1)
         }
-        contest.rallies[RallyID].generateSummary(nParticipants).CreateStageTable(summaryDiv, 2)
+        contest.rallies[RallyID].generateSummary(nParticipants).CreateContestEntireStageTable(summaryDiv, 2)
     }
    
     //CHART.js 
@@ -87,15 +88,15 @@ function loadRallyTables(RallyID){
 
     for(let i=0; i< stages.length; i++){
         let records = stages[i].records;
-        stage_records[i] = stages[i].wr[1];  //0 = Arcade  1 = Simulation
+        stage_records[i] = stages[i].wr["simulation"][0]; //0 = first place
         stage_minimum[i] = Number.POSITIVE_INFINITY;
         for(let j=0; j< records.length; j++){
             let record = records[j]
             if(record.time !== "DNF"){
-                if(participants_centiseconds[record.participant.name] === undefined)
-                participants_centiseconds[record.participant.name] = [];
-                participants_centiseconds[record.participant.name][i] = record.centiseconds;
-                participants[record.participant.name] = record.participant;
+                if(participants_centiseconds[record.participant.user.name] === undefined)
+                participants_centiseconds[record.participant.user.name] = [];
+                participants_centiseconds[record.participant.user.name][i] = record.centiseconds;
+                participants[record.participant.user.name] = record.participant;
                 if(record.centiseconds < stage_minimum[i]) stage_minimum[i] = record.centiseconds;
             }
         }

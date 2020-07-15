@@ -1,3 +1,48 @@
+class Website{
+    constructor(){
+        this.contests = [];
+        this.users = [];
+        this.game = new Game();
+    }
+    GetUserIDByName(name){
+        function checkName(user){
+            if(user.name == name)
+                return true;
+            return false;
+        }
+        return this.users.findIndex(checkName);
+    }
+    GetUserByName(name){
+        return this.users[this.GetUserIDByName(name)];
+    }
+}
+
+class Game{
+    constructor(){
+        this.rallies = [];
+    }
+    AddRally(rally){
+        rally.id = this.rallies.length;
+        this.rallies.push(rally);
+    }
+}
+
+class User{
+    constructor(name, country = ""){
+        this.name = name;
+        this.country = country;
+    }
+}
+
+class Participant{
+    constructor(user, color, car){
+        this.user = user
+        this.color = color
+        this.car = car
+    }
+    
+}
+
 class Contest{
     constructor(name){
         this.name = name
@@ -10,7 +55,7 @@ class Contest{
     }
     GetParticipantIDByName(name){
         function checkName(participant){
-            if(participant.name == name)
+            if(participant.user.name == name)
                 return true
             return false
         }
@@ -24,15 +69,15 @@ class Contest{
         for(let i = 0; i< this.rallies.length; i++){
             let rally = this.rallies[i];
             let summaryRally_stage = rally.generateSummary(this.participants.length)  // Stage object
-            let direction_wr_centiseconds = [0,0]   //somar os wr de cada stage em um rally
-            for(let k = 0; k < direction_wr_centiseconds.length; k++){   //Arcade = 0; Simulation = 1  for k
-                for(let j = 0; j < rally.stages.length; j++){
-                    let stage = rally.stages[j];
-                    let current_direction_wr = stage.wr[k];
+            let direction_wr_centiseconds = {"arcade": 0, "simulation": 0}   //somar os wr de cada stage em um rally
+            for(let j = 0; j < rally.stages.length; j++){ 
+                let stage = rally.stages[j];
+                for(let k in stage.wr){    
+                    let current_direction_wr = stage.wr[k][0];
                     direction_wr_centiseconds[k] += current_direction_wr.centiseconds;
                 }
             }
-            summaryRally_stage.AddWorldRecord(direction_wr_centiseconds[0],direction_wr_centiseconds[1]);
+            summaryRally_stage.AddWorldRecord(direction_wr_centiseconds["arcade"],direction_wr_centiseconds["simulation"]);
             this.summaryRally.stages.push(summaryRally_stage)
         }
     }
@@ -56,7 +101,7 @@ class Rally{
             let stage = stages[i];
             for(let j = 0; j< stage.records.length; j++){
                 let record = stage.records[j];
-                let name = record.participant.name;
+                let name = record.participant.user.name;
                 if(!participants[name]){
                     participants[name] = record.participant;
                     centiseconds_initial_hash[name] = record.centiseconds_initial;
@@ -98,7 +143,7 @@ class Rally{
         this.summary.RecordsSorted_Centiseconds()
         for(let i = 0; i< this.summary.records.length; i++){
             let record = this.summary.records[i];
-            let key = record.participant.name;
+            let key = record.participant.user.name;
             if(typeof(points_hash[key]) !== "undefined"){
                 record.points = points_hash[key]
             }
@@ -115,7 +160,10 @@ class Stage{
         this.name = name;
         this.records = []
         this.imageURL = "";
-        this.wr = [];
+        this.wr = {
+            "arcade": [],
+            "simulation": []
+        };
     }
     AddRecord(participant, time, penalty, verified){
         let newRecord = new Record(participant,time,penalty,verified)
@@ -123,8 +171,12 @@ class Stage{
         return newRecord;
     }
     AddWorldRecord(ArcadeTime, SimulationTime){
-        this.wr[0] = new Record(new Participant("RecordHolder"), ArcadeTime,"00:00.00", "yes");
-        this.wr[1] = new Record(new Participant("RecordHolder"), SimulationTime,"00:00.00", "yes");
+        if(ArcadeTime){
+            this.wr["arcade"].push(new Record(new Participant(new User("RecordHolder", ""), "#000000",""), ArcadeTime,"00:00.00", "yes"));
+        }
+        if(SimulationTime){
+            this.wr["simulation"].push(new Record(new Participant(new User("RecordHolder", ""), "#000000",""), SimulationTime,"00:00.00", "yes"));
+        }
     }
     RecordsSorted_Centiseconds(){  //compare centiseconds
         return this.records.sort(function (a,b){
@@ -138,7 +190,13 @@ class Stage{
     RecordsSorted_Points(){
         return this.records.sort((a,b) => b.points - a.points)
     }
-    CreateStageTable(div, finalLevel){  //div = space for the table  //finalLevel 0: Normal Stages, 1: RallySummaries, 2:Final Contest Summary
+    CreateContestEntireStageTable(div, finalLevel){
+        this.CreateContestStageTable(this.CreateStageTable(div), finalLevel);
+    }
+    CreateWorldRecordEntireStageTable(div){
+        this.CreateWorldRecordStageTable(this.CreateStageTable(div));
+    }
+    CreateStageTable(div){  //div = space for the table  //finalLevel 0: Normal Stages, 1: RallySummaries, 2:Final Contest Summary
         let divStage = document.createElement('div')
         divStage.className = "divStage"
         let divTitleImage = document.createElement('div')
@@ -156,6 +214,11 @@ class Stage{
         
         divStage.appendChild(divTitleImage)
 
+        div.appendChild(divStage)
+
+        return divStage   //returning 
+    }
+    CreateContestStageTable(divStage, finalLevel){
         let newTable = document.createElement('table')
         newTable.setAttribute("class", "table")
         let string_lastColumn = finalLevel==0 ? "Verified?":"Points"
@@ -178,13 +241,13 @@ class Stage{
             let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
             for(let j = 0; j< records.length; j++)
             {
-                let flagImg = `<img src="../../resources/flag_${records[j].participant.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
+                let flagImg = `<img src="../../resources/flag_${records[j].participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
                 let value_lastColumn = finalLevel==0? records[j].verified:records[j].points
                 newTable.innerHTML+= 
                 `
                 <tr>
                     <th scope="row">`+(j+1)+`</th>
-                    <td>${flagImg} `+ records[j].participant.name +` ${flagImg}</td>
+                    <td>${flagImg} `+ records[j].participant.user.name +` ${flagImg}</td>
                     <td>`+ records[j].time + `</td>
                     <td>`+ records[j].penalty +`</td>
                     <td>`+ records[j].timePenalty +`</td>
@@ -195,8 +258,36 @@ class Stage{
         }
         newTable.innerHTML+= `</tbody>`
         
-        divStage.appendChild(newTable)
-        div.appendChild(divStage)
+        divStage.appendChild(newTable);
+    }
+    CreateWorldRecordStageTable(divStage){
+        let newTable = document.createElement('table');
+        newTable.setAttribute("class", "table");
+        newTable.innerHTML = 
+            `<thead class="thead-dark">
+                <tr>
+                    <th scope="col">Ranking</th>
+                    <th scope="col">Driver</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody>`
+        let records = this.wr["arcade"];
+        for(let j = 0; j< records.length; j++)
+        {
+            let flagImg = `<img src="../../resources/flag_${records[j].participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
+            newTable.innerHTML+= 
+            `
+            <tr>
+                <th scope="row">`+(j+1)+`</th>
+                <td>${flagImg} `+ records[j].participant.user.name +` ${flagImg}</td>
+                <td>`+ records[j].time + `</td>
+            </tr>
+            `
+        }
+        newTable.innerHTML+= `</tbody>`
+        
+        divStage.appendChild(newTable);
     }
 }
 
@@ -264,11 +355,4 @@ class Record{
     }
 }
 
-class Participant{
-    constructor(name, color, car, country){
-        this.name = name
-        this.color = color
-        this.car = car
-        this.country = country
-    }
-}
+
