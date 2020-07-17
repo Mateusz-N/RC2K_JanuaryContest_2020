@@ -252,3 +252,7 @@ canvas.tables{
 #updatelist {
     margin: 0 150px 20px 150px;
 }
+
+.updateRallyWinner {
+    text-align: center;
+}
