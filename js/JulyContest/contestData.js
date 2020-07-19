@@ -234,6 +234,7 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/153Dhq5Nk8ZUa5b82_JdSw3PahCWKGeSl/view?usp=sharing"
         
         stage = rally.stages[1]; //Falstone
+        
         wr = stage.AddRecord(sBinnala, "DNF", "DNF", "Yes")
         
         stage = rally.stages[2]; //Kershope
