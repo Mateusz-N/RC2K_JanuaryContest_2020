@@ -84,7 +84,8 @@ class Contest{
 }
 
 class Rally{
-    constructor(name){
+    constructor(name, id){
+        this.id = id;
         this.name = name
         this.stages = []
     }
@@ -156,10 +157,11 @@ class Rally{
 }
 
 class Stage{
-    constructor(name){
+    constructor(name, id){
+        this.id = id;
         this.name = name;
         this.records = []
-        this.imageURL = "";
+        this.imageURL = undefined;
         this.wr = {
             "arcade": [],
             "simulation": []
@@ -218,7 +220,7 @@ class Stage{
         divTitleImage.appendChild(newTitle)
 
         let newImage = document.createElement("img")
-        newImage.src = this.imageURL
+        newImage.src = this.getImageUrl();
         newImage.className = "mapImage"
         divTitleImage.appendChild(newImage)
         
@@ -314,6 +316,12 @@ class Stage{
         proofs.image !== null ? proofsImages += `<a href=${proofs.image}><img src="../../resources/image_icon.png" style="height: 16px; border: 1px solid #CCC;"></img></a>`: null;
         proofs.replay !== null ? proofsImages += `<a href=${proofs.replay}><img src="../../resources/replay_icon.png" style="height: 16px; border: 1px solid #CCC;"></img></a>`: null;
         return proofsImages;
+    }
+    getImageUrl(){
+        if(typeof(this.id) !== "undefined"){
+            return "../../resources/Stages/Images/stage"+ (this.id <10 ?"0":"") + this.id + ".png";
+        }
+        return this.imageURL;
     }
 }
 
