@@ -88,7 +88,7 @@ function contestData(){
         wr = stage.AddRecord(Migger, "11:25.06", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/11Xy5Stxu3FKrMjyc25TBseVnYnGhA-vl/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/11_zHt9MfIUYiwBHB8wiLyslA0ryPvJLE/view?usp=sharing"
-        wr = stage.AddRecord(SpartaX18, "10:31.51", "00:00.00", "No")
+        wr = stage.AddRecord(SpartaX18, "10:31.51", "00:00.00", "Yes")
         wr.proofs["image"] = "https://drive.google.com/file/d/1Em88FHLV88C2DkNzgTGKiZnt0nDIKfX2/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/17FDNCK4pw8NmvSsXMjw4ivLU9L3Glqu5/view?usp=sharing"
         wr = stage.AddRecord(XsaraTorrada, "11:59.28", "00:00.00", "No")
@@ -214,7 +214,7 @@ function contestData(){
         wr = stage.AddRecord(SpartaX18, "17:24.09", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1_2jcKKEyGeLS4H2zAd9oIfd_I2UArx_6/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1qU7aRoPFZrfcCGikdCxBtolRhyKirlQo/view?usp=sharing"
-        wr = stage.AddRecord(XsaraTorrada, "18:24.54", "00:10.00", "No")
+        wr = stage.AddRecord(XsaraTorrada, "18:24.54", "00:05.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/14ZOBZzUDj9gFLTlCfDVw55NfUPuUpdut/view?usp=sharing"
         wr.proofs["youtube"] = "https://www.youtube.com/watch?v=yNWLmOjE0QA"
         wr = stage.AddRecord(Lewsys, "21:32.92", "00:00.00", "No")
