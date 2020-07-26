@@ -546,6 +546,42 @@ function contestData(){
     }
     {
         rally = contest.rallies[3];  //Seat Jim Clark
+
+        stage = rally.stages[0]; //Moon and Star
+        wr = stage.AddRecord(Migger,"03:16.92","00:00.00","No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1kmmThwWbRqD1BXkW7nnCGBxtM01LXBj_/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1cwdqDQxDWOSPnpzAycntTnJeRJTioV8V/view?usp=sharing"
+        wr = stage.AddRecord(SpartaX18, "02:51.36", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1VJ9Im5q8NLUMeQLkvHIH_Mdp4q4F0xOh/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1alUCjHyawLhJ74G8zoBcAPSiPSNSkE9l/view?usp=sharing"
+        wr = stage.AddRecord(XsaraTorrada, "03:32.13", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1gRxngjLPHnuMAcn8f-i_s7G0LmL3qigX/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/12x_Vvr1R2Tvpxv3CTkFHEYsZzSDut13k/view?usp=sharing"
+        wr.proofs["youtube"] = "https://youtu.be/MAYrYKOi8ZA"
+        
+        stage = rally.stages[1]; //Bothwell
+        wr = stage.AddRecord(Migger,"05:18.34","00:00.00","No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1H4x0nX6CGrFKY7A89AkJoKBv1fZBsMIg/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/19VJaXkChyKFVpMTEtlJcR6eRlovmuemi/view?usp=sharing"
+        wr = stage.AddRecord(SpartaX18, "04:35.44", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1lB6kUUxUbH9j4cdrkqIteMswMmXYiTCz/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1hK3l1fxJzACy8UqXkBUEG8IfeoI3-FTB/view?usp=sharing"
+        wr = stage.AddRecord(XsaraTorrada, "05:22.30", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1TgI1NMDNk4EMDsQi2J3YzbrDlRC-W2Sy/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1KyKUPIiOQB-vJi26Gw31NWaFIY4XWmwS/view?usp=sharing"
+        wr.proofs["youtube"] = "https://youtu.be/MAYrYKOi8ZA"
+        
+        stage = rally.stages[2]; //Whitchester
+        wr = stage.AddRecord(Migger,"04:38.12","00:00.00","No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1R7rwbAPjPhUzN7yPpsJUQyMSTV-T46Tp/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1RMP239rT0TR7VEuXKAShcRsFAeZ2AVQ5/view?usp=sharing"
+        wr = stage.AddRecord(SpartaX18, "04:14.42", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1hWm1bCA1ERo1N04YaWjgw2_UAYSJf0qm/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1Qv6VY9-fhJc0J5ciZRzbpfznkQRPUaoO/view?usp=sharing"
+        wr = stage.AddRecord(XsaraTorrada, "04:45.42", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/10nRwxvSiktnod9Q-ypb0ApX0ZvYEgeHp/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1svtk0wogN8CoSrjQb4qyYak3fOY7tJbT/view?usp=sharing"
+        wr.proofs["youtube"] = "https://youtu.be/MAYrYKOi8ZA"
         
         stage = rally.stages[3]; //Eccles
         
