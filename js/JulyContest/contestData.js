@@ -716,6 +716,9 @@ function contestData(){
         rally = contest.rallies[4];  //Stena Line
 
         stage = rally.stages[0]; //Hamilton's Folly
+        wr = stage.AddRecord(Erwto,"07:46.78","00:00.00","No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1XwuSUl0TkcF-qucKvOdhsfuVCDhyH7Qn/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1ju6svjm_ZOawNxnWg2CbMQtA4YOJJEDg/view?usp=sharing"
         wr = stage.AddRecord(Migger,"07:34.31","00:00.00","No")
         wr.proofs["image"] = "https://drive.google.com/file/d/16mcF5mS_wWkNhtvyZ2_BQdEFflQhLBZQ/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1-1-bpWVgj_h-1u-d1KfQXRaqgZ0fExgQ/view?usp=sharing"
@@ -743,6 +746,9 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/1Pnn2I3zvBFUIewroiC6vlNYGxgU8NBF6/view?usp=sharing"
         
         stage = rally.stages[1]; //Tyrones Ditches
+        wr = stage.AddRecord(Erwto,"09:52.38","00:00.00","No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1CkU9UzZknGv6YED9GGWSMuVSyslKAJ5I/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1MVPRw07zjy85k-yb8aTYNixdkq7iJaPk/view?usp=sharing"
         wr = stage.AddRecord(Migger,"09:07.89","00:00.00","No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1Htqn5yhqXEot5j5SvfZ9F0TiJ9t4L1d9/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1gaPeCElXZJwTtiztDI38lNYOYQobxVSh/view?usp=sharing"
