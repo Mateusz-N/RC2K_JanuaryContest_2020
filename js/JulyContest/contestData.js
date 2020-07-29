@@ -716,7 +716,7 @@ function contestData(){
         rally = contest.rallies[4];  //Stena Line
 
         stage = rally.stages[0]; //Hamilton's Folly
-        /*wr = stage.AddRecord(Migger,"07:34.31","00:00.00","No")
+        wr = stage.AddRecord(Migger,"07:34.31","00:00.00","No")
         wr.proofs["image"] = "https://drive.google.com/file/d/16mcF5mS_wWkNhtvyZ2_BQdEFflQhLBZQ/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1-1-bpWVgj_h-1u-d1KfQXRaqgZ0fExgQ/view?usp=sharing"
         wr = stage.AddRecord(SpartaX18, "06:52.32", "00:00.00", "No")
@@ -740,10 +740,10 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/1t4Pn6SQdyiaUu6_I4wYE_XECYTfZ5c_H/view?usp=sharing"
         wr = stage.AddRecord(sBinnala, "08:45.56", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1Q18c6PpXAHxmgwIyXKv9jo32TSfw1qvU/view?usp=sharing"
-        wr.proofs["replay"] = "https://drive.google.com/file/d/1Pnn2I3zvBFUIewroiC6vlNYGxgU8NBF6/view?usp=sharing"*/
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1Pnn2I3zvBFUIewroiC6vlNYGxgU8NBF6/view?usp=sharing"
         
         stage = rally.stages[1]; //Tyrones Ditches
-        /*wr = stage.AddRecord(Migger,"09:07.89","00:00.00","No")
+        wr = stage.AddRecord(Migger,"09:07.89","00:00.00","No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1Htqn5yhqXEot5j5SvfZ9F0TiJ9t4L1d9/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1gaPeCElXZJwTtiztDI38lNYOYQobxVSh/view?usp=sharing"
         wr = stage.AddRecord(SpartaX18, "08:28.60", "00:00.00", "No")
@@ -768,7 +768,7 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/1ix6aTph4jCXWcoXI-wCukenTxBktHmpS/view?usp=sharing"
         wr = stage.AddRecord(sBinnala, "10:18.75", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1Q0gHbaqRqQGt-cxkrmM_pYbaDL5xSikF/view?usp=sharing"
-        wr.proofs["replay"] = "https://drive.google.com/file/d/1PltQeqD7UkPOwz2geXqvKDbDkl8-cNPB/view?usp=sharing"*/
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1PltQeqD7UkPOwz2geXqvKDbDkl8-cNPB/view?usp=sharing"
         
         stage = rally.stages[2]; //Feeney
         
