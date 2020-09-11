@@ -16,7 +16,7 @@ function websiteData(){
         new User('Juraj', "hr"),
         new User('datsun', "cz"),
         new User('Tornado', ""),
-        new User('MidnightRunner', "")
+        new User('MidnightRunner', ""),
         new User('Pendzior', "pl")
     );
 
