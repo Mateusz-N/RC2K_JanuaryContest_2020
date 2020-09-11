@@ -251,7 +251,6 @@ function websiteData(){
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/576052922064830467/ral_2019-05-09_16-26-19-18.png"
         wr = stage.AddSimulationWorldRecord(Spartax, "04:54.89")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/575649315356409878/ral_2019-05-08_13-44-25-91.png"
-        stage.AddWorldRecord("04:56.07","04:54.89")
         rally.stages[5] = stage;
 
         game.AddRally(rally)
@@ -317,7 +316,6 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "03:50.63")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/607538409740959744/ral_2019-08-04_13-39-50-56.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1OHK9SygZedSb9s1zJQzFS3xK1QHUNHiB/view?usp=sharing"
-        stage.AddWorldRecord("03:53.83","03:50.63")
         rally.stages[0] = stage;
 
         stage = new Stage("Ballagyr");
