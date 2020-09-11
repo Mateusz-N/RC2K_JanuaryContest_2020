@@ -152,6 +152,7 @@ body{
 
 
 .tables table{
+    width: 70%;
     background-color: #FFF;
     margin-bottom: 0px;
     padding-right: 10px;
