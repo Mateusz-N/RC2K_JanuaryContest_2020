@@ -61,8 +61,9 @@ function websiteData(){
         wr = stage.AddArcadeWorldRecord(Spartax, "10:38.32");
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/739413690218053712/unknown.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1IFEzOelf-iSkShRJhLpRUtWXVCZF2Us4/view?usp=sharing"
-        wr = stage.AddSimulationWorldRecord(Linotrix, "10:48.33");
-        wr.proofs["image"] = "https://imgur.com/TW4ps9v"
+        wr = stage.AddSimulationWorldRecord(Spartax, "10:41.61");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/754070113879326810/unknown.png"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/16GK45h8ft5iDo7VGikxS8R8esPg4--tO/view?usp=sharing"
         rally.stages[3] = stage;
 
         stage = new Stage("Dyfi");
