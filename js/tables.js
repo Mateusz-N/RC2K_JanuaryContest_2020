@@ -35,9 +35,11 @@ class User{
 }
 
 class Participant{
-    constructor(user, color, car){
+    constructor(num, user, color, group, car){
+        this.num = num
         this.user = user
         this.color = color
+        this.group = group
         this.car = car
     }
     
