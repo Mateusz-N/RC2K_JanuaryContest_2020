@@ -19,8 +19,8 @@ function websiteData(){
         new User('MidnightRunner', ""),
         new User('Pendzior', "pl"),
         new User('Ephemeral', "pl"),
-        new User('Woeringen1288', "pl"),
-        new User('BrosTheThird', "pl"),
+        new User('Woeringen1288', ""),
+        new User('BrosTheThird', ""),
         new User('Karel Pipa', "cz")
     );
 

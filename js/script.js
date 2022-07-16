@@ -5,8 +5,20 @@ console.log(contest)
 
 document.getElementById("title").innerHTML = contest.name
 
+// Compare function for sorting participants by Group (ascending order)
+function compareGroups(participant1, participant2) {
+    if (participant1.group.charAt(1) < participant2.group.charAt(1)) {
+        return 1;
+    }
+    if (participant1.group.charAt(1) > participant2.group.charAt(1)) {
+        return -1;
+    }
+    return 0;
+}
+
 // Entry list generator (START)
 let generateEntries = document.getElementById("generateEntries");
+contest.participants.sort(compareGroups);
 
     for(let i=0; i<contest.participants.length; i++) {
         let participant = contest.participants[i];
