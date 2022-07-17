@@ -201,6 +201,12 @@ class Stage{
             return (a.centiseconds - b.centiseconds)
         })
     }
+    RecordsAddGaps(records) {
+        let leader = records[0];
+        for (const rec of records) {
+            rec.gapToLeader = "+" + rec.CentisecondsToTime(rec.centiseconds_initial - leader.centiseconds_initial);
+        }
+    }
     RecordsSorted_Points(){
         return this.records.sort((a,b) => b.points - a.points)
     }
@@ -232,19 +238,22 @@ class Stage{
 
         return divStage   //returning 
     }
+
+    /* Standings tables */
     CreateContestStageTable(divStage, finalLevel){
         let newTable = document.createElement('table')
         newTable.setAttribute("class", "table")
-        let string_lastColumn = finalLevel==0 ? "Verified?":"Points"
+        let string_lastColumn = finalLevel==0 ? "Gap to Leader":"Points"
         let proofColumn = finalLevel==0?`<th scope="col">Proofs</th>`:``
         newTable.innerHTML = 
             `<thead class="thead-dark">
                 <tr>
-                    <th scope="col">Ranking</th>
+                    <th scope="col">Rank</th>
+                    <th scope="col">#</th>
                     <th scope="col">Driver</th>
+                    <th scope="col">NAT</th>
+                    <th scope="col">Group</th>
                     <th scope="col">Time</th>
-                    <th scope="col">Penalty</th>
-                    <th scope="col">Time (+Penalty)</th>
                     <th scope="col">`+string_lastColumn+`</th>
                     ${proofColumn}
                 </tr>
@@ -255,20 +264,22 @@ class Stage{
         }
         else {
             let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
+            this.RecordsAddGaps(records);
             for(let j = 0; j< records.length; j++)
             {
-                let flagImg = `<img src="../../resources/flag_${records[j].participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
-                let value_lastColumn = finalLevel==0? records[j].verified:records[j].points
+                let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"/ >`;
+                let value_lastColumn = finalLevel==0? `<span class="gapToLeader">${records[j].gapToLeader}<div class="gapsHint">Gap to next: +00:00.25<br/>Gap to Previous: -00:00.90</div></span>`:records[j].points
                 let proofRow = finalLevel==0?`<td>${this.proofsToDiv(records[j].proofs)}</td>`:``
                 newTable.innerHTML+= 
                 `
                 <tr>
                     <th scope="row">`+(j+1)+`</th>
-                    <td>${flagImg} `+ records[j].participant.user.name +` ${flagImg}</td>
-                    <td>`+ records[j].time + `</td>
-                    <td>`+ records[j].penalty +`</td>
-                    <td>`+ records[j].timePenalty +`</td>
-                    <td>`+ value_lastColumn +`</td>
+                    <td>${records[j].participant.num}</td>
+                    <td>${records[j].participant.user.name}</td>
+                    <td>${flagImg}</td>
+                    <td>${records[j].participant.group}</td>
+                    <td>${records[j].time}</td>
+                    <td>${value_lastColumn}</td>
                     ${proofRow}
                 </tr>
                 `
@@ -348,6 +359,7 @@ class Record{
         }
         this.centiseconds = this.centiseconds_initial + this.centiseconds_penalty; //int
         this.timePenalty = this.CentisecondsToTime(this.centiseconds);  //string
+        this.gapToLeader = 0;
         this.verified = verified;
         this.proofs = {
             "youtube": null,
