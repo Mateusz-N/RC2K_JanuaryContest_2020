@@ -21,7 +21,8 @@ function contestData(){
     let Woeringen1288 = new Participant(9, website.GetUserByName('Woeringen1288'), participantColor(), 'G2', 'Subaru Impreza WRC');
     let Pendzior = new Participant(8, website.GetUserByName('Pendzior'), participantColor(), 'G2', 'Proton Wira/Persona');
     let KarelPipa = new Participant(55, website.GetUserByName('Karel Pipa'), participantColor(), 'G4', 'Subaru Impreza WRC');
-    contest.participants.push(Erwto, Ephemeral, Lewsys, sBinnala, Linotrix, BrosTheTird, Pendzior, KarelPipa);
+    let TheKetrab = new Participant(10, website.GetUserByName('TheKetrab'), participantColor(), 'G3', 'Mitsubishi Lancer Evo V');
+    contest.participants.push(Erwto, Ephemeral, Lewsys, sBinnala, Linotrix, BrosTheTird, Pendzior, KarelPipa, TheKetrab);
 
     contest.rallies = website.game.rallies;
     let rally, stage
