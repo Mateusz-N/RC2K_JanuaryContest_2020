@@ -71,7 +71,7 @@ function loadRallyTables(RallyID){
     let stages = contest.rallies[RallyID].stages
     let nParticipants = contest.participants.length
 
-    let summaryDiv = document.getElementById("rallyboards")
+    let summaryDiv = document.getElementById("rallyboards") || document.getElementById("finalboard")
     summaryDiv.innerHTML = "";
 
     let graphDiv = document.getElementById('myChart');

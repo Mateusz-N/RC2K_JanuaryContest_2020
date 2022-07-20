@@ -257,35 +257,41 @@ class Stage{
                     <th scope="col">`+string_lastColumn+`</th>
                     ${proofColumn}
                 </tr>
-            </thead>
-            <tbody>`
+            </thead>`
+        let newTableBody = document.createElement('tbody');
+        newTable.appendChild(newTableBody);
+
         if (this.records.length === 0) { // Fills empty tables with a "Check back later" message.
-            newTable.innerHTML+=`<tr><td style="color: gray;" colspan="100%" rowspan="2">The results aren't complete yet. Please check back later.</td></tr>`;
+            newTable.innerHTML+=`<tr id="emptyFinalTable"><td style="color: gray;" colspan="100%" rowspan="2" >The results aren't complete yet. Please check back later.</td></tr>`;
         }
         else {
             let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
             this.RecordsAddGaps(records);
-            for(let j = 0; j< records.length; j++)
+            for(let j = 0; j < records.length; j++)
             {
                 let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"/ >`;
-                let value_lastColumn = finalLevel==0? `<span class="gapToLeader">${records[j].gapToLeader}<div class="gapsHint">Gap to next: +00:00.25<br/>Gap to Previous: -00:00.90</div></span>`:records[j].points
-                let proofRow = finalLevel==0?`<td>${this.proofsToDiv(records[j].proofs)}</td>`:``
-                newTable.innerHTML+= 
-                `
-                <tr>
-                    <th scope="row">`+(j+1)+`</th>
-                    <td>${records[j].participant.num}</td>
-                    <td>${records[j].participant.user.name}</td>
-                    <td>${flagImg}</td>
-                    <td>${records[j].participant.group}</td>
-                    <td>${records[j].time}</td>
-                    <td>${value_lastColumn}</td>
-                    ${proofRow}
-                </tr>
-                `
+                let value_lastColumn = finalLevel==0 ? `<span class="gapToLeader">${records[j].gapToLeader}<div class="gapsHint">Gap to next: +00:00.25<br/>Gap to Previous: -00:00.90</div></span>` : records[j].points
+                let proofRow = finalLevel==0 ? `<td>${this.proofsToDiv(records[j].proofs)}</td>` : ``
+                let tr = newTableBody.insertRow();
+                let th = document.createElement("th");
+                th.appendChild(document.createTextNode(j+1));
+                th.setAttribute('scope', 'row');
+                tr.appendChild(th);
+                let td = tr.insertCell();
+                td.appendChild(document.createTextNode(records[j].participant.num));
+                td = tr.insertCell();
+                td.appendChild(document.createTextNode(records[j].participant.user.name));
+                td = tr.insertCell();
+                td.innerHTML = flagImg;
+                td = tr.insertCell();
+                td.appendChild(document.createTextNode(records[j].participant.group));
+                td = tr.insertCell();
+                td.appendChild(document.createTextNode(records[j].time));
+                td = tr.insertCell();
+                td.innerHTML += value_lastColumn;
+                tr.innerHTML += proofRow;
             }
         }
-        newTable.innerHTML+= `</tbody>`
         
         divStage.appendChild(newTable);
     }
