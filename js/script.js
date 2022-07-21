@@ -223,3 +223,14 @@ function loadRallyTables(RallyID){
     } 
 }
 
+const quickUpdates = document.getElementsByClassName('updateContent');
+const quickUpdatesAmount = quickUpdates.length;
+let quickUpdateContent;
+for(let i = 0; i < quickUpdatesAmount; i++) {
+    quickUpdateContent = quickUpdates[i].firstElementChild;
+    if(quickUpdateContent.innerHTML.trim().length == 0) {
+        quickUpdateContent.innerHTML = "The day hasn't finished yet. Please Check back later!";
+        quickUpdateContent.style.color = "gray";
+        quickUpdateContent.style.textAlign = "center";
+    }
+}
