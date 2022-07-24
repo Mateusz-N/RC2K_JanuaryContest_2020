@@ -201,11 +201,47 @@ class Stage{
             return (a.centiseconds - b.centiseconds)
         })
     }
-    RecordsAddGaps(records) {
-        let leader = records[0];
+    RecordsAddGapsToLeader(records) {
+        const leader = records[0];
         for (const rec of records) {
             rec.gapToLeader = "+" + rec.CentisecondsToTime(rec.centiseconds_initial - leader.centiseconds_initial);
         }
+    }
+    RecordsAddMoreGaps(rank, records) {
+        let gapToRankAboveMessage = ``;
+        let gapToRankBelowMessage = ``;
+        if(rank > 0) {
+            const rankAbove = rank-1;
+            const rankAboveOrdinal = this.ToOrdinalRank(rankAbove);
+            const gapToRankAbove = records[rank].CentisecondsToTime(records[rank].centiseconds_initial - records[rankAbove].centiseconds_initial);
+            gapToRankAboveMessage = `<span class="gapToRankAbove">Gap to ${rankAboveOrdinal}: +${gapToRankAbove}</span><br/>`;
+        }
+        if(rank < records.length-1) {
+            const rankBelow = rank+1;
+            const rankBelowOrdinal = this.ToOrdinalRank(rankBelow);
+            const gapToRankBelow = records[rank].CentisecondsToTime(records[rankBelow].centiseconds_initial - records[rank].centiseconds_initial);
+            gapToRankBelowMessage = `<span class="gapToRankBelow">Gap to ${rankBelowOrdinal}: -${gapToRankBelow}</span>`;
+        }
+        return `<span class="gapToLeader">${records[rank].gapToLeader}<div class="gapsHint">${gapToRankAboveMessage}${gapToRankBelowMessage}</span>`;
+    }
+    ToOrdinalRank(rank) {
+        rank++; // 0th => 1st, etc.
+        let suffix = 'th';
+        switch(rank) {
+            case 1:
+                suffix = 'st';
+                break;
+            case 2:
+                suffix = 'nd';
+                break;
+            case 3:
+                suffix = 'rd';
+                break;
+        }
+        return rank+suffix;
+    }
+    RecordsSetLastColumn(rank, records, finalLevel) {
+        return finalLevel==0 ? this.RecordsAddMoreGaps(rank, records) : records[rank].points;
     }
     RecordsSorted_Points(){
         return this.records.sort((a,b) => b.points - a.points)
@@ -266,11 +302,11 @@ class Stage{
         }
         else {
             let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
-            this.RecordsAddGaps(records);
+            this.RecordsAddGapsToLeader(records);
             for(let j = 0; j < records.length; j++)
             {
                 let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"/ >`;
-                let value_lastColumn = finalLevel==0 ? `<span class="gapToLeader">${records[j].gapToLeader}<div class="gapsHint">Gap to next: +00:00.25<br/>Gap to Previous: -00:00.90</div></span>` : records[j].points
+                let value_lastColumn = this.RecordsSetLastColumn(j, records, finalLevel);
                 let proofRow = finalLevel==0 ? `<td>${this.proofsToDiv(records[j].proofs)}</td>` : ``
                 let tr = newTableBody.insertRow();
                 let th = document.createElement("th");
