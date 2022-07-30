@@ -14,14 +14,15 @@ function websiteData(){
         new User('Linotrix', "hr"),
         new User('SpartaRemixer', "pl"),
         new User('Juraj', "hr"),
-        new User('datsun100aGTR', "cz"),
-        new User('Tornado', ""),
-        new User('MidnightRunner', ""),
+        new User('SForman135LS', "cz"),
+        new User('Tornado', "unknown"),
+        new User('MidnightRunner', "unknown"),
         new User('Pendzior', "pl"),
         new User('Ephemeral', "pl"),
-        new User('Woeringen1288', ""),
-        new User('BrosTheThird', ""),
+        new User('Woeringen1288', "be"),
+        new User('BrosTheThird', "unknown"),
         new User('Karel Pipa', "cz"),
+        new User('Tribell', "pl"),
         new User('TheKetrab', "pl")
     );
 

@@ -305,7 +305,7 @@ class Stage{
             this.RecordsAddGapsToLeader(records);
             for(let j = 0; j < records.length; j++)
             {
-                let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"/ >`;
+                let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;"/ >`;
                 let value_lastColumn = this.RecordsSetLastColumn(j, records, finalLevel);
                 let proofRow = finalLevel==0 ? `<td>${this.proofsToDiv(records[j].proofs)}</td>` : ``
                 let tr = newTableBody.insertRow();
@@ -348,7 +348,7 @@ class Stage{
         let records = this.wr[direction];
         for(let j = 0; j< records.length; j++)
         {
-            let flagImg = `<img src="../../resources/flag_${records[j].participant.user.country}.png" style="height: 16px; border: 1px solid #CCC;"></img>`;
+            let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;"></img>`;
             
             newTable.innerHTML+= 
             `
@@ -367,9 +367,9 @@ class Stage{
     }
     proofsToDiv(proofs){
         let proofsImages = "";
-        proofs.youtube !== null ? proofsImages += `<a href=${proofs.youtube}><img src="../../resources/youtube_icon.png" style="height: 16px; border: 1px solid #CCC;"></img></a>`: null;
-        proofs.image !== null ? proofsImages += `<a href=${proofs.image}><img src="../../resources/image_icon.png" style="height: 16px; border: 1px solid #CCC;"></img></a>`: null;
-        proofs.replay !== null ? proofsImages += `<a href=${proofs.replay}><img src="../../resources/replay_icon.png" style="height: 16px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.youtube !== null ? proofsImages += `<a href=${proofs.youtube}><img src="../../resources/youtube_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.image !== null ? proofsImages += `<a href=${proofs.image}><img src="../../resources/image_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.replay !== null ? proofsImages += `<a href=${proofs.replay}><img src="../../resources/replay_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
         return proofsImages;
     }
     getImageUrl(){
