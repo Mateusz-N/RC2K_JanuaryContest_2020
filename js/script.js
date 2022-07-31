@@ -40,6 +40,10 @@ let buttonSpace = document.getElementById("buttons");
 
 if(buttonSpace){
     for(let i=0; i< contest.rallies.length; i++){
+        // let button = document.createElement("img")
+        // button.setAttribute("onclick","loadRallyTables("+ i +")");
+        // button.setAttribute("src", `../../resources/rally${i}.png`);
+        // button.setAttribute("width", "100px");
         let button = document.createElement("button")
         button.setAttribute("onclick","loadRallyTables("+ i +")");
         button.innerHTML = contest.rallies[i].name;

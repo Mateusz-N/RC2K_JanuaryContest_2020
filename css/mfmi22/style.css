@@ -57,9 +57,6 @@ body{
     margin: auto;
 }
 
-#nav ul li {
-}
-
 #nav ul li a {
     display: flex;
     flex-wrap: nowrap;
@@ -118,7 +115,7 @@ body{
 }
 
 #entrylist{
-    margin: 0 150px;
+    margin: 0 150px 20px 150px;
     padding: 0 10px 10px 10px;
     background-color: #343a40;
 }
@@ -184,10 +181,6 @@ body{
     background-color: #FFF;
     margin-bottom: 0px;
     padding-right: 10px;
-}
-
-.tables table tr th{
-    border: 0px;
 }
 
 .tables table td, #tables table th{
