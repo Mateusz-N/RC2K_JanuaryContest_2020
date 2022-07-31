@@ -1,0 +1,351 @@
+body{
+    font-family: "Verdana", Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: black;
+    min-height: 100vh;
+}
+
+@font-face{
+    font-family: "rcFont";
+    src: url('../../resources/rcfont.ttf');
+}
+
+#nav{
+    margin: 0px 150px;
+}
+
+#titleContainer {
+    padding: 2.5vh 2.5vw;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#title{
+    margin: 0;
+    flex: auto;
+    font-family: "rcFont";
+    text-shadow: 0.4vw 0.4vw black;
+    font-size: 3.5vw;
+    color: gold;
+    text-align: center;
+}
+
+#title_icon{
+    display: flex;
+    background-color: white;
+    border: 0.3vw solid black; 
+    border-radius: 50%;
+}
+
+#title_icon img{
+    width: 5vw;
+}
+
+#title_icon:hover {
+    opacity: 0.85;
+}
+
+#nav ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-around;
+    padding: 20px 0;
+    margin: auto;
+}
+
+#nav ul li {
+}
+
+#nav ul li a {
+    display: flex;
+    flex-wrap: nowrap;
+    text-decoration: none;
+}
+
+#nav span{
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    height: 29px;
+    background-image: url('../../resources/navmid.png');
+    background-size: contain;
+    font-family: "rcFont";
+    text-decoration: none;
+    color: yellow;
+}
+
+#nav button{
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+#main {
+    font-size: max(110%, 0.5vw);
+    display: grid;
+    grid-template-columns: 1fr 720px 1fr;
+}
+
+#main h1{
+    background: repeating-linear-gradient(60deg, goldenrod, #987316 20%, goldenrod 30%, #987316 50%, goldenrod 60%, #987316 80%, goldenrod 90%, #987316 100%);
+    border: 5px solid black;
+    font-family: "rcFont";
+    font-size: 220%;
+}
+
+#main p, #main li{
+    padding: 0 12px 0 12px;
+    text-align: justify;
+    color: #EEE;
+}
+
+#main a{
+    color: #FBB;
+    text-decoration: underline;
+}
+
+#validation, #closingWords {
+    clear: both;
+}
+
+#poster {
+    width: 100%;
+    display: inline-block;
+}
+
+#entrylist{
+    margin: 0 150px;
+    padding: 0 10px 10px 10px;
+    background-color: #343a40;
+}
+
+#entrylist table{
+    width: 100%;
+    margin: auto;
+}
+
+#entrylist table th{
+    background-color: #343a40;
+    color: white;
+}
+
+#entrylist table tr{
+    background-color: #FFF;
+    color: black;
+    border-top: 2px #DDD solid;
+}
+
+#entrylist table tr:first-child{
+    border-top: none;
+}
+
+#entrylist table td, th{
+    padding: 10px 50px;
+}
+
+#entrylist table tr td:first-child{
+    font-weight: 600;
+}
+
+#buttons{
+    margin: 0 150px 10px 150px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    font-family: "Trebuchet MS";
+}
+
+#buttons button{
+    border-radius: 50vh;
+    font-weight: 600;
+    margin: 0px 3px;
+    background: linear-gradient(45deg, white 33.3%, #DDD 66.7%, #BBB 100%);
+}
+
+#buttons button:hover{
+    background: linear-gradient(45deg, #BBB 33.3%, #DDD 66.7%, white 100%);
+}
+
+.tables{
+    padding: 2% 3% !important;
+    background-color: #606060;
+    border: 0.3vw solid black;
+    font-size: 1vw;
+    margin: 0px 10% 1% 10% !important;
+}
+
+
+.tables table{
+    width: 70%;
+    background-color: #FFF;
+    margin-bottom: 0px;
+    padding-right: 10px;
+}
+
+.tables table tr th{
+    border: 0px;
+}
+
+.tables table td, #tables table th{
+    vertical-align: middle;
+}
+
+.tables table td:nth-child(2) {
+    position: relative;
+    background-color: rgba(0,0,0,0.03);
+}
+
+#finalboard table tr:not(#emptyFinalTable):nth-child(1) {
+    background-color: rgba(255,215,0,0.25);
+}
+
+#finalboard table tr:not(#emptyFinalTable):nth-child(1):hover {
+    background-color: rgba(205,165,0,0.25);
+}
+
+#finalboard table tr:nth-child(2) {
+    background-color: rgba(192,192,192,0.25);
+}
+
+#finalboard table tr:nth-child(2):hover {
+    background-color: rgba(142,142,142,0.25);
+}
+
+#finalboard table tr:nth-child(3) {
+    background-color: rgba(205,127,50,0.25);
+}
+
+#finalboard table tr:nth-child(3):hover {
+    background-color: rgba(155,77,0,0.25);
+}
+
+.gapsHint {
+    font-size: 20px;
+    position: absolute;
+    visibility: hidden;
+    background-color: rgba(50,50,50,0.5);
+    padding: 0 7px;
+    border: 2px solid #333;
+    border-radius: 10px;
+}
+
+.gapsHint span {
+    text-shadow:
+        1px 1px 0 #333,
+        -1px -1px 0 #333,  
+         1px -1px 0 #333,
+        -1px 1px 0 #333,
+        2px 2px 1px #333;
+}
+
+.gapToRankAbove {
+    color: coral;
+}
+
+.gapToRankBelow {
+    color: lightgreen;
+}
+
+.gapToLeader {
+    cursor: pointer;
+}
+
+.gapToLeader:hover .gapsHint {
+    visibility: visible;
+}
+
+.tables table tr:hover, #entrylist table tr:hover {
+    background-color: #DDD;
+}
+
+.divStage{
+    vertical-align: top;
+    display: inline-flex;
+    background: #343a40;
+    padding: 0 1em 1em 1em;
+    margin: 5px 0px;
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.stageName{
+    font-size: 1.7em;
+}
+
+.divTitleImage{
+    width: 30%;
+    display: inline-block;
+    padding: 1vw;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-style: italic;
+}
+
+.mapImage{
+    width: 100%;
+}
+
+canvas.tables{
+    width: 80% !important;
+    display: initial !important;
+    background-color: white;
+}
+
+.updateCollapsible {
+    background-color: #343a40;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.active, .updateCollapsible:hover {
+    background-color: #242a30;
+}
+
+.updateContent {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: white;
+}
+
+.updateCollapsible:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.updateContent > p {
+    text-align: justify;
+    margin-top: 20px;
+    color: black;
+}
+
+#updatelist {
+    margin: 0 150px 20px 150px;
+}
+
+.updateRallyWinner {
+    text-align: center;
+}
