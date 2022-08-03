@@ -75,6 +75,10 @@ body{
     background: none;
 }
 
+#main {
+    margin: 0 150px 20px 150px;
+}
+
 #main h1{
     background: repeating-linear-gradient(60deg, goldenrod, #987316 20%, goldenrod 30%, #987316 50%, goldenrod 60%, #987316 80%, goldenrod 90%, #987316 100%);
     border: 5px solid black;
