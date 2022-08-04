@@ -1,7 +1,8 @@
 body{
     font-family: "Verdana", Arial, Helvetica, sans-serif;
     text-align: center;
-    background-color: black;
+    background-size: cover;
+    background-attachment: fixed;
     min-height: 100vh;
 }
 
@@ -25,6 +26,7 @@ body{
 }
 
 #title_icon{
+    line-height: 0;
     position: absolute;
     top: 2.5vh;
     left: 2.5vw;
@@ -76,30 +78,103 @@ body{
 }
 
 #main {
-    margin: 0 150px 20px 150px;
+    margin: 100px 150px 120px 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#main h1{
-    background: repeating-linear-gradient(60deg, goldenrod, #987316 20%, goldenrod 30%, #987316 50%, goldenrod 60%, #987316 80%, goldenrod 90%, #987316 100%);
-    border: 5px solid black;
-    font-family: "rcFont";
-    font-size: 220%;
+#main button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.5s;
 }
 
-#main p, #main li{
-    padding: 0 12px 0 12px;
-    text-align: justify;
-    color: #EEE;
+#main button:focus {
+    outline: none;
 }
 
-#main a{
-    color: #FBB;
-    text-decoration: underline;
+#main button:hover i {
+    color: #636363;
 }
 
-#poster {
-    width: 30rem;
-    display: inline-block;
+#main i {
+    font-size: 50px;
+    color: gray;
+}
+
+.book {
+    position: relative;
+    width: 525px;
+    height: 750px;
+    transition: transform 0.5s;
+}
+
+.paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    perspective: 2250px;
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.front {
+    z-index: 1;
+    backface-visibility: hidden;
+    border-left: 3px solid #111;
+}
+
+.back {
+    z-index: 0;
+}
+
+.front-content, .back-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-content {
+    transform: rotateY(180deg);
+}
+
+.flipped .front, .flipped .back {
+    transform: rotateY(-180deg);
+}
+
+#p1 {
+    z-index: 5;
+}
+
+#p2 {
+    z-index: 4;
+}
+
+#p3 {
+    z-index: 3;
+}
+
+#p4 {
+    z-index: 2;
+}
+
+#p5 {
+    z-index: 1;
 }
 
 #entrylist{

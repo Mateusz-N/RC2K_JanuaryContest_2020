@@ -3,6 +3,16 @@ contest = contestData();
 console.log("Reading script.js")
 console.log(contest)
 
+// Roll a random background pic
+function bgRoll() {
+    const bgm = ['../../resources/SBISL02.png','../../resources/MTLSL04.png','../../resources/OSCSL08.png','../../resources/PGTSL04.png','../../resources/PTWSL02.png','../../resources/STCSL01.png'];
+ 
+    $('body').css({
+        'background-image' : 'url('+ bgm[Math.floor(Math.random() * bgm.length)] + ')',
+    });
+}
+bgRoll();
+
 document.getElementById("title").innerHTML = contest.name
 
 // Compare function for sorting participants by Group (ascending order)
