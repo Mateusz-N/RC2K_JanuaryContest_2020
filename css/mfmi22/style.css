@@ -86,7 +86,9 @@ body{
 
 #main button {
     border: none;
-    background-color: transparent;
+    border-radius: 50vh;
+    background-color: white;
+    padding: 0;
     cursor: pointer;
     margin: 10px;
     transition: transform 0.5s;
@@ -97,12 +99,13 @@ body{
 }
 
 #main button:hover i {
-    color: #636363;
+    color: #333;
 }
 
 #main i {
     font-size: 50px;
-    color: gray;
+    color: #000;
+    mix-blend-mode:darken;
 }
 
 .book {
