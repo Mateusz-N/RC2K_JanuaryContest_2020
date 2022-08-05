@@ -12,7 +12,7 @@ function websiteData(){
         new User('Twajlot', "pl"),
         new User('sBinnala', "pl"),
         new User('Linotrix', "hr"),
-        new User('SpartaRemixer', "pl"),
+        new User('SpartaRemixerPL', "pl"),
         new User('Juraj', "hr"),
         new User('SForman135LS', "cz"),
         new User('Tornado', "unknown"),

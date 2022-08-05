@@ -26,6 +26,18 @@ function compareGroups(participant1, participant2) {
     return 0;
 }
 
+function showDriverProfile(participant) {
+    document.getElementById("modalDriverProfile").style.display = "flex";
+    let driverProfileImgFilename = `${participant.group}_${participant.user.name}`;
+    document.getElementById("driverProfileImg").setAttribute("src", `../../resources/driver_profiles/${driverProfileImgFilename.toLowerCase().replaceAll(' ','')}.png`);
+}
+
+function closeModal(event) {
+    if(event.target != document.getElementById("driverProfileImg")) {   // If clicked anything but the image (so either the "X" or just outside the modal)
+        document.getElementById("modalDriverProfile").style.display = "none";
+    }
+}
+
 // Entry list generator (START)
 let generateEntries = document.getElementById("generateEntries");
 contest.participants.sort(compareGroups);
@@ -41,6 +53,7 @@ contest.participants.sort(compareGroups);
                 <td>${flagImg}</td>
                 <td>${participant.group}</td>
                 <td>${participant.car}</td>
+                <td><button id="showModalBtn" onClick='showDriverProfile(${JSON.stringify(participant)})'>Show</button></td>
             </tr>`
         }
     }

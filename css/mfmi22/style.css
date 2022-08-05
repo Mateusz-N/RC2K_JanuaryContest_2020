@@ -193,7 +193,7 @@ body{
 
 #entrylist table th{
     background-color: #343a40;
-    color: white;
+    color: #FFF;
 }
 
 #entrylist table tr{
@@ -212,6 +212,53 @@ body{
 
 #entrylist table tr td:first-child{
     font-weight: 600;
+}
+
+#modalDriverProfile {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+#showModalBtn {
+    background-color: #EEE;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+#showModalBtn:focus {
+    outline: none;
+}
+
+#showModalBtn:hover {
+    background-color: #CCC;
+}
+
+#showModalBtn:active {
+    
+    background-color: #AAA;
+}
+
+#closeModal {
+    font-size: 5rem;
+    line-height: 1;
+    font-weight: bolder;
+    position: absolute;
+    cursor: pointer;
+    top: 2rem;
+    right: 3rem;
+    color: white;
+}
+
+#closeModal:hover {
+    color: #CCC;
 }
 
 #buttons{
