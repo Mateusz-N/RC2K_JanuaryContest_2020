@@ -204,12 +204,21 @@ class Stage{
     RecordsAddGapsToLeader(records) {
         const leader = records[0];
         for (const rec of records) {
-            rec.gapToLeader = "+" + rec.CentisecondsToTime(rec.centiseconds_initial - leader.centiseconds_initial);
+            let reg = /[0-9]{2}:[0-5][0-9].[0-9]{2}/g;
+            if(reg.test(rec.time))  {
+                rec.gapToLeader = "+" + rec.CentisecondsToTime(rec.centiseconds_initial - leader.centiseconds_initial);
+            }
+            else {
+                rec.gapToLeader = 'N/A';
+            }
         }
     }
+
+    // Have to fix the DNF checks here!!!
     RecordsAddMoreGaps(rank, records) {
         let gapToRankAboveMessage = ``;
         let gapToRankBelowMessage = ``;
+        let reg = /[0-9]{2}:[0-5][0-9].[0-9]{2}/g;
         if(rank > 0) {
             const rankAbove = rank-1;
             const rankAboveOrdinal = this.ToOrdinalRank(rankAbove);
@@ -222,7 +231,9 @@ class Stage{
             const gapToRankBelow = records[rank].CentisecondsToTime(records[rankBelow].centiseconds_initial - records[rank].centiseconds_initial);
             gapToRankBelowMessage = `<span class="gapToRankBelow">Gap to ${rankBelowOrdinal}: -${gapToRankBelow}</span>`;
         }
+        if(reg.test(records[rank].time))
         return `<span class="gapToLeader">${records[rank].gapToLeader}<div class="gapsHint">${gapToRankAboveMessage}${gapToRankBelowMessage}</span>`;
+        else return `N/A`;
     }
     ToOrdinalRank(rank) {
         rank++; // 0th => 1st, etc.
