@@ -210,7 +210,7 @@ class Stage{
     }
     RecordsAddMoreGaps(rank, records) {
         const recordTimePattern = /[0-9]{2}:[0-5][0-9].[0-9]{2}/;
-        if(!recordTimePattern.test(records[rank].time) || rank == records.length-1) return `<span class="gapToLeader">N/A</span>`;
+        if(!recordTimePattern.test(records[rank].time)) return `<span class="gapToLeader">N/A</span>`;
         let gapToRankAboveMessage = ``;
         let gapToRankBelowMessage = ``;
         if(rank > 0) {
@@ -219,7 +219,7 @@ class Stage{
             const gapToRankAbove = records[rank].CentisecondsToTime(records[rank].centiseconds_initial - records[rankAbove].centiseconds_initial);
             gapToRankAboveMessage = `<span class="gapToRankAbove">Gap to ${rankAboveOrdinal}: +${gapToRankAbove}</span><br/>`;
         }
-        if(rank < records.length-1 && reg.test(records[rank+1].time)) {
+        if(rank < records.length-1 && recordTimePattern.test(records[rank+1].time)) {
             const rankBelow = rank+1;
             const rankBelowOrdinal = this.ToOrdinalRank(rankBelow);
             const gapToRankBelow = records[rank].CentisecondsToTime(records[rankBelow].centiseconds_initial - records[rank].centiseconds_initial);
