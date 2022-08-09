@@ -123,9 +123,8 @@ function contestData(){
         wr.proofs["image"] = "https://drive.google.com/file/d/1RpLNpVKYtbVsEy3flpTw328UwKPw0sMh/view?usp=sharing"
         wr = stage.AddRecord(Migger, "11:32.67", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1jG0GbRjlofZWh1go7o2-k8nr3oHj6Vlb/view?usp=sharing"
-        // wr = stage.AddRecord(Pendzior, "07:52.75", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1k7a8Kdib8CjcJUPdFDBk1v5qBIaidKd3/view?usp=sharing"
-        // wr.proofs["youtube"] = "https://www.youtube.com/watch?v=sTIixisSPYk"
+        wr = stage.AddRecord(Pendzior, "11:21.92", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1zBnTATYnlfoWgSgf_fCyLRZ7sagy3MOf/view?usp=sharing"
         wr = stage.AddRecord(sBinnala, "11:52.07", "00:00.00", "Yes")
         wr.proofs["image"] = "https://drive.google.com/file/d/1CRIh_upc204DU6f10CvU-75vniFMygSo/view?usp=sharing"
         wr = stage.AddRecord(SpartaRemixer, "11:22.19", "00:00.00", "No")
@@ -155,9 +154,8 @@ function contestData(){
         wr.proofs["image"] = "https://drive.google.com/file/d/1ecW6SgkD0tc25yseIvWIeXtgtK579Vqq/view?usp=sharing"
         wr = stage.AddRecord(Migger, "12:20.81", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1cCjCJTAYWbs-cngbiOqOe5yIce1IXteN/view?usp=sharing"
-        // wr = stage.AddRecord(Pendzior, "07:52.75", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1k7a8Kdib8CjcJUPdFDBk1v5qBIaidKd3/view?usp=sharing"
-        // wr.proofs["youtube"] = "https://www.youtube.com/watch?v=sTIixisSPYk"
+        wr = stage.AddRecord(Pendzior, "12:21.50", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1VebO5NUF6ctaHCGQVdDV1JELHpthTRxe/view?usp=sharing"
         wr = stage.AddRecord(sBinnala, "11:59.51", "00:00.00", "Yes")
         wr.proofs["image"] = "https://drive.google.com/file/d/1td6NNqPe3hbfO9qIEFevvxVd0Fv58geA/view?usp=sharing"
         wr = stage.AddRecord(SpartaRemixer, "12:14.91", "00:00.00", "No")

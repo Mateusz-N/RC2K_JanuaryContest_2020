@@ -138,7 +138,7 @@ class Rally{
             }
         }
         for(let key in centiseconds_initial_hash){
-            if(number_hash[key] == 6 || this.id == 6){
+            if(number_hash[key] > 1 || this.id == 6){
                 let participant = participants[key];
                 this.summary.AddRecord(participant,centiseconds_initial_hash[key],penalty_hash[key],verified_hash[key])
             }
