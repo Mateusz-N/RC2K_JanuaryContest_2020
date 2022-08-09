@@ -201,39 +201,31 @@ class Stage{
             return (a.centiseconds - b.centiseconds)
         })
     }
+    // The next two functions need some refactoring!
     RecordsAddGapsToLeader(records) {
         const leader = records[0];
         for (const rec of records) {
-            let reg = /[0-9]{2}:[0-5][0-9].[0-9]{2}/g;
-            if(reg.test(rec.time))  {
-                rec.gapToLeader = "+" + rec.CentisecondsToTime(rec.centiseconds_initial - leader.centiseconds_initial);
-            }
-            else {
-                rec.gapToLeader = 'N/A';
-            }
+            rec.gapToLeader = "+" + rec.CentisecondsToTime(rec.centiseconds_initial - leader.centiseconds_initial);
         }
     }
-
-    // Have to fix the DNF checks here!!!
     RecordsAddMoreGaps(rank, records) {
+        const recordTimePattern = /[0-9]{2}:[0-5][0-9].[0-9]{2}/;
+        if(!recordTimePattern.test(records[rank].time) || rank == records.length-1) return `<span class="gapToLeader">N/A</span>`;
         let gapToRankAboveMessage = ``;
         let gapToRankBelowMessage = ``;
-        let reg = /[0-9]{2}:[0-5][0-9].[0-9]{2}/g;
         if(rank > 0) {
             const rankAbove = rank-1;
             const rankAboveOrdinal = this.ToOrdinalRank(rankAbove);
             const gapToRankAbove = records[rank].CentisecondsToTime(records[rank].centiseconds_initial - records[rankAbove].centiseconds_initial);
             gapToRankAboveMessage = `<span class="gapToRankAbove">Gap to ${rankAboveOrdinal}: +${gapToRankAbove}</span><br/>`;
         }
-        if(rank < records.length-1) {
+        if(rank < records.length-1 && reg.test(records[rank+1].time)) {
             const rankBelow = rank+1;
             const rankBelowOrdinal = this.ToOrdinalRank(rankBelow);
             const gapToRankBelow = records[rank].CentisecondsToTime(records[rankBelow].centiseconds_initial - records[rank].centiseconds_initial);
             gapToRankBelowMessage = `<span class="gapToRankBelow">Gap to ${rankBelowOrdinal}: -${gapToRankBelow}</span>`;
         }
-        if(reg.test(records[rank].time))
         return `<span class="gapToLeader">${records[rank].gapToLeader}<div class="gapsHint">${gapToRankAboveMessage}${gapToRankBelowMessage}</span>`;
-        else return `N/A`;
     }
     ToOrdinalRank(rank) {
         rank++; // 0th => 1st, etc.
