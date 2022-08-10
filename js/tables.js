@@ -166,7 +166,7 @@ class Rally{
                 record.points = points_hash[key]
             }
             else{
-                record.points = `${nParticipants - 1 + weak_car_bonus + group_bonus} (<span class="pointsHover">${nParticipants - i}<div class="pointsHint">Base</div></span> + <span class="pointsHover">${weak_car_bonus}<div class="pointsHint">Weaker car bonus</div></span> + <span class="pointsHover">${group_bonus}<div class="pointsHint">Group bonus</div></span>)`;
+                record.points = `${nParticipants - i + weak_car_bonus + group_bonus} (<span class="pointsHover">${nParticipants - i}<div class="pointsHint">Base</div></span> + <span class="pointsHover">${weak_car_bonus}<div class="pointsHint">Weaker car bonus</div></span> + <span class="pointsHover">${group_bonus}<div class="pointsHint">Group bonus</div></span>)`;
             }
         }
         return this.summary;
