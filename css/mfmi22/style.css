@@ -332,7 +332,7 @@ body{
     background-color: rgba(155,77,0,0.25);
 }
 
-.gapsHint {
+.gapsHint, .pointsHint {
     font-size: 20px;
     position: absolute;
     visibility: hidden;
@@ -342,7 +342,7 @@ body{
     border-radius: 10px;
 }
 
-.gapsHint span {
+.gapsHint, .pointsHint {
     text-shadow:
         1px 1px 0 #333,
         -1px -1px 0 #333,  
@@ -359,11 +359,15 @@ body{
     color: lightgreen;
 }
 
-.gapToLeader {
+.pointsHint {
+    color: #DDD;
+}
+
+.gapToLeader, .pointsHover {
     cursor: pointer;
 }
 
-.gapToLeader:hover .gapsHint {
+.gapToLeader:hover .gapsHint, .pointsHover:hover .pointsHint {
     visibility: visible;
 }
 

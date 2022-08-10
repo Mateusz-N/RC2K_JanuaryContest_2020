@@ -148,15 +148,28 @@ class Rally{
             let record = this.summary.records[i];
             let key = record.participant.user.name;
             let car = record.participant.car;
-            let group = record.participant.group;
+            let group = record.participant.group.charAt(1);
+            
+            // Bonus points
+            let group_bonus = 0;
+            let groups_beaten = []; // Groups beaten by current player
             let weak_car_bonus = (car == 'Mitsubishi Lancer Evo IV' || car == 'Seat Cordoba WRC' || car == 'Proton Wira/Persona') ? 1 : 0;
+            for(let j = this.summary.records.length - 1; j > i; j--) {  // Starting with the player ranked last, up to the current player
+                let group_beaten = this.summary.records[j].participant.group.charAt(1);
+                if (group_beaten < group && !groups_beaten.includes(group_beaten)) {    // If current player beat a better ("lower") group, give a one-time bonus equal to currentGroup - beatenGroup
+                    group_bonus += (group - group_beaten);
+                    groups_beaten.push(group_beaten);
+                }
+            }
+
             if(typeof(points_hash[key]) !== "undefined"){
                 record.points = points_hash[key]
             }
             else{
-                record.points = `${nParticipants - i} + ${weak_car_bonus}`;
+                record.points = `${nParticipants - 1 + weak_car_bonus + group_bonus} (<span class="pointsHover">${nParticipants - i}<div class="pointsHint">Base</div></span> + <span class="pointsHover">${weak_car_bonus}<div class="pointsHint">Weaker car bonus</div></span> + <span class="pointsHover">${group_bonus}<div class="pointsHint">Group bonus</div></span>)`;
             }
         }
+
         return this.summary;
     }
 }
@@ -228,7 +241,7 @@ class Stage{
             const gapToRankBelow = records[rank].CentisecondsToTime(records[rankBelow].centiseconds_initial - records[rank].centiseconds_initial);
             gapToRankBelowMessage = `<span class="gapToRankBelow">Gap to ${rankBelowOrdinal}: -${gapToRankBelow}</span>`;
         }
-        return `<span class="gapToLeader">${records[rank].gapToLeader}<div class="gapsHint">${gapToRankAboveMessage}${gapToRankBelowMessage}</span>`;
+        return `<span class="gapToLeader">${records[rank].gapToLeader}<div class="gapsHint">${gapToRankAboveMessage}${gapToRankBelowMessage}</div></span>`;
     }
     ToOrdinalRank(rank) {
         rank++; // 0th => 1st, etc.
