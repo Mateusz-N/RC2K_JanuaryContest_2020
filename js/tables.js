@@ -147,11 +147,14 @@ class Rally{
         for(let i = 0; i< this.summary.records.length; i++){
             let record = this.summary.records[i];
             let key = record.participant.user.name;
+            let car = record.participant.car;
+            let group = record.participant.group;
+            let weak_car_bonus = (car == 'Mitsubishi Lancer Evo IV' || car == 'Seat Cordoba WRC' || car == 'Proton Wira/Persona') ? 1 : 0;
             if(typeof(points_hash[key]) !== "undefined"){
                 record.points = points_hash[key]
             }
             else{
-                record.points = nParticipants - i;
+                record.points = `${nParticipants - i} + ${weak_car_bonus}`;
             }
         }
         return this.summary;
@@ -293,7 +296,7 @@ class Stage{
                     <th scope="col">NAT</th>
                     <th scope="col">Group</th>
                     <th scope="col">Time</th>
-                    <th scope="col">`+string_lastColumn+`</th>
+                    <th scope="col">${string_lastColumn}</th>
                     ${proofColumn}
                 </tr>
             </thead>`
