@@ -183,6 +183,7 @@ function contestData(){
         wr.proofs["image"] = "https://drive.google.com/file/d/1r98V37upuPzeUf43A3X_xMe3ByjSPiop/view?usp=sharing"
         wr = stage.AddRecord(KarelPipa, "14:34.51", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1E1s9yv0NfmkbqpzLUk_veouo6n6vBV2R/view?usp=sharing"
+        wr.proofs["youtube"] = "https://www.youtube.com/watch?v=ygq3QEs4OyU"
         wr = stage.AddRecord(Lewsys, "12:52.82", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1IuC-dm6XUVt4n8bz13UzCxZkhI4yvu2i/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1_4Ho2jYYasOYXH9WoUuMY2NXPftAAHkW/view?usp=sharing"
@@ -190,7 +191,7 @@ function contestData(){
         wr.proofs["image"] = "https://drive.google.com/file/d/1kIP24Hn7VueHhkFkOdBJXRRpnRA8gPIH/view?usp=sharing"
         wr = stage.AddRecord(Migger, "12:48.36", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1f4Jqm04cxyjby_cweQnvZ2jOrop_LwPk/view?usp=sharing"
-        wr = stage.AddRecord(Pendzior, "12:21.83", "00:00.00", "No")
+        wr = stage.AddRecord(Pendzior, "12:11.83", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1uUE9Ie0RQAK3bK-713W-vR4KPWCVF3jy/view?usp=sharing"
         wr = stage.AddRecord(sBinnala, "12:39.86", "00:00.00", "Yes")
         wr.proofs["image"] = "https://drive.google.com/file/d/12jtT9uq1UASB50QKA6p2EnTIzCNS8jVh/view?usp=sharing"
@@ -218,6 +219,7 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/1jInVY4OZhT36bPNl-myo3iN-uUBf3c_l/view?usp=sharing"
         wr = stage.AddRecord(KarelPipa, "12:11.11", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1jQScRpqeNo7gs0wSrFVF0feI7-3LVax8/view?usp=sharing"
+        wr.proofs["youtube"] = "https://www.youtube.com/watch?v=WYBwz1yhONA"
         wr = stage.AddRecord(Lewsys, "11:25.13", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1Gp3jQYySBwZ1jlwIqVi6IHcpPDvVe2Hw/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1-M59UcF_vIz1MlMHIw1_yStff74ysCiG/view?usp=sharing"
