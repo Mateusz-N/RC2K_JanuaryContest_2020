@@ -260,7 +260,7 @@ function contestData(){
         wr = stage.AddRecord(Ephemeral, "17:04.55", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1q4HV2hrdn9YoHXkXXq-Fhpgrmewtxfcz/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1VCdz3j1ED1MUf3MObFZVs_9o-2DpygN9/view?usp=sharing"
-        wr = stage.AddRecord(Erwto, "18:11.88", "00:00.00", "No")
+        wr = stage.AddRecord(Erwto, "18:01.88", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1OS9REm7S1bZ5K8ujMOPlRZEZ9q_Ap4nW/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1A0nEnbwL9zuKIxqDglTfDDEa6L3k6HEd/view?usp=sharing"
         wr = stage.AddRecord(KarelPipa, "20:14.88", "00:00.00", "No")
