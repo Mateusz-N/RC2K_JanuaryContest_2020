@@ -4,30 +4,17 @@ function contestData(){
         console.log(website);
     }
     let contest  = new Contest("Magnetic Fields Memorial Invitational 2022");
-    
-    let col = 0x000020;
-    let participantColor = () => {
-        let hex, red, green, blue, redGreenDiff, redBlueDiff, greenBlueDiff;
-        do {
-            hex = (Math.random()*0xFFFFFF<<0).toString(16);
-            red = hex.slice(0,2);
-            green = hex.slice(2,4);
-            blue = hex.slice(4,6);
-            redGreenDiff = Math.abs(parseInt(red, 16) - parseInt(green, 16));
-            redBlueDiff = Math.abs(parseInt(red, 16) - parseInt(blue, 16));
-            greenBlueDiff = Math.abs(parseInt(green, 16) - parseInt(blue, 16));
-        }
-        while(redGreenDiff < 50 || redBlueDiff < 50 || greenBlueDiff < 50);
-        return `#${hex}`;
-    }
+
+    const participantColors = generateDistinctColors(15)
+    let colorIndex = 0
+    const participantColor = () => participantColors[colorIndex++];
+
     let Erwto = new Participant(20, website.GetUserByName('Erwto'), participantColor(), 'G3', 'Seat Cordoba WRC');
     let Migger = new Participant(23, website.GetUserByName('Migger'), participantColor(), 'G3', 'Mitsubishi Lancer Evo IV');
-    let SpartaX18 = new Participant(3, website.GetUserByName('SpartaX18'), participantColor(), 'G1', 'Seat Cordoba WRC');
     let SpartaRemixer = new Participant(26, website.GetUserByName('SpartaRemixerPL'), participantColor(), 'G2', 'Subaru Impreza WRC');
     let Ephemeral = new Participant(25, website.GetUserByName('Ephemeral'), participantColor(), 'G1', 'Seat Cordoba WRC');
     let XsaraTorrada = new Participant(27, website.GetUserByName('XsaraTorrada'), participantColor(), 'G3', 'Seat Cordoba WRC');
     let Lewsys = new Participant(14, website.GetUserByName('Lewsys'), participantColor(), 'G4', 'Mitsubishi Lancer Evo V');
-    let Twajlot = new Participant(6, website.GetUserByName('Twajlot'), participantColor(), 'G2', 'Mitsubishi Lancer Evo IV');
     let sBinnala = new Participant(16, website.GetUserByName('sBinnala'), participantColor(), 'G4', 'Subaru Impreza WRC');
     let Linotrix = new Participant(2, website.GetUserByName('Linotrix'), participantColor(), 'G1', 'Mitsubishi Lancer Evo IV');
     let BrosTheTird = new Participant(30, website.GetUserByName('BrosTheThird'), participantColor(), 'G4', 'Subaru Impreza WRC');
