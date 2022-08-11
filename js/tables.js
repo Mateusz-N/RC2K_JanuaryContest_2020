@@ -163,7 +163,7 @@ class Rally{
             }
 
             if(typeof(points_hash[key]) !== "undefined"){
-                record.points = points_hash[key]
+                record.points = `${points_hash[key]}`;
             }
             else{
                 record.points = `${nParticipants - i + weak_car_bonus + group_bonus} (<span class="pointsHover">${nParticipants - i}<div class="pointsHint">Base</div></span> + <span class="pointsHover">${weak_car_bonus}<div class="pointsHint">Weaker car bonus</div></span> + <span class="pointsHover">${group_bonus}<div class="pointsHint">Group bonus</div></span>)`;
@@ -319,16 +319,32 @@ class Stage{
             newTable.innerHTML+=`<tr id="emptyFinalTable"><td style="color: gray;" colspan="100%" rowspan="2" >The results aren't complete yet. Please check back later.</td></tr>`;
         }
         else {
-            let records = finalLevel==2 ? this.RecordsSorted_Points() :  this.RecordsSorted_Centiseconds()
+            let records = finalLevel==0 ?  this.RecordsSorted_Centiseconds() : this.RecordsSorted_Points()
             this.RecordsAddGapsToLeader(records);
+            let rank, exAequoRank;
             for(let j = 0; j < records.length; j++)
             {
                 let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;"/ >`;
                 let value_lastColumn = this.RecordsSetLastColumn(j, records, finalLevel);
                 let proofRow = finalLevel==0 ? `<td>${this.proofsToDiv(records[j].proofs)}</td>` : ``
+                rank = j+1;
+                if(j > 0) {
+                    if(
+                        // Check for finalLevel to avoid undefined reference
+                        finalLevel == 0 && records[j].time == records[j-1].time || // If time-based table and two identical times
+                        finalLevel != 0 && records[j].points.substr(0, records[j].points.indexOf(' ')) == records[j-1].points.substr(0, records[j-1].points.indexOf(' ')) // If point-based table and two identical scores
+                    ){
+                        // Give the same rank as the "anchoring" ex aequo rank
+                        rank = exAequoRank;
+                    }
+                    else {
+                        // Make the current rank a potential ex aequo "anchor"
+                        exAequoRank = rank;
+                    }
+                }
                 let tr = newTableBody.insertRow();
                 let th = document.createElement("th");
-                th.appendChild(document.createTextNode(j+1));
+                th.appendChild(document.createTextNode(rank));
                 th.setAttribute('scope', 'row');
                 tr.appendChild(th);
                 let td = tr.insertCell();

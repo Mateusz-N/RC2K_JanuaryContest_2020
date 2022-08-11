@@ -283,7 +283,7 @@ function contestData(){
         // wr.proofs["replay"] = "https://drive.google.com/file/d/1OXDHZlMrMUPNPvxxZoSIZ8fCj-brvQ-7/view?usp=sharing"
         wr = stage.AddRecord(SpartaRemixer, "17:46.33", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1x6SsfHzcwfO-TuHc6SWioyZAO829iRyO/view?usp=sharing"
-        // wr.proofs["youtube"] = "https://www.youtube.com/watch?v=nWqWmXk731c"
+        wr.proofs["youtube"] = "https://www.youtube.com/watch?v=nO-7rJHmYvw"
         // wr = stage.AddRecord(TheKetrab, "11:08.59", "00:00.00", "No")
         // wr.proofs["image"] = "https://drive.google.com/file/d/1UQKwKIMdNDazqvcXNy7Bx_u9uCoM6Ql7/view?usp=sharing"
         // wr.proofs["replay"] = "https://drive.google.com/file/d/1j8EmjtSH5wSt9paeFngtZxFFhoszuoRA/view?usp=sharing"
