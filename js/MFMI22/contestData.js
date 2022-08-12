@@ -303,7 +303,7 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/1cg3qDnD3Mha8rI2fj2TJYCl72wiShWqZ/view?usp=sharing"
         wr = stage.AddRecord(Erwto, "15:22.21", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1ul2x3hwkaOSC_YP7biBePC_cdDvvzq8w/view?usp=sharing"
-        wr = stage.AddRecord(KarelPipa, "20:14.88", "00:00.00", "No")
+        wr = stage.AddRecord(KarelPipa, "15:51.96", "00:00.00", "No")
         wr.proofs["replay"] = "https://drive.google.com/file/d/14A0-AJJKV7lr7gVb4iZ_iHyyo4UQHnf_/view?usp=sharing"
         wr.proofs["youtube"] = "https://www.youtube.com/watch?v=dzDv-DydLLY"
         wr = stage.AddRecord(Lewsys, "15:56.91", "00:00.00", "No")
