@@ -329,6 +329,38 @@ function contestData(){
         wr.proofs["image"] = "https://drive.google.com/file/d/1-OVxcy0J77hXS8L76Zs9fjWxJqe1KOFQ/view?usp=sharing"
         
         stage = rally.stages[2]; //Kershope
+        // wr = stage.AddRecord(BrosTheTird, "16:04.70", "00:00.00", "No")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1G9Pp7nJssOQI3h72_e0gnre0cxi2WFKp/view?usp=sharing"
+        wr = stage.AddRecord(datsun100aGTR, "DNF", "DNF", "No")
+        wr = stage.AddRecord(Ephemeral, "12:23.49", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1HD5OI06XzIPPaqgRwatorY4rIPix1UWz/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1-Pmhf3Omv-g7iq7qdWvp95IQrx4zNfpc/view?usp=sharing"
+        // wr = stage.AddRecord(Erwto, "15:22.21", "00:00.00", "No")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1ul2x3hwkaOSC_YP7biBePC_cdDvvzq8w/view?usp=sharing"
+        // wr = stage.AddRecord(KarelPipa, "15:51.96", "00:00.00", "No")
+        // wr.proofs["replay"] = "https://drive.google.com/file/d/14A0-AJJKV7lr7gVb4iZ_iHyyo4UQHnf_/view?usp=sharing"
+        // wr.proofs["youtube"] = "https://www.youtube.com/watch?v=dzDv-DydLLY"
+        // wr = stage.AddRecord(Lewsys, "15:56.91", "00:00.00", "No")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1zTd7WNULqNbGA3qBWGm-OHM6Y4q69mv6/view?usp=sharing"
+        // wr.proofs["replay"] = "https://drive.google.com/file/d/1FEaObVWWhz4m7AyWiCQwiv78mynnj68h/view?usp=sharing"
+        // wr = stage.AddRecord(Linotrix, "14:08.76", "00:00.00", "No")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1tONn8yM0dW9yddO8r7_9Lm2Yr-ygyUjQ/view?usp=sharing"
+        // wr = stage.AddRecord(Migger, "16:17.21", "00:00.00", "No")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1EuEwVXmnRtDdo5anPNX0CkEE06VQ39UV/view?usp=sharing"
+        // wr = stage.AddRecord(Pendzior, "15:04.57", "00:00.00", "No")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1plwErmUm9wtLt2NiFj7fGx-J6WWyFqS6/view?usp=sharing"
+        // wr = stage.AddRecord(sBinnala, "15:03.90", "00:00.00", "Yes")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1K69jOYmO0luzEbwQ-oWBixFEePZHDGPG/view?usp=sharing"
+        // wr = stage.AddRecord(SpartaRemixer, "14:31.89", "00:00.00", "No")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1ZqwxFn-ZhPV3-7aetnq-QWzeMyKTZC9s/view?usp=sharing"
+        // wr = stage.AddRecord(TheKetrab, "14:39.31", "00:00.00", "No")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1uNBHb7K2QRz1XEoTGTkPk7JRDAfALoHS/view?usp=sharing"
+        // wr = stage.AddRecord(Tribell, "14:28.88", "00:00.00", "No")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1Z8PhThKEMRc2S-KEOqa5jodvz1tBFW81/view?usp=sharing"
+        // wr.proofs["replay"] = "https://drive.google.com/file/d/1o6gog_gLAagpctbE_XuJF2S9sv07OrmH/view?usp=sharing"
+        wr = stage.AddRecord(Woeringen1288, "DNF", "DNF", "No")
+        // wr = stage.AddRecord(XsaraTorrada, "15:28.68", "00:00.00", "No")
+        // wr.proofs["image"] = "https://drive.google.com/file/d/1-OVxcy0J77hXS8L76Zs9fjWxJqe1KOFQ/view?usp=sharing"
         
         stage = rally.stages[3]; //Pundershaw
         
