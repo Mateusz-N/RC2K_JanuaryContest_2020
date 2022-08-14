@@ -80,6 +80,7 @@ class Contest{
                 }
             }
             summaryRally_stage.AddWorldRecord(direction_wr_centiseconds["arcade"],direction_wr_centiseconds["simulation"]);
+            summaryRally_stage.index = i
             this.summaryRally.stages.push(summaryRally_stage)
         }
     }
@@ -91,36 +92,37 @@ class Rally{
         this.name = name
         this.stages = []
     }
-    generateSummary(nParticipants, stages = this.stages){
+    generateSummary(nParticipants, sortBy = "centiseconds"){
         this.summary = new Stage(this.name + " Summary");
+        this.summary.index = 6
         this.summary.imageURL = "../../resources/rally" + this.id + ".PNG";
         let participants = []  //name to participant object
-        let centiseconds_initial_hash = []
-        let penalty_hash = []
-        let verified_hash = []
+        let centiseconds_initial_hash = []  //Centiseconds initial = sum of time without penalties
+        let penalty_hash = [] //sum of penalties
+        let verified_hash = []  // final verification => Yes/No/DNF
         let number_hash = []  //number of stages completed [participant_name]
         let points_hash = []
-        for(let i = 0; i< stages.length; i++){
-            let stage = stages[i];
+        for(let i = 0; i < this.stages.length; i++){
+            let stage = this.stages[i];
             for(let j = 0; j< stage.records.length; j++){
                 let record = stage.records[j];
                 let name = record.participant.user.name;
-                if(!participants[name]){
+                if(!participants[name]){ //Setting up hashes with key = name --- Only first stage
                     participants[name] = record.participant;
                     centiseconds_initial_hash[name] = record.centiseconds_initial;
                     penalty_hash[name] = record.centiseconds_penalty;
                     verified_hash[name] = record.verified
                     number_hash[name] = 1;
-                    if(typeof(record.points) !== "undefined"){
+                    if(typeof(record.points) !== "undefined"){ //This verification differs normal stages and summary stages
                         points_hash[name] = record.points;
                     }
                 }
                 else{
-                    if(record.centiseconds_initial < 0){
-                        if(this.id !== 6){
+                    if(record.centiseconds_initial < 0){ //If DNF
+                        if(this.id !== 6){ //if its the normal rallies
                             centiseconds_initial_hash[name] = -1
                             penalty_hash[name] = -1
-                            points_hash[name] = 0;
+                            points_hash[name] = new PointsWrapper(0,0,0);
                         }
                         verified_hash[name] = "DNF"
                         number_hash[name] += 1;   
@@ -130,30 +132,34 @@ class Rally{
                         penalty_hash[name] += record.centiseconds_penalty;
                         if(record.verified == "No"){verified_hash[name] = "No"}
                         number_hash[name] += 1;
-                        if(typeof(record.points) !== "undefined"){
-                            points_hash[name] += record.points;
+                        if(typeof(record.points) !== "undefined"){  //If is an summary stage
+                            points_hash[name] = points_hash[name].add(record.points);
                         }
                     }
                 }
             }
         }
         for(let key in centiseconds_initial_hash){
-            if(number_hash[key] > 1 || this.id == 6){
+            if(number_hash[key] > 1 || this.id == 6){ //If participant completed one stage or its the final standings page
                 let participant = participants[key];
-                this.summary.AddRecord(participant,centiseconds_initial_hash[key],penalty_hash[key],verified_hash[key])
+                this.summary.AddRecord(participant,centiseconds_initial_hash[key],penalty_hash[key],verified_hash[key])  //write hashes = sum of results
             }
         }
         this.summary.RecordsSorted_Centiseconds()
-        for(let i = 0; i< this.summary.records.length; i++){
+        for(let i = 0; i< this.summary.records.length; i++){  //"i" ordered by position
             let record = this.summary.records[i];
             let key = record.participant.user.name;
+            if(typeof(points_hash[key]) !== "undefined"){  //If it's the summary rally
+                record.points = points_hash[key];
+                continue;
+            }
             let car = record.participant.car;
             let group = record.participant.group.charAt(1);
             
             // Bonus points
             let group_bonus = 0;
             let groups_beaten = []; // Groups beaten by current player
-            let weak_car_bonus = (car == 'Mitsubishi Lancer Evo IV' || car == 'Seat Cordoba WRC' || car == 'Proton Wira/Persona') ? 1 : 0;
+            const weak_car_bonus = (car == 'Mitsubishi Lancer Evo IV' || car == 'Seat Cordoba WRC' || car == 'Proton Wira/Persona') ? 1 : 0;
             for(let j = this.summary.records.length - 1; j > i; j--) {  // Starting with the player ranked last, up to the current player
                 let group_beaten = this.summary.records[j].participant.group.charAt(1);
                 if (group_beaten < group && !groups_beaten.includes(group_beaten)) {    // If current player beat a better ("lower") group, give a one-time bonus equal to currentGroup - beatenGroup
@@ -162,13 +168,13 @@ class Rally{
                 }
             }
 
-            if(typeof(points_hash[key]) !== "undefined"){
-                record.points = `${points_hash[key]}`;
-            }
-            else{
-                record.points = `${nParticipants - i + weak_car_bonus + group_bonus} (<span class="pointsHover">${nParticipants - i}<div class="pointsHint">Base</div></span> + <span class="pointsHover">${weak_car_bonus}<div class="pointsHint">Weaker car bonus</div></span> + <span class="pointsHover">${group_bonus}<div class="pointsHint">Group bonus</div></span>)`;
-            }
+            const positionPoints = nParticipants - i
+            const points = new PointsWrapper(positionPoints, weak_car_bonus, group_bonus)
+
+            record.points = points;
         }
+        this.summary.AssignRanks()
+        this.summary.RecordsSorted_SortBy(sortBy)
         return this.summary;
     }
 }
@@ -206,15 +212,6 @@ class Stage{
         let record = new Record(new Participant(user, "#000000",carName), time,"00:00.00", "yes")
         this.wr["simulation"].push(record);
         return record;
-    }
-    RecordsSorted_Centiseconds(){  //compare centiseconds
-        return this.records.sort(function (a,b){
-            if(a.centiseconds < 0)
-                return Number.POSITIVE_INFINITY
-            if(b.centiseconds < 0)
-                return Number.NEGATIVE_INFINITY
-            return (a.centiseconds - b.centiseconds)
-        })
     }
     // The next two functions need some refactoring!
     RecordsAddGapsToLeader(records) {
@@ -259,13 +256,83 @@ class Stage{
         return rank+suffix;
     }
     RecordsSetLastColumn(rank, records, finalLevel) {
-        return finalLevel==0 ? this.RecordsAddMoreGaps(rank, records) : records[rank].points;
+        return finalLevel==0 ? this.RecordsAddMoreGaps(rank, records) : records[rank].points.toDiv();
+    }
+    RecordsSorted_SortBy(sortBy){
+        switch(sortBy){
+            case "centiseconds": return this.RecordsSorted_Centiseconds();
+            case "points": return this.RecordsSorted_Points();
+        }
     }
     RecordsSorted_Points(){
-        return this.records.sort((a,b) => b.points - a.points)
+        return this.records.sort((a,b) => b.points.getTotalPoints() - a.points.getTotalPoints())
+    }
+    RecordsSorted_Centiseconds(){  //compare centiseconds
+        return this.records.sort(function (a,b){
+            if(a.centiseconds < 0)
+                return Number.POSITIVE_INFINITY
+            if(b.centiseconds < 0)
+                return Number.NEGATIVE_INFINITY
+            return (a.centiseconds - b.centiseconds)
+        })
+    }
+    AssignRanks(){ //Caution: This can change the record order
+        if(this.records.length <= 0){
+            return;
+        }
+        const isBasedOnPoints = typeof this.records[0].points !== "undefined"
+        if(isBasedOnPoints){
+            this.RecordsSorted_Points()
+            for(let i = 0; i< this.records.length; i++){
+                let record = this.records[i];
+                if(i == 0){
+                    record.rank = 1;
+                    continue;
+                }
+                let lastRecord = this.records[i-1]
+                if(record.points.getTotalPoints() === lastRecord.points.getTotalPoints()){
+                    record.rank = lastRecord.rank;
+                    continue;
+                }
+                record.rank = lastRecord.rank + 1
+            }
+        }
+        else{
+            this.RecordsSorted_Centiseconds()
+            for(let i = 0; i < this.records.length; i++){
+                this.records[i].rank = i+1
+            }
+        } 
     }
     CreateContestEntireStageTable(div, finalLevel){
-        this.CreateContestStageTable(this.CreateStageTable(div), finalLevel);
+        this.AssignRanks()
+        const baseDiv = this.CreateStageTable(div)
+        const stageTablesDiv = document.createElement('div')
+        stageTablesDiv.className = "divStageTables"
+        let orders = ["centiseconds"]
+        if(finalLevel != 0){
+            if(this.index == 6){
+                orders = ["centiseconds", "points"]
+            }
+            else{
+                orders = ["points"]
+            }
+        }
+        for(const order of orders){
+            this.RecordsSorted_SortBy(order);
+            if(this.index == 6){
+                let orderText = "Results ordered by time"
+                if(order == "points"){
+                    orderText = "Results ordered by number of points"
+                }
+                let orderElement =  document.createElement('h5')
+                orderElement.innerHTML = orderText
+                orderElement.className = "orderText"
+                stageTablesDiv.appendChild(orderElement)
+            }
+            this.CreateContestStageTable(stageTablesDiv, finalLevel);
+        }
+        baseDiv.appendChild(stageTablesDiv)
     }
     CreateWorldRecordEntireStageTable(div, direction){
         this.CreateWorldRecordStageTable(this.CreateStageTable(div), direction);
@@ -319,32 +386,16 @@ class Stage{
             newTable.innerHTML+=`<tr id="emptyFinalTable"><td style="color: gray;" colspan="100%" rowspan="2" >The results aren't complete yet. Please check back later.</td></tr>`;
         }
         else {
-            let records = finalLevel==0 ?  this.RecordsSorted_Centiseconds() : this.RecordsSorted_Points()
+            let records = this.records;
             this.RecordsAddGapsToLeader(records);
-            let rank, exAequoRank;
             for(let j = 0; j < records.length; j++)
             {
                 let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;"/ >`;
                 let value_lastColumn = this.RecordsSetLastColumn(j, records, finalLevel);
                 let proofRow = finalLevel==0 ? `<td>${this.proofsToDiv(records[j].proofs)}</td>` : ``
-                rank = j+1;
-                if(j > 0) {
-                    if(
-                        // Check for finalLevel to avoid undefined reference
-                        finalLevel == 0 && records[j].time == records[j-1].time || // If time-based table and two identical times
-                        finalLevel != 0 && records[j].points.substr(0, records[j].points.indexOf(' ')) == records[j-1].points.substr(0, records[j-1].points.indexOf(' ')) // If point-based table and two identical scores
-                    ){
-                        // Give the same rank as the "anchoring" ex aequo rank
-                        rank = exAequoRank;
-                    }
-                    else {
-                        // Make the current rank a potential ex aequo "anchor"
-                        exAequoRank = rank;
-                    }
-                }
                 let tr = newTableBody.insertRow();
                 let th = document.createElement("th");
-                th.appendChild(document.createTextNode(rank));
+                th.appendChild(document.createTextNode(records[j].rank));
                 th.setAttribute('scope', 'row');
                 tr.appendChild(th);
                 let td = tr.insertCell();
@@ -481,6 +532,26 @@ class Record{
             return "0" + number
         }
         return ""+number
+    }
+}
+
+class PointsWrapper{
+    constructor(positionPoints, carPoints, groupPoints){
+        this.positionPoints = positionPoints;
+        this.carPoints = carPoints;
+        this.groupPoints = groupPoints;
+    }
+    getTotalPoints(){
+        return this.positionPoints + this.carPoints + this.groupPoints
+    }
+    add(pointsWrapper){
+        this.positionPoints += pointsWrapper.positionPoints
+        this.carPoints += pointsWrapper.carPoints
+        this.groupPoints += pointsWrapper.groupPoints
+        return this
+    }
+    toDiv(){
+        return `${this.getTotalPoints()} (<span class="pointsHover">${this.positionPoints}<div class="pointsHint">Base</div></span> + <span class="pointsHover">${this.carPoints}<div class="pointsHint">Weaker car bonus</div></span> + <span class="pointsHover">${this.groupPoints}<div class="pointsHint">Group bonus</div></span>)`
     }
 }
 

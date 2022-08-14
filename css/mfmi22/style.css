@@ -289,7 +289,6 @@ body{
 
 
 .tables table{
-    width: 70%;
     background-color: #FFF;
     margin-bottom: 0px;
     padding-right: 10px;
@@ -390,6 +389,15 @@ body{
     padding: 0 1em 1em 1em;
     margin: 5px 0px;
     width: 100%;
+}
+
+.divStageTables{
+    flex-direction: column;
+    width: 100%;
+}
+
+.orderText{
+    padding: 10px 0px 10px 0px;
 }
 
 h1, h2, h3, h4, h5, h6{

@@ -376,6 +376,7 @@ function websiteData(){
         let rally = game.rallies[rallyId];
         for(let stageId = 0; stageId < rally.stages.length; stageId++){
             let stage = rally.stages[stageId];
+            stage.index = stageId
             stage.id = rallyId * game.rallies.length + stageId;
         }
         rally.id = rallyId;
