@@ -294,7 +294,7 @@ class Stage{
                     record.rank = lastRecord.rank;
                     continue;
                 }
-                record.rank = lastRecord.rank + 1
+                record.rank = i + 1
             }
         }
         else{
