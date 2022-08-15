@@ -197,19 +197,19 @@ class Stage{
     }
     AddWorldRecord(ArcadeTime, SimulationTime){
         if(ArcadeTime){
-            this.wr["arcade"].push(new Record(new Participant(new User("RecordHolder", ""), "#000000",""), ArcadeTime,"00:00.00", "yes"));
+            this.wr["arcade"].push(new Record(new Participant(1, new User("RecordHolder", ""), "#000000",""), ArcadeTime,"00:00.00", "yes"));
         }
         if(SimulationTime){
-            this.wr["simulation"].push(new Record(new Participant(new User("RecordHolder", ""), "#000000",""), SimulationTime,"00:00.00", "yes"));
+            this.wr["simulation"].push(new Record(new Participant(1, new User("RecordHolder", ""), "#000000",""), SimulationTime,"00:00.00", "yes"));
         }
     }
     AddArcadeWorldRecord(user, time, carName = "Mitsubishi Lancer Evo V"){
-        let record = new Record(new Participant(user, "#000000",carName), time,"00:00.00", "yes")
+        let record = new Record(new Participant(1, user, "#000000", "",carName), time, "00:00.00", "yes")
         this.wr["arcade"].push(record);
         return record;
     }
     AddSimulationWorldRecord(user, time, carName = "Mitsubishi Lancer Evo V"){
-        let record = new Record(new Participant(user, "#000000",carName), time,"00:00.00", "yes")
+        let record = new Record(new Participant(1, user, "#000000", "", carName), time, "00:00.00", "yes")
         this.wr["simulation"].push(record);
         return record;
     }
@@ -258,17 +258,17 @@ class Stage{
     RecordsSetLastColumn(rank, records, finalLevel) {
         return finalLevel==0 ? this.RecordsAddMoreGaps(rank, records) : records[rank].points.toDiv();
     }
-    RecordsSorted_SortBy(sortBy){
+    RecordsSorted_SortBy(sortBy, records = this.records){
         switch(sortBy){
-            case "centiseconds": return this.RecordsSorted_Centiseconds();
-            case "points": return this.RecordsSorted_Points();
+            case "centiseconds": return this.RecordsSorted_Centiseconds(records);
+            case "points": return this.RecordsSorted_Points(records);
         }
     }
-    RecordsSorted_Points(){
-        return this.records.sort((a,b) => b.points.getTotalPoints() - a.points.getTotalPoints())
+    RecordsSorted_Points(records = this.records){
+        return records.sort((a,b) => b.points.getTotalPoints() - a.points.getTotalPoints())
     }
-    RecordsSorted_Centiseconds(){  //compare centiseconds
-        return this.records.sort(function (a,b){
+    RecordsSorted_Centiseconds(records = this.records){  //compare centiseconds
+        return records.sort(function (a,b){
             if(a.centiseconds < 0)
                 return Number.POSITIVE_INFINITY
             if(b.centiseconds < 0)
@@ -276,20 +276,20 @@ class Stage{
             return (a.centiseconds - b.centiseconds)
         })
     }
-    AssignRanks(){ //Caution: This can change the record order
-        if(this.records.length <= 0){
+    AssignRanks(records = this.records){ //Caution: This can change the record order
+        if(records.length <= 0){
             return;
         }
-        const isBasedOnPoints = typeof this.records[0].points !== "undefined"
+        const isBasedOnPoints = typeof records[0].points !== "undefined"
         if(isBasedOnPoints){
-            this.RecordsSorted_Points()
-            for(let i = 0; i< this.records.length; i++){
-                let record = this.records[i];
+            this.RecordsSorted_Points(records)
+            for(let i = 0; i< records.length; i++){
+                let record = records[i];
                 if(i == 0){
                     record.rank = 1;
                     continue;
                 }
-                let lastRecord = this.records[i-1]
+                let lastRecord = records[i-1]
                 if(record.points.getTotalPoints() === lastRecord.points.getTotalPoints()){
                     record.rank = lastRecord.rank;
                     continue;
@@ -298,9 +298,9 @@ class Stage{
             }
         }
         else{
-            this.RecordsSorted_Centiseconds()
-            for(let i = 0; i < this.records.length; i++){
-                this.records[i].rank = i+1
+            this.RecordsSorted_Centiseconds(records)
+            for(let i = 0; i < records.length; i++){
+                records[i].rank = i+1
             }
         } 
     }
@@ -335,6 +335,8 @@ class Stage{
         baseDiv.appendChild(stageTablesDiv)
     }
     CreateWorldRecordEntireStageTable(div, direction){
+        this.AssignRanks(this.wr["arcade"])
+        this.AssignRanks(this.wr["simulation"])
         this.CreateWorldRecordStageTable(this.CreateStageTable(div), direction);
     }
     CreateStageTable(div){  //div = space for the table  //finalLevel 0: Normal Stages, 1: RallySummaries, 2:Final Contest Summary
@@ -438,7 +440,7 @@ class Stage{
             newTable.innerHTML+= 
             `
             <tr>
-                <th scope="row">`+(j+1)+`</th>
+                <th scope="row">`+records[j].rank+`</th>
                 <td>${flagImg} `+ records[j].participant.user.name +` ${flagImg}</td>
                 <td>`+ records[j].time + `</td>
                 <td>`+ records[j].participant.car + `</td>

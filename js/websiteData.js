@@ -29,6 +29,7 @@ function websiteData(){
     let Spartax = website.GetUserByName("SpartaX18");
     let Linotrix = website.GetUserByName("Linotrix"); 
     let Pendzior = website.GetUserByName("Pendzior"); 
+    let Ephemeral = website.GetUserByName("Ephemeral"); 
 
     game = website.game;
 
@@ -43,6 +44,8 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "07:50.26");
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/642842956159647797/unknown.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1Eysd-Annx8t4wPuFn8N4Vu0YrqxWd1oO/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "07:49.41");
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/971874971225825311/988414928157294592/clocaenog.png?width=918&height=676"
         rally.stages[0] = stage
         
         stage = new Stage("Penmachno South");
@@ -52,15 +55,22 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "06:57.59");
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/665576938819158026/unknown.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1Rm51O0jpn04Z6FWRv2Ndm-XdRC1sRnb3/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "06:54.57", "Subaru Impreza WRC");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/795280558309244958/IMG_20210103_142034.png"
+        wr.proofs["youtube"] = "https://youtu.be/2mQ29WWXics"
         rally.stages[1] = stage
 
         stage = new Stage("Myherin");
         wr = stage.AddArcadeWorldRecord(Spartax, "10:29.81");
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/602495347415187466/ral_2019-07-21_15-39-22-43.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1sitURmPeP2iDqIYkPgEYiWT4UUQSGlVa/view?usp=sharing"
+        wr = stage.AddArcadeWorldRecord(Ephemeral, "10:20.94");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/995432830744133743/unknown.png"
         wr = stage.AddSimulationWorldRecord(Spartax, "10:21.16");
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/590959187173965833/ral_2019-06-19_19-39-53-30.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1NIqVSpYY2AMwkMOPbgLl_pple-CYZ1Xj/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "10:12.98");
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/971874971225825311/988428427390505010/jebenimyhe.png"
         rally.stages[2] = stage;
 
         stage = new Stage("Hafren");
@@ -70,15 +80,19 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "10:41.61");
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/754070113879326810/unknown.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/16GK45h8ft5iDo7VGikxS8R8esPg4--tO/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "10:32.70");
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/790641444431462401/813366843523596308/SPOILER_hafren.png"
         rally.stages[3] = stage;
 
         stage = new Stage("Dyfi");
         wr = stage.AddArcadeWorldRecord(Spartax, "11:39.81");
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/563386838488711219/RAL_2019-04-04_17-37-24-15.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1pSlujAII8HnY3ej-k6pLI4F61EULndjo/view?usp=sharing"
+        wr = stage.AddArcadeWorldRecord(Linotrix, "11:37.18");
         wr = stage.AddSimulationWorldRecord(Spartax, "11:38.33");
         wr.proofs["image"] = "https://media.discordapp.net/attachments/199990758089031680/734862572234473542/unknown.png?width=708&height=566"
         wr.proofs["replay"] = "https://drive.google.com/file/d/113Rm7DNSU2VY3AQeyFzKOj1VY-t8u2Jg/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "11:33.74");
         rally.stages[4] = stage;
 
         stage = new Stage("Gartheiniog");
@@ -88,6 +102,8 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "09:35.20");
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/593132745585197097/ral_2019-06-25_19-36-49-83.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1LAibzVfwtBV6cPj4DQvrpkN_EEw3qd2J/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "09:34.51");
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/971874971225825311/988725445539295272/garthe.png?width=922&height=676"
         rally.stages[5] = stage;
 
         game.AddRally(rally)
@@ -99,9 +115,13 @@ function websiteData(){
         wr = stage.AddArcadeWorldRecord(Spartax, "15:51.43")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/563762910505992192/RAL_2019-04-05_18-30-43-64.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1qF3KRj54Kij3H0cQPO3FHZtiLYu7NDaM/view?usp=sharing"
+        wr = stage.AddArcadeWorldRecord(Ephemeral, "15:44.12")
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/995049023306203156/unknown.png" 
         wr = stage.AddSimulationWorldRecord(Spartax, "15:53.33")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/563769158332841985/RAL_2019-04-05_18-57-04-38.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1TTrayN9gAQIhnHk-YB4brfwZ3rGFGOwX/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Ephemeral, "15:40.00")
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/576495084015452191/990703129953726495/unknown.png?width=854&height=683"
         rally.stages[0] = stage;
 
         stage = new Stage("Falstone");
@@ -111,15 +131,21 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "13:31.67")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/607654212880564224/ral_2019-08-04_21-19-59-24.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1oQ3c-llYN2_A9Cg-bCWZeuln3psWT3m9/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "13:29.82")
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/790641444431462401/813843114372104242/falstone.png?width=845&height=676"
         rally.stages[1] = stage;
 
         stage = new Stage("Kershope");
         wr = stage.AddArcadeWorldRecord(Spartax, "11:44.92")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/598557835768496131/ral_2019-07-10_18-54-10-78.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/13UDjNziFsEIBHDFr95uyUyw9R4-co-RN/view?usp=sharing"
+        wr = stage.AddArcadeWorldRecord(Ephemeral, "11:35.16")
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/996857592380928080/unknown.png"
         wr = stage.AddSimulationWorldRecord(Spartax, "11:54.83")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/563789530092797952/RAL_2019-04-05_20-17-50-98.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1RgyjjWR3gD6Yw2W7VVNWjYPMEYUSBGQ6/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Ephemeral, "11:50.26")
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/997223232740528208/unknown.png"
         rally.stages[2] = stage;
 
         stage = new Stage("Pundershaw");
@@ -143,9 +169,13 @@ function websiteData(){
         wr = stage.AddArcadeWorldRecord(Spartax, "12:02.83")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/602505503439847434/ral_2019-07-21_16-18-57-68.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/17TbyI0UQAvhBbr6GugnxotJkzncvtDCK/view?usp=sharing"
+        wr = stage.AddArcadeWorldRecord(Ephemeral, "11:48.80")
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/995772220607574066/unknown.png"
         wr = stage.AddSimulationWorldRecord(Spartax, "11:50.45")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/564074789355126805/RAL_2019-04-06_15-08-06-98.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1KI5T34yn0lLLi456Zk03Pu9NV8_UDDO7/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "11:50.01")
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/576495084015452191/823616078840201236/newcastleton_s.png?width=847&height=676"
         rally.stages[5] = stage;
 
         game.AddRally(rally)
@@ -160,6 +190,7 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "06:46.48")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/735938192297164860/unknown.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1KI5T34yn0lLLi456Zk03Pu9NV8_UDDO7/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "06:40.80")
         rally.stages[0] = stage;
 
         stage = new Stage("Yair");
@@ -169,6 +200,8 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "03:43.72")
         wr.proofs["youtube"] = "https://youtu.be/3MhkFmuwWZc"
         wr.proofs["replay"] = "https://drive.google.com/file/d/14NRsUUenUcOpdoYX3JnHcXX0aMe4VADB/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "03:43.43")
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/576495084015452191/990929709187629066/yair.png?width=902&height=676"
         rally.stages[1] = stage;
 
         stage = new Stage("Cardrona");
@@ -187,6 +220,8 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "05:16.84")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/561917353357606943/RAL_2019-03-31_16-18-38-81.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1pYKj79hdvNLiUt5UcQf9W_IKphx00AwV/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "05:12.14")
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/576495084015452191/823511422561419276/black_loch.png?width=844&height=676"
         rally.stages[3] = stage;
 
         stage = new Stage("Glentrool");
@@ -205,6 +240,8 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "14:17.08")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/731595150312210432/unknown.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1zJIsN1osnvkpQxFtOQCmXL4SWNvkt1WF/view?usp=sharing"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "14:10.52")
+        wr.proofs["youtube"] = "https://youtu.be/pzfpNr6HdHg"
         rally.stages[5] = stage;
 
         game.AddRally(rally)
@@ -215,8 +252,8 @@ function websiteData(){
         stage = new Stage("Moon and star");
         wr = stage.AddArcadeWorldRecord(Spartax, "02:45.38")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/578638904169594919/ral_2019-05-16_19-44-05-54.png"
-        wr = stage.AddSimulationWorldRecord(Linotrix, "02:44.37")
-        wr.proofs["image"] = "https://media.discordapp.net/attachments/576495084015452191/738120648861417565/Screenshot_313.png?width=903&height=677"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "02:44.04")
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/576495084015452191/997580933802766396/Rally_Championship_2000_Mobil_1_Screenshot_2022.07.15_-_21.04.48.18.png?width=901&height=676"
         rally.stages[0] = stage;
 
         stage = new Stage("Bothwell");
@@ -250,7 +287,8 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "01:24.08")
         wr.proofs["youtube"] = "https://youtu.be/LO8pvvNDO1E"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1Hwqb8m7YbcXOm_0z-tDfa6n2M7Ko_I_y/view?usp=sharing"
-        stage.AddWorldRecord("01:22.60","01:24.08")
+        wr = stage.AddSimulationWorldRecord(Linotrix, "01:23.94")
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/576495084015452191/823511552174063617/langton_s.png?width=852&height=676"
         rally.stages[4] = stage;
 
         stage = new Stage("Fogo");
@@ -258,6 +296,8 @@ function websiteData(){
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/576052922064830467/ral_2019-05-09_16-26-19-18.png"
         wr = stage.AddSimulationWorldRecord(Spartax, "04:54.89")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/575649315356409878/ral_2019-05-08_13-44-25-91.png"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "04:53.91")
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/576495084015452191/823511587150757888/fogo_s.png?width=842&height=676"
         rally.stages[5] = stage;
 
         game.AddRally(rally)
@@ -268,14 +308,13 @@ function websiteData(){
         stage = new Stage("Hamilton's Folly");
         wr = stage.AddArcadeWorldRecord(Spartax, "06:49.86")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/578944062825168935/ral_2019-05-17_15-56-38-23.png"
-        wr = stage.AddSimulationWorldRecord(Linotrix, "06:45.22")
-        wr.proofs["youtube"] = "https://www.youtube.com/watch?v=cb7fRDMz-pw"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "06:43.48")
+        wr.proofs["youtube"] = "https://youtu.be/O25XpQYvUsU"
         rally.stages[0] = stage;
 
         stage = new Stage("Tyrones Ditches");
-        wr = stage.AddArcadeWorldRecord(Spartax, "08:24.41")
-        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/561223763631538191/RAL_2019-03-29_17-22-28-75.png"
-        wr.proofs["replay"] = "https://drive.google.com/file/d/1s6P2p8qzZ1mJLXxiaJpesrDqqTcdhQ3w/view?usp=sharing"
+        wr = stage.AddArcadeWorldRecord(Spartax, "08:17.60")
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/754299147884036116/unknown.png"
         wr = stage.AddSimulationWorldRecord(Linotrix, "08:15.25")
         wr.proofs["image"] = "https://imgur.com/YJSDLuv"
         rally.stages[1] = stage;
@@ -284,15 +323,15 @@ function websiteData(){
         wr = stage.AddArcadeWorldRecord(Spartax, "08:06.96")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/564168765382721552/RAL_2019-04-06_21-24-17-29.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1J0y-2a1fTkL2uf3zGGUkhPAbUZS2ucwg/view?usp=sharing"
-        wr = stage.AddSimulationWorldRecord(Linotrix, "07:57.61")
-        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/373971436139708419/645566078721851422/chic.png"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "07:55.11")
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/788814534600949820/IMG-20201216-WA0000.jpg"
         rally.stages[2] = stage;
 
         stage = new Stage("Parkanaur");
         wr = stage.AddArcadeWorldRecord(Linotrix, "08:05.61")
         wr.proofs["image"] = "https://imgur.com/vnwpHeL"
-        wr = stage.AddSimulationWorldRecord(Linotrix, "07:53.05")
-        wr.proofs["image"] = "https://imgur.com/h4RLKCd"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "07:51.64")
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/971874971225825311/994660761039294554/SPOILER_Rally_Championship_2000_Mobil_1_Screenshot_2022.07.07_-_19.45.39.94.png?width=901&height=676 "
         rally.stages[3] = stage;
 
         stage = new Stage("Lisnamuck");
@@ -317,9 +356,9 @@ function websiteData(){
         rally = new Rally("Sony Manx International Rally")
 
         stage = new Stage("Port Soderick");
-        wr = stage.AddArcadeWorldRecord(Pendzior, "03:53.83")
-        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/747241052099969095/Port_Soderick_WR.png"
-        wr.proofs["replay"] = "https://drive.google.com/file/d/15xUy2Sybw_d0pnoJ5QzAEhEgX40WhHEH/view?usp=sharing"
+        wr = stage.AddArcadeWorldRecord(Pendzior, "03:49.88")
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/826145727604195348/unknown.png"
+        wr.proofs["youtube"] = "https://www.youtube.com/watch?v=KKMIj5avWMk"
         wr = stage.AddSimulationWorldRecord(Spartax, "03:50.63")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/607538409740959744/ral_2019-08-04_13-39-50-56.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1OHK9SygZedSb9s1zJQzFS3xK1QHUNHiB/view?usp=sharing"
@@ -364,8 +403,8 @@ function websiteData(){
         wr = stage.AddArcadeWorldRecord(Spartax, "08:21.46")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/564153475525640202/RAL_2019-04-06_20-23-30-99.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/19nZNpQQpGyrZ2lxtqaODtl8HmV8zfrbA/view?usp=sharing"
-        wr = stage.AddSimulationWorldRecord(Linotrix, "08:21.64")
-        wr.proofs["youtube"] = "https://youtu.be/lk8xp0ccvbY"
+        wr = stage.AddSimulationWorldRecord(Linotrix, "08:15.94")
+        wr.proofs["image"] = "https://media.discordapp.net/attachments/576495084015452191/823159008801456128/cringle_dirty.png?width=901&height=676"
         rally.stages[5] = stage;
 
         game.AddRally(rally)
