@@ -609,6 +609,8 @@ function websiteData(){
         wr.proofs["twitch"] = "https://www.twitch.tv/videos/325383978"
         wr = stage.AddSimulationWorldRecord(Linotrix, "08:15.94")
         wr.proofs["image"] = "https://media.discordapp.net/attachments/576495084015452191/823159008801456128/cringle_dirty.png?width=901&height=676"
+        wr = stage.AddSimulationWorldRecord(Spartax, "08:22.09")
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/564098853058641920/RAL_2019-04-06_16-46-42-08.png"
         rally.stages[5] = stage;
 
         game.AddRally(rally)
