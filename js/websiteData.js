@@ -259,7 +259,8 @@ function websiteData(){
         wr = stage.AddSimulationWorldRecord(Spartax, "06:46.48")
         wr.proofs["image"] = "https://cdn.discordapp.com/attachments/199990758089031680/735938192297164860/unknown.png"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1KI5T34yn0lLLi456Zk03Pu9NV8_UDDO7/view?usp=sharing"
-        wr = stage.AddSimulationWorldRecord(Linotrix, "06:40.80")
+        wr = stage.AddSimulationWorldRecord(Linotrix, "06:40.80", "Subaru Impreza WRC")
+        wr.proofs["image"] = "https://cdn.discordapp.com/attachments/971874971225825311/1009780034589966336/day9.png"
         wr = stage.AddSimulationWorldRecord(Komuh, "06:55.04", "Peugeot 206 WRC");
         wr.proofs["youtube"] = "https://www.youtube.com/watch?v=pir0lXrMGbQ"
         rally.stages[0] = stage;
