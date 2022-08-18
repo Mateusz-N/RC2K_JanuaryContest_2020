@@ -680,7 +680,7 @@ Whitchester sim: 04:12.08 by Rowan Dean (au) — https://web.archive.org/web/200
 Eccles arcade: 05:10.61 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Eccles sim: 04:30.67 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Langton arcade: 01:25.64 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Langton sim: 01:29.50 by Daniel Arber (uk) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Langton sim: 01:29.50 by Daniel Arber (gb) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Fogo arcade: 05:01.26 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Fogo sim: 05:03.79 by Luka Rutar (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 
@@ -691,7 +691,7 @@ Tyrone's Ditches sim: 08:41.50 by Goesta Kunze (de) — https://web.archive.org/
 Feeney arcade: 08:19.27 by Wild Swede (se) — https://web.archive.org/web/20020106002211/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
 Feeney sim: 08:36.47 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Parkanaur arcade: 08:19.93 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Parkanaur sim: 09:00.75 by Daniel Arber (uk) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Parkanaur sim: 09:00.75 by Daniel Arber (gb) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Lisnamuck arcade: 06:42.88 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Lisnamuck sim: 06:41.07 by Luka Rutar (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Tardree arcade: 06:36.30 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
@@ -699,7 +699,7 @@ Tardree sim: 06:24.02 by Rowan Dean (au) — https://web.archive.org/web/2004101
 
 Port Soderick arcade: 04:03.10 by Bruno de Ceuster (be) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Port Soderick sim: 03:54.59 by Beanbag (unknown) — https://web.archive.org/web/20020919130941/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
-Ballagyr arcade: 06:28.10 by Ian Noble (uk) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Ballagyr arcade: 06:28.10 by Ian Noble (gb) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Ballagyr sim: 06:13.36 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Curraghs arcade: 08:14.45 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Curraghs sim: 08:10.93 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
