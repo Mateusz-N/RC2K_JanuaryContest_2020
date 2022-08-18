@@ -709,7 +709,7 @@ Tholt-y-Will sim: 03:01.96 by Luka Rutar (de) [Subaru Impreza WRC] — https://w
 Injerbreck arcade: 08:57.10 by Goesta Kunze (de) [Nissan Micra Maxi] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Injerbreck sim: 08:19.60 by Vex Musa (hr) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Cringle arcade: 
-Cringle sim: 08:30.15 by cf (gr) — https://web.archive.org/web/20040703194953/http://www.activescore.com:80/rally/rc.html`
+Cringle sim: 08:30.15 by cf (gr) — https://web.archive.org/web/20040913110509/http://www.activescore.com/rally/mftr.html`
 
 function loadOldRecords(website){
     const oldRallyRecords = oldRecords.split('\n\n')
