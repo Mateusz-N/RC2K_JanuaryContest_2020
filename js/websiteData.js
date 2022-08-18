@@ -616,6 +616,8 @@ function websiteData(){
         game.AddRally(rally)
     }
 
+    loadOldRecords(website)
+
     //SettingUp rally and Stage ids;  //Simulation order
     for(let rallyId = 0; rallyId < game.rallies.length; rallyId ++){
         let rally = game.rallies[rallyId];
@@ -628,4 +630,126 @@ function websiteData(){
     }
 
     return website;
+}
+
+const oldRecords = `Clocaenog Mid arcade: 08:44.19 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Clocaenog Mid sim: 08:34.20 by Luka Rutar — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Penmachno South arcade: 07:37.72 by Wild Swede — http://web.archive.org/web/20050503195148/http://members.xoom.virgilio.it/pchapman/rev_wales_ss2.htm
+Penmachno South sim: 07:08.03 by Wild Swede — https://web.archive.org/web/20020106002211/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
+Myherin arcade: 11:00.85 by Goesta Kunze — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Myherin sim: 11:11.45 by Emilio — https://web.archive.org/web/20040914004645/http://www.activescore.com/rally/championship/zip_ind_ral5.html
+Hafren arcade: 12:15.56 by Wild Swede — http://web.archive.org/web/20050503195219/http://members.xoom.virgilio.it/pchapman/rev_wales_ss4.htm
+Hafren sim: 11:03.53 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Dyfi arcade: 12:33.01 by Goesta Kunze — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Dyfi sim: 12:02.96 by Beanbag — https://web.archive.org/web/20011118011354/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
+Gartheiniog arcade: 10:58.16 by Wild Swede — http://web.archive.org/web/20050503195305/http://members.xoom.virgilio.it/pchapman/rev_wales_ss6.htm
+Gartheiniog sim: 10:18.71 by Beanbag — https://web.archive.org/web/20011118011354/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
+
+Chirdonhead arcade: 17:52.64 by Wild N Wooly — http://web.archive.org/web/20050306111141/http://members.xoom.virgilio.it/pchapman/rev_pirelli_ss1.htm
+Chirdonhead sim: 18:05.43 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Falstone arcade: 14:14.09 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Falstone sim: 14:03.87 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Kershope arcade: 12:54.21 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Kershope sim: 11:57.93 by Goesta Kunze — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Pundershaw arcade: 15:41.04 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Pundershaw sim: 15:30.70 by Bruno de Ceuster — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Riccarton arcade: 06:31.22 by Wild N Wooly — http://web.archive.org/web/20050306113955/http://members.xoom.virgilio.it/pchapman/rev_pirelli_ss5.htm
+Riccarton sim: 05:56.20 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Newcastleton arcade: 12:41.65 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Newcastleton sim: 12:43.50 by Bruno de Ceuster — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+
+Twiglees arcade: 07:29.14 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Twiglees sim: 06:59.00 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Yair arcade: 04:07.17 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Yair sim: 04:00.09 by Luka Rutar — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Cardrona arcade: 04:41.60 by Bruno de Ceuster — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Cardrona sim: 04:33.08 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Black Loch arcade: 06:13.51 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Black Loch sim: 05:28.40 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Glentrool arcade: 13:39.56 by Goesta Kunze — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Glentrool sim: 15:08.40 by Vex Musa — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Ae arcade: 15:30.97 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Ae sim: 14:52.90 by Wild Swede — https://web.archive.org/web/20011118011354/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
+
+Moon and Star arcade: 02:57.43 by Goesta Kunze — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Moon and Star sim: 02:56.29 by Luka Rutar — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Bothwell arcade: 05:19.71 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Bothwell sim: 04:47.97 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Whitchester arcade: 04:10.98 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Whitchester sim: 04:12.08 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Eccles arcade: 05:10.61 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Eccles sim: 04:30.67 by Goesta Kunze — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Langton arcade: 01:25.64 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Langton sim: 01:29.50 by Daniel Arber — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Fogo arcade: 05:01.26 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Fogo sim: 05:03.79 by Luka Rutar — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+
+Hamilton's Folly arcade: 07:14.03 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Hamilton's Folly sim: 06:50.01 by Wild Swede — https://web.archive.org/web/20020919130941/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
+Tyrone's Ditches arcade: 09:23.66 by Goesta Kunze — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Tyrone's Ditches sim: 08:41.50 by Goesta Kunze — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Feeney arcade: 08:19.27 by Wild Swede — https://web.archive.org/web/20020106002211/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
+Feeney sim: 08:36.47 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Parkanaur arcade: 08:19.93 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Parkanaur sim: 09:00.75 by Daniel Arber — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Lisnamuck arcade: 06:42.88 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Lisnamuck sim: 06:41.07 by Luka Rutar — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Tardree arcade: 06:36.30 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Tardree sim: 06:24.02 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+
+Port Soderick arcade: 04:03.10 by Bruno de Ceuster — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Port Soderick sim: 03:54.59 by Beanbag — https://web.archive.org/web/20020919130941/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
+Ballagyr arcade: 06:28.10 by Ian Noble — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Ballagyr sim: 06:13.36 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Curraghs arcade: 08:14.45 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Curraghs sim: 08:10.93 by Rowan Dean — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Tholt-y-Will arcade: 03:06.95 by Goesta Kunze — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Tholt-y-Will sim: 03:01.96 by Luka Rutar — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Injerbreck arcade: 08:57.10 by Goesta Kunze — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Injerbreck sim: 08:19.60 by Vex Musa — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Cringle arcade: 
+Cringle sim: 08:30.15 by cf — https://web.archive.org/web/20040703194953/http://www.activescore.com:80/rally/rc.html`
+
+function loadOldRecords(website){
+    const oldRallyRecords = oldRecords.split('\n\n')
+    const records = oldRallyRecords.map(rally => rally.split('\n'))
+    const recordsDetails = records.map((rally, rallyIndex) => rally.map((record, stageIndex) => {
+        const stageAndDetails = record.split(': ', 2)
+        const detailsString = stageAndDetails[1]
+        if(detailsString.length == 0){
+            return null
+        }
+        const timeAndDetails = detailsString.split(' by ', 2)
+        const time = timeAndDetails[0]
+        const userAndProof = timeAndDetails[1].split(' — ', 2)
+        return {
+            time,
+            user: userAndProof[0],
+            proofUrl: userAndProof[1],
+            stageIndex: ~~(stageIndex/2),
+            rallyIndex: rallyIndex,
+            isSimulationDirection: stageIndex%2 != 0
+        }
+    })).flat().filter(record => record != null)
+    const uniqueUsers = {}
+    recordsDetails.forEach(record => {
+        const userString = record.user
+        if(!(userString in uniqueUsers)){
+            const user = new User(userString, "unknown")
+            website.users.push(user)
+            uniqueUsers[userString] = user
+        }
+    })
+    const game = website.game
+    recordsDetails.forEach(record => {
+        const stage = game.rallies[record.rallyIndex].stages[record.stageIndex]
+        let wr
+        if(record.isSimulationDirection){
+            wr = stage.AddSimulationWorldRecord(uniqueUsers[record.user], record.time)
+        }
+        else{
+            wr = stage.AddArcadeWorldRecord(uniqueUsers[record.user], record.time)
+        }
+        wr.proofs["link"] = record.proofUrl
+    })
 }

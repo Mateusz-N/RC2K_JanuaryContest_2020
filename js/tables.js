@@ -458,6 +458,7 @@ class Stage{
         proofs.image !== null ? proofsImages += `<a href=${proofs.image}><img src="../../resources/image_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
         proofs.replay !== null ? proofsImages += `<a href=${proofs.replay}><img src="../../resources/replay_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
         proofs.twitch !== null ? proofsImages += `<a href=${proofs.twitch}><img src="../../resources/twitch_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.link !== null ? proofsImages += `<a href=${proofs.link}><img src="../../resources/link_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
         return proofsImages;
     }
     getImageUrl(){
@@ -496,6 +497,7 @@ class Record{
             "image": null,
             "replay": null,
             "twitch": null,
+            "link": null,
         }
     }
     TimeToCentiseconds(time){   //string to int
