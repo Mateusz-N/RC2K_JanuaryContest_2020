@@ -634,80 +634,80 @@ function websiteData(){
 }
 
 const oldRecords = `Clocaenog Mid arcade: 08:44.19 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Clocaenog Mid sim: 08:34.20 by Luka Rutar (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Clocaenog Mid sim: 08:34.20 by Luka Rutar (de) [Subaru Impreza WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Penmachno South arcade: 07:37.72 by Wild Swede (se) — http://web.archive.org/web/20050503195148/http://members.xoom.virgilio.it/pchapman/rev_wales_ss2.htm
 Penmachno South sim: 07:08.03 by Wild Swede (se) — https://web.archive.org/web/20020106002211/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
 Myherin arcade: 11:00.85 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Myherin sim: 11:11.45 by Emilio (es) — https://web.archive.org/web/20040914004645/http://www.activescore.com/rally/championship/zip_ind_ral5.html
 Hafren arcade: 12:15.56 by Wild Swede (se) — http://web.archive.org/web/20050503195219/http://members.xoom.virgilio.it/pchapman/rev_wales_ss4.htm
-Hafren sim: 11:03.53 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Dyfi arcade: 12:33.01 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Hafren sim: 11:03.53 by Rowan Dean (au) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Dyfi arcade: 12:33.01 by Goesta Kunze (de) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Dyfi sim: 12:02.96 by Beanbag (unknown) — https://web.archive.org/web/20011118011354/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
 Gartheiniog arcade: 10:58.16 by Wild Swede (se) — http://web.archive.org/web/20050503195305/http://members.xoom.virgilio.it/pchapman/rev_wales_ss6.htm
 Gartheiniog sim: 10:18.71 by Beanbag (unknown) — https://web.archive.org/web/20011118011354/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
 
 Chirdonhead arcade: 17:52.64 by Wild N Wooly (gb-wls) — http://web.archive.org/web/20050306111141/http://members.xoom.virgilio.it/pchapman/rev_pirelli_ss1.htm
 Chirdonhead sim: 18:05.43 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Falstone arcade: 14:14.09 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Falstone arcade: 14:14.09 by Rowan Dean (au) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Falstone sim: 14:03.87 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Kershope arcade: 12:54.21 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Kershope arcade: 12:54.21 by Rowan Dean (au) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Kershope sim: 11:57.93 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Pundershaw arcade: 15:41.04 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Pundershaw sim: 15:30.70 by Bruno de Ceuster (be) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Pundershaw arcade: 15:41.04 by Rowan Dean (au) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Pundershaw sim: 15:30.70 by Bruno de Ceuster (be) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Riccarton arcade: 06:31.22 by Wild N Wooly (gb-wls) — http://web.archive.org/web/20050306113955/http://members.xoom.virgilio.it/pchapman/rev_pirelli_ss5.htm
 Riccarton sim: 05:56.20 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Newcastleton arcade: 12:41.65 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Newcastleton sim: 12:43.50 by Bruno de Ceuster (be) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Newcastleton sim: 12:43.50 by Bruno de Ceuster (be) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 
-Twiglees arcade: 07:29.14 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Twiglees arcade: 07:29.14 by Rowan Dean (au) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Twiglees sim: 06:59.00 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Yair arcade: 04:07.17 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Yair sim: 04:00.09 by Luka Rutar (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Cardrona arcade: 04:41.60 by Bruno de Ceuster (be) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Yair arcade: 04:07.17 by Rowan Dean (au) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Yair sim: 04:00.09 by Luka Rutar (de) [Subaru Impreza WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Cardrona arcade: 04:41.60 by Bruno de Ceuster (be) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Cardrona sim: 04:33.08 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Black Loch arcade: 06:13.51 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Black Loch arcade: 06:13.51 by Rowan Dean (au) [Peugeot 106 Maxi] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Black Loch sim: 05:28.40 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Glentrool arcade: 13:39.56 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Glentrool sim: 15:08.40 by Vex Musa (hr) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Glentrool sim: 15:08.40 by Vex Musa (hr) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Ae arcade: 15:30.97 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Ae sim: 14:52.90 by Wild Swede (se) — https://web.archive.org/web/20011118011354/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
 
-Moon and Star arcade: 02:57.43 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Moon and Star sim: 02:56.29 by Luka Rutar (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Bothwell arcade: 05:19.71 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Bothwell sim: 04:47.97 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Moon and Star arcade: 02:57.43 by Goesta Kunze (de) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Moon and Star sim: 02:56.29 by Luka Rutar (de) [Subaru Impreza WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Bothwell arcade: 05:19.71 by Rowan Dean (au) [Peugeot 106 Maxi] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Bothwell sim: 04:47.97 by Rowan Dean (au) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Whitchester arcade: 04:10.98 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Whitchester sim: 04:12.08 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Eccles arcade: 05:10.61 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Eccles sim: 04:30.67 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Eccles arcade: 05:10.61 by Rowan Dean (au) [Peugeot 106 Maxi] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Eccles sim: 04:30.67 by Goesta Kunze (de) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Langton arcade: 01:25.64 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Langton sim: 01:29.50 by Daniel Arber (gb) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Fogo arcade: 05:01.26 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Fogo sim: 05:03.79 by Luka Rutar (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Fogo sim: 05:03.79 by Luka Rutar (de) [Subaru Impreza WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 
 Hamilton's Folly arcade: 07:14.03 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Hamilton's Folly sim: 06:50.01 by Wild Swede (se) — https://web.archive.org/web/20020919130941/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
-Tyrone's Ditches arcade: 09:23.66 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Tyrone's Ditches sim: 08:41.50 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Feeney arcade: 08:19.27 by Wild Swede (se) — https://web.archive.org/web/20020106002211/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
-Feeney sim: 08:36.47 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Tyrone's Ditches arcade: 09:23.66 by Goesta Kunze (de) [Seat Cordoba WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Tyrone's Ditches sim: 08:41.50 by Goesta Kunze (de) [Subaru Impreza WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Feeney arcade: 09:00.50 by Vex Musa (hr) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Feeney sim: 08:19.27 by Wild Swede (se) — https://web.archive.org/web/20020106002211/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
 Parkanaur arcade: 08:19.93 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Parkanaur sim: 09:00.75 by Daniel Arber (gb) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Lisnamuck arcade: 06:42.88 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Lisnamuck sim: 06:41.07 by Luka Rutar (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Lisnamuck sim: 06:41.07 by Luka Rutar (de) [Subaru Impreza WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Tardree arcade: 06:36.30 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Tardree sim: 06:24.02 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 
-Port Soderick arcade: 04:03.10 by Bruno de Ceuster (be) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Port Soderick arcade: 04:03.10 by Bruno de Ceuster (be) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Port Soderick sim: 03:54.59 by Beanbag (unknown) — https://web.archive.org/web/20020919130941/http://www.activescore.com/cgi-bin/rally/20new.cgi?sf=20new.sup
-Ballagyr arcade: 06:28.10 by Ian Noble (gb) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Ballagyr sim: 06:13.36 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Ballagyr arcade: 06:28.10 by Ian Noble (gb) [Proton Wira/Persona] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Ballagyr sim: 06:13.36 by Rowan Dean (au) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Curraghs arcade: 08:14.45 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Curraghs sim: 08:10.93 by Rowan Dean (au) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Tholt-y-Will arcade: 03:06.95 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Tholt-y-Will sim: 03:01.96 by Luka Rutar (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Injerbreck arcade: 08:57.10 by Goesta Kunze (de) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
-Injerbreck sim: 08:19.60 by Vex Musa (hr) — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Tholt-y-Will arcade: 03:06.95 by Goesta Kunze (de) [Renault Megane Kit Car] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Tholt-y-Will sim: 03:01.96 by Luka Rutar (de) [Subaru Impreza WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Injerbreck arcade: 08:57.10 by Goesta Kunze (de) [Nissan Micra Maxi] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
+Injerbreck sim: 08:19.60 by Vex Musa (hr) [Peugeot 206 WRC] — https://web.archive.org/web/20041013051950/http://www.explosiveracing.net/rallychampionshipleague/stage_records.htm
 Cringle arcade: 
 Cringle sim: 08:30.15 by cf (gr) — https://web.archive.org/web/20040703194953/http://www.activescore.com:80/rally/rc.html`
 
@@ -729,6 +729,7 @@ function loadOldRecords(website){
             time,
             userName: user.substring(0, user.indexOf(' (')),
             nationality: user.substring(user.indexOf('(')+1, user.indexOf(')')),
+            car: user.substring(user.indexOf('[')+1, user.indexOf(']')) || 'Mitsubishi Lancer Evo V',
             proofUrl,
             stageIndex: ~~(stageIndex/2),
             rallyIndex: rallyIndex,
@@ -749,10 +750,10 @@ function loadOldRecords(website){
         const stage = game.rallies[record.rallyIndex].stages[record.stageIndex]
         let wr
         if(record.isSimulationDirection){
-            wr = stage.AddSimulationWorldRecord(uniqueUsers[record.userName], record.time)
+            wr = stage.AddSimulationWorldRecord(uniqueUsers[record.userName], record.time, record.car)
         }
         else{
-            wr = stage.AddArcadeWorldRecord(uniqueUsers[record.userName], record.time)
+            wr = stage.AddArcadeWorldRecord(uniqueUsers[record.userName], record.time, record.car)
         }
         wr.proofs["link"] = record.proofUrl
     })
