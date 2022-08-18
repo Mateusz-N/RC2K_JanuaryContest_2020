@@ -1,3 +1,5 @@
+const recordTimePattern = /[0-9]{2}:[0-5][0-9].[0-9]{2}/; // Regex for correct time results
+
 class Website{
     constructor(){
         this.contests = [];
@@ -162,7 +164,7 @@ class Rally{
             const weak_car_bonus = (car == 'Mitsubishi Lancer Evo IV' || car == 'Seat Cordoba WRC' || car == 'Proton Wira/Persona') ? 1 : 0;
             for(let j = this.summary.records.length - 1; j > i; j--) {  // Starting with the player ranked last, up to the current player
                 let group_beaten = this.summary.records[j].participant.group.charAt(1);
-                if (group_beaten < group && !groups_beaten.includes(group_beaten)) {    // If current player beat a better ("lower") group, give a one-time bonus equal to currentGroup - beatenGroup
+                if (group_beaten < group && !groups_beaten.includes(group_beaten) && recordTimePattern.test(this.summary.records[j].time)) {    // If current player beat a better ("lower") group (and the better group's driver actually completed the rally), give a one-time bonus equal to currentGroup - beatenGroup
                     group_bonus += (group - group_beaten);
                     groups_beaten.push(group_beaten);
                 }
@@ -221,7 +223,6 @@ class Stage{
         }
     }
     RecordsAddMoreGaps(rank, records) {
-        const recordTimePattern = /[0-9]{2}:[0-5][0-9].[0-9]{2}/;
         if(!recordTimePattern.test(records[rank].time)) return `<span class="gapToLeader">N/A</span>`;
         let gapToRankAboveMessage = ``;
         let gapToRankBelowMessage = ``;
