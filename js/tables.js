@@ -502,7 +502,7 @@ class Record{
         }
     }
     TimeToCentiseconds(time){   //string to int
-        if(time == "DNF")
+        if(!recordTimePattern.test(time))
             return -1
         let centiseconds = 0;
         let index = time.lastIndexOf('.')

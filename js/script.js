@@ -134,7 +134,8 @@ function loadRallyTables(RallyID){
         stage_minimum[i] = Number.POSITIVE_INFINITY;
         for(let j=0; j< records.length; j++){
             let record = records[j]
-            if(record.time !== "DNF"){
+            const recordTimePattern = /[0-9]{2}:[0-5][0-9].[0-9]{2}/; // Regex for correct time results
+            if(recordTimePattern.test){
                 if(participants_centiseconds[record.participant.user.name] === undefined)
                 participants_centiseconds[record.participant.user.name] = [];
                 participants_centiseconds[record.participant.user.name][i] = record.centiseconds;
