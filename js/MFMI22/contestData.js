@@ -692,8 +692,8 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/1sEeGNbFIAfnJeUTNJ0jJi6aUj6o7rHfm/view?usp=sharing"
         wr = stage.AddRecord(SpartaRemixer, "02:58.41", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1A8JkoqJHBaqb848VlSdqgQWXf-J8FM9u/view?usp=sharing"
-        // wr = stage.AddRecord(TheKetrab, "16:15.71", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1BB0CIwj1zThVkbzr28E8DwdZvwWNSk9y/view?usp=sharing"
+        wr = stage.AddRecord(TheKetrab, "03:18.38", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1SjuCkYFwzV6seT9urL_jrkEmuk-zzxkp/view?usp=sharing"
         wr = stage.AddRecord(Tribell, "02:55.92", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1cFLKPqvyAft-CJ7q0XUclKymCrVCr_M6/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1BCG2Ebz_-VqnBVfAkiIJ8VPvaIQn6k8E/view?usp=sharing"
@@ -727,8 +727,8 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/1BFxmVxMriraLhY0feW4oI9VJM1DizL1D/view?usp=sharing"
         wr = stage.AddRecord(SpartaRemixer, "05:00.34", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1nlquo_NyzKcs5hGS_Qd5dty3HlZSN-IQ/view?usp=sharing"
-        // wr = stage.AddRecord(TheKetrab, "16:15.71", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1BB0CIwj1zThVkbzr28E8DwdZvwWNSk9y/view?usp=sharing"
+        wr = stage.AddRecord(TheKetrab, "05:11.94", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1XGTDih_O8-RWUJgaVKzXtONKYWAA2oLF/view?usp=sharing"
         wr = stage.AddRecord(Tribell, "04:50.73", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1p5-3gNRhsgo0F3jjsZVZ_3kj6BPk3H2Z/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1U_YWcmNUrH7mb4HlMfAkFi7w70JHMY5u/view?usp=sharing"
@@ -761,8 +761,8 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/1jOB5k9agAUq06rhjAm76Tsm-mahRi-1g/view?usp=sharing"
         wr = stage.AddRecord(SpartaRemixer, "04:32.82", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1anOgk7eoAVXxyDqysFc1VKUozHcOINCz/view?usp=sharing"
-        // wr = stage.AddRecord(TheKetrab, "16:15.71", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1BB0CIwj1zThVkbzr28E8DwdZvwWNSk9y/view?usp=sharing"
+        wr = stage.AddRecord(TheKetrab, "04:42.61", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1ot50ED-0Sk4_TB7QmM4pD3OYc6c5FEbh/view?usp=sharing"
         wr = stage.AddRecord(Tribell, "04:29.91", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1xKEJwakSCzqev8w0DgQJpmeTHZpj1aUk/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1MgVFZErLxij59NpynclzvrnZ9C8qFvG1/view?usp=sharing"
@@ -793,14 +793,14 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/1k_ObGmwGIKLllSbiA986yteepC5oHRLo/view?usp=sharing"
         wr = stage.AddRecord(SpartaRemixer, "04:43.41", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/13DxeYGQSFUPtAErplpKICswPAn_wrYPk/view?usp=sharing"
-        // wr = stage.AddRecord(TheKetrab, "16:15.71", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1BB0CIwj1zThVkbzr28E8DwdZvwWNSk9y/view?usp=sharing"
+        wr = stage.AddRecord(TheKetrab, "04:50.85", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/16HuAsvHIVewBWpVSZ7BKN4aOgWsjduoH/view?usp=sharing"
         wr = stage.AddRecord(Tribell, "04:45.14", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1wzDYL_KyH97S2kmNp0QrVzQm5nv7pklk/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1jkc77kda9EPVLa8TDORetULwXtcbhBwJ/view?usp=sharing"
         wr = stage.AddRecord(Woeringen1288, "DNS", "DNS", "No")
-        // wr = stage.AddRecord(XsaraTorrada, "19:08.34", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1F3fgrvcZfKC2Guz0wT8iuHLg7s1Kf5KT/view?usp=sharing"
+        wr = stage.AddRecord(XsaraTorrada, "05:58.09", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1eS6EDCKxeXZ3S_QoPF4DeUBXdhK82eJ9/view?usp=sharing"
         
         stage = rally.stages[4]; //Langton
         wr = stage.AddRecord(BrosTheTird, "DSQ", "DSQ", "No")
@@ -825,14 +825,14 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/10VDhVKyLGUwKTRgA6w1ZpGJvr4jhD1Ky/view?usp=sharing"
         wr = stage.AddRecord(SpartaRemixer, "01:35.42", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1y_ruolbDReeI2DwRFo67tqGYKFOmD8Hc/view?usp=sharing"
-        // wr = stage.AddRecord(TheKetrab, "16:15.71", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1BB0CIwj1zThVkbzr28E8DwdZvwWNSk9y/view?usp=sharing"
+        wr = stage.AddRecord(TheKetrab, "01:35.08", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1E6Y7YJV46iG0tePnoq6p79MITtIEL66I/view?usp=sharing"
         wr = stage.AddRecord(Tribell, "01:36.22", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/15ooJuUGujOn5qon3H_ixfhfpHCjaMcLT/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1mMmcLwyHLKRwK2y7jOjC3x5FRQKKSdHr/view?usp=sharing"
         wr = stage.AddRecord(Woeringen1288, "DNS", "DNS", "No")
-        // wr = stage.AddRecord(XsaraTorrada, "19:08.34", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1F3fgrvcZfKC2Guz0wT8iuHLg7s1Kf5KT/view?usp=sharing"
+        wr = stage.AddRecord(XsaraTorrada, "01:38.68", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1utKvQAUzBTYlYT3D1gwx8eihqu4qCbeS/view?usp=sharing"
         
         stage = rally.stages[5]; //Fogo
         wr = stage.AddRecord(BrosTheTird, "DSQ", "DSQ", "No")
@@ -857,13 +857,13 @@ function contestData(){
         wr.proofs["replay"] = "https://drive.google.com/file/d/1yRj_98qwLDKcsI0nFIWOAA4yAOJpqL04/view?usp=sharing"
         wr = stage.AddRecord(SpartaRemixer, "05:13.12", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1BQKRmzvClIiO-R14PypmGJ5oS9fAPGKf/view?usp=sharing"
-        // wr = stage.AddRecord(TheKetrab, "16:15.71", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1BB0CIwj1zThVkbzr28E8DwdZvwWNSk9y/view?usp=sharing"
+        wr = stage.AddRecord(TheKetrab, "05:16.20", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1Ox2gKu4Cf07OdDfE-Imze0RBWccCRAIX/view?usp=sharing"
         wr = stage.AddRecord(Tribell, "05:13.82", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1tI0E1WRcXIba3xFNtxD9CMDirQ6m5Ylx/view?usp=sharing"
         wr = stage.AddRecord(Woeringen1288, "DNS", "DNS", "No")
-        // wr = stage.AddRecord(XsaraTorrada, "19:08.34", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1F3fgrvcZfKC2Guz0wT8iuHLg7s1Kf5KT/view?usp=sharing"
+        wr = stage.AddRecord(XsaraTorrada, "05:38.55", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1n0D88NwrUswj6-2QTSlcPCGV2FRdZnVV/view?usp=sharing"
     }
     {
         rally = contest.rallies[4];  //Stena Line
