@@ -871,9 +871,9 @@ function contestData(){
         wr = stage.AddRecord(Lewsys, "07:36.86", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1t2KNdWih86Dd7ADwkxdXt3qYHrmmZX_B/view?usp=sharing"
         wr = stage.AddRecord(Linotrix, "DNS", "DNS", "No")
-        // wr = stage.AddRecord(Migger, "03:12.00", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1ZL-j7hjJL5cbal2k7jCZNmi5TXuiLIde/view?usp=sharing"
-        // wr.proofs["replay"] = "https://drive.google.com/file/d/1DXyS65CdvGXlq9pmyo8mDahoQ8aroKWt/view?usp=sharing"
+        wr = stage.AddRecord(Migger, "07:36.68", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1Yp9dhdL4K6-3YeQvZj5mD8W-6DOgPTd4/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1nm4D0665uvTQSogwLobEuS9HDzYiVWct/view?usp=sharing"
         // wr = stage.AddRecord(Pendzior, "DNF", "DNF", "No")
         wr = stage.AddRecord(sBinnala, "07:41.00", "00:00.00", "Yes")
         wr.proofs["image"] = "https://drive.google.com/file/d/1XnzF7Ysd607Zgbds2LMHsEa_k3OHeNx3/view?usp=sharing"
@@ -904,9 +904,9 @@ function contestData(){
         wr = stage.AddRecord(Lewsys, "10:12.32", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1FL-0fgXvPonQTV0qiGAS7mQc9-D07Jau/view?usp=sharing"
         wr = stage.AddRecord(Linotrix, "DNS", "DNS", "No")
-        // wr = stage.AddRecord(Migger, "03:12.00", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1ZL-j7hjJL5cbal2k7jCZNmi5TXuiLIde/view?usp=sharing"
-        // wr.proofs["replay"] = "https://drive.google.com/file/d/1DXyS65CdvGXlq9pmyo8mDahoQ8aroKWt/view?usp=sharing"
+        wr = stage.AddRecord(Migger, "09:34.95", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1bPhbv2xuPpDylg0jXAdKOXE4XD-NhiCx/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1ZA-Ya1f58VUKyzC63Y_NnrK92AbBQbyj/view?usp=sharing"
         // wr = stage.AddRecord(Pendzior, "DNF", "DNF", "No")
         wr = stage.AddRecord(sBinnala, "09:42.13", "00:00.00", "Yes")
         wr.proofs["image"] = "https://drive.google.com/file/d/12l8LaaOdu4hFMMQyTQoDI5gwcMnDsMWZ/view?usp=sharing"
