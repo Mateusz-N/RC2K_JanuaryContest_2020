@@ -173,6 +173,25 @@ class Rally{
             const positionPoints = nParticipants - i
             const points = new PointsWrapper(positionPoints, weak_car_bonus, group_bonus)
 
+            // That weird multiplier for Seat JCMR based on the group
+            let seatMultiplier;
+            if(this.id == 3) { // Rally.id == Seat JCMR
+                switch(group) {
+                    case '3':
+                        seatMultiplier = 2;
+                        break;
+                    case '4':
+                        seatMultiplier = 2.5;
+                        break;
+                    default:
+                        seatMultiplier = 1.5;
+                        break;
+                }
+                Object.keys(points).forEach(function(key) { // Multiply each type of points
+                    points[key] *= seatMultiplier;
+                })
+            }
+
             record.points = points;
         }
         this.summary.AssignRanks()
