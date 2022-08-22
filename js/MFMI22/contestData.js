@@ -1017,9 +1017,9 @@ function contestData(){
         wr = stage.AddRecord(Lewsys, "07:09.73", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1h1bOQ8TlhOHtYtjpdzhyC44LkOry8kjt/view?usp=sharing"
         wr = stage.AddRecord(Linotrix, "DNS", "DNS", "No")
-        // wr = stage.AddRecord(Migger, "09:22.59", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/11XESNlzoO3CZLl9NWcznLR3fUKQqHOf1/view?usp=sharing"
-        // wr.proofs["replay"] = "https://drive.google.com/file/d/17bpgOGjmrd0X40bmuJaerznEXI35l4Ca/view?usp=sharing"
+        wr = stage.AddRecord(Migger, "07:58.91", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1ZpcERX1JvjpcW4hDNIpExwnF8rV1vbcc/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/17bpgOGjmrd0X40bmuJaerznEXI35l4Ca/view?usp=sharing"
         // wr = stage.AddRecord(Pendzior, "09:41.80", "00:00.00", "No")
         // wr.proofs["image"] = "https://drive.google.com/file/d/1LphmqG90zjfTi0X1p1Dq1r-NF1x0xyfp/view?usp=sharing"
         wr = stage.AddRecord(sBinnala, "10:06.47", "00:00.00", "Yes")
@@ -1033,8 +1033,8 @@ function contestData(){
         wr.proofs["image"] = "https://drive.google.com/file/d/1XJ7k_Z5j3zvijc5gL1uWM5mB06FB6zrM/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1spQDCrjncqKFHX2vIymPailmCh6k1tbF/view?usp=sharing"
         wr = stage.AddRecord(Woeringen1288, "DNS", "DNS", "No")
-        // wr = stage.AddRecord(XsaraTorrada, "10:08.90", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1zav7vOa4UlhMdlbU5TCax-5bMnJVhoXo/view?usp=sharing"
+        wr = stage.AddRecord(XsaraTorrada, "09:58.20", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1zKDqzJj3wd_kv9pMsOajGJSngfp-Eo0Z/view?usp=sharing"
         
         stage = rally.stages[5]; //Tardree
         wr = stage.AddRecord(BrosTheTird, "DNF", "DNF", "No")
@@ -1048,9 +1048,9 @@ function contestData(){
         wr = stage.AddRecord(Lewsys, "07:08.52", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/13rli7xDdo52cRIUTuK_oW2dg7PG2-vIV/view?usp=sharing"
         wr = stage.AddRecord(Linotrix, "DNS", "DNS", "No")
-        // wr = stage.AddRecord(Migger, "09:22.59", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/11XESNlzoO3CZLl9NWcznLR3fUKQqHOf1/view?usp=sharing"
-        // wr.proofs["replay"] = "https://drive.google.com/file/d/17bpgOGjmrd0X40bmuJaerznEXI35l4Ca/view?usp=sharing"
+        wr = stage.AddRecord(Migger, "07:11.39", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/10x1XKaF-UvFNY-KhT_ybmxYH4cRVWwvE/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/19SnPJAbL_EJF_XaDc7u4FKCSqXAowkaF/view?usp=sharing"
         // wr = stage.AddRecord(Pendzior, "09:41.80", "00:00.00", "No")
         // wr.proofs["image"] = "https://drive.google.com/file/d/1LphmqG90zjfTi0X1p1Dq1r-NF1x0xyfp/view?usp=sharing"
         wr = stage.AddRecord(sBinnala, "07:59.79", "00:00.00", "Yes")
@@ -1064,8 +1064,8 @@ function contestData(){
         wr.proofs["image"] = "https://drive.google.com/file/d/1UaJH68WQFP7nNZLboN9bc91qd5F6OyAv/view?usp=sharing"
         wr.proofs["replay"] = "https://drive.google.com/file/d/1IIzjC5TFTKgDgN72r9fV5OZRNNpVsLQg/view?usp=sharing"
         wr = stage.AddRecord(Woeringen1288, "DNS", "DNS", "No")
-        // wr = stage.AddRecord(XsaraTorrada, "10:08.90", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1zav7vOa4UlhMdlbU5TCax-5bMnJVhoXo/view?usp=sharing"
+        wr = stage.AddRecord(XsaraTorrada, "07:47.70", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1gGck47nbRTV5tv08kasfOEprfnAF-zw-/view?usp=sharing"
     }
     {
         rally = contest.rallies[5];  //Sony Manx
