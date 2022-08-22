@@ -132,20 +132,22 @@ function loadRallyTables(RallyID){
         stage_minimum[i] = Number.POSITIVE_INFINITY;
         for(let j=0; j< records.length; j++){
             let record = records[j]
-            const recordTimePattern = /[0-9]{2}:[0-5][0-9].[0-9]{2}/; // Regex for correct time results
-            if(recordTimePattern.test){
-                if(participants_centiseconds[record.participant.user.name] === undefined)
-                participants_centiseconds[record.participant.user.name] = [];
-                participants_centiseconds[record.participant.user.name][i] = record.centiseconds;
-                participants[record.participant.user.name] = record.participant;
-                if(record.centiseconds < stage_minimum[i]) stage_minimum[i] = record.centiseconds;
+            if(record.status.didFinish){
+                const participantName = record.participant.user.name
+                const centiseconds = record.finalTime.centiseconds
+                if(participants_centiseconds[participantName] === undefined)
+                    participants_centiseconds[participantName] = [];
+                participants_centiseconds[participantName][i] = centiseconds;
+                participants[participantName] = record.participant;
+                if(centiseconds < stage_minimum[i]) 
+                    stage_minimum[i] = centiseconds;
             }
         }
     }
     let labels = stages.map((S)=>S.name)
     let participants_centiseconds_record = clone(participants_centiseconds);
 
-    Object.keys(participants_centiseconds).map(function(participant){
+    Object.keys(participants_centiseconds).forEach(participant => {
         let data = participants_centiseconds[participant];
         for(let i = 0; i< data.length; i++){
             data[i] = stage_minimum[i]/data[i]
@@ -153,20 +155,20 @@ function loadRallyTables(RallyID){
     });
 
 
-    Object.keys(participants_centiseconds_record).map(function(participant){
+    Object.keys(participants_centiseconds_record).forEach(participant => {
         let data = participants_centiseconds_record[participant];
         for(let i = 0; i< data.length; i++){
-            data[i] = stage_records[i].centiseconds/data[i]
+            data[i] = stage_records[i].finalTime.centiseconds/data[i]
         }
     });
 
 
-    let datasets = Object.keys(participants_centiseconds).map(function(participant){
+    let datasets = Object.keys(participants_centiseconds).map(participant => {
         let arr = {"label" : participant, "borderColor" : participants[participant].color, "data" : participants_centiseconds[participant], "fill": true}
         return arr;
     });
 
-    let datasets_record = Object.keys(participants_centiseconds_record).map(function(participant){
+    let datasets_record = Object.keys(participants_centiseconds_record).map(participant => {
         let arr = {"label" : participant, "borderColor" : participants[participant].color, "data" : participants_centiseconds_record[participant], "fill": true}
         return arr;
     });

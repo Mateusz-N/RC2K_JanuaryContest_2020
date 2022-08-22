@@ -622,7 +622,6 @@ class RecordStatus{
         return new RecordStatus("FINISHED")
     }
     static getContestStatus(rallyStatuses){
-        console.log(rallyStatuses)
         if(rallyStatuses.length <= 0){
             return new RecordStatus("DNS")
         }
@@ -642,7 +641,6 @@ class RecordStatus{
                 ralliesNotFinished++;
             }
         }
-        console.log(ralliesNotFinished)
         if(ralliesNotFinished === 0){
             return new RecordStatus("FINISHED")
         }
