@@ -143,7 +143,7 @@ class Rally{
             RallyRecord.assignPoints(this.summary.records, this.id)
         }
         RallyRecord.assignRanks(this.summary.records)
-        RallyRecord.sortBy(this.summary.records, sortBy);
+        ContestRecord.sortBy(this.summary.records, sortBy);
         return this.summary;
     }
     getWorldRecords(){
@@ -256,7 +256,7 @@ class Stage{
             case 3: orders = ["finalTime", "points"]; break;
         }
         for(const order of orders){
-            RallyRecord.sortBy(this.records, order);
+            ContestRecord.sortBy(this.records, order);
             if(orders.length > 1){
                 let orderText = "Results ordered by time"
                 if(order == "points"){
@@ -332,7 +332,9 @@ class Stage{
                 let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;"/ >`;
                 let value_lastColumn = this.RecordsSetLastColumn(j, records, finalLevel);
                 let proofRow = finalLevel==0 ? `<td>${this.proofsToDiv(records[j].proofs)}</td>` : ``
-                let finalTimeToDisplay = records[j].status.didFinish ? records[j].finalTime.formattedTime : records[j].status.value
+                let finalTimeToDisplay = finalLevel === 3 
+                    ? `${records[j].finalTime.formattedTime} ${RecordStatus.getNotFinishedStatusesString(records[j].rallyStatuses)}`
+                    : records[j].status.didFinish ? records[j].finalTime.formattedTime : records[j].status.value
                 let tr = newTableBody.insertRow();
                 let th = document.createElement("th");
                 th.appendChild(document.createTextNode(records[j].rank));
@@ -552,18 +554,13 @@ class RallyRecord extends Record{
     static sortByPoints(records){
         return records.sort((a,b) => b.points.getTotalPoints() - a.points.getTotalPoints())
     }
-    static sortBy(records, sortBy){
-        switch(sortBy){
-            case "finalTime": return Record.sortByFinalTime(records);
-            case "points": return RallyRecord.sortByPoints(records);
-        }
-    }
 }
 
 class ContestRecord extends RallyRecord{
     constructor(rallyRecord, rallyStatuses){
         super(rallyRecord, rallyRecord.points)
         this.rallyStatuses = rallyStatuses
+        this.ralliesNotFinished = RecordStatus.countNotFinishedStatuses(rallyStatuses)
     }
     static fromRallyRecords(rallyRecords){
         const contestRecord = new ContestRecord(
@@ -573,6 +570,23 @@ class ContestRecord extends RallyRecord{
         contestRecord.points = PointsWrapper.addMany(rallyRecords.map(rallyRecord => rallyRecord.points))
         contestRecord.status = RecordStatus.getContestStatus(rallyRecords.map(rallyRecord => rallyRecord.status))
         return contestRecord
+    }
+    static sortByFinalTime(records){ //compare centiseconds
+        return records
+            .sort((a,b) => (a.finalTime.centiseconds - b.finalTime.centiseconds))
+            .sort((a,b) => (a.ralliesNotFinished - b.ralliesNotFinished))
+    }
+    static sortBy(records, sortBy){
+        if(records.length <= 0){
+            return records
+        }
+        const firstRecord = records[0]
+        switch(sortBy){
+            case "finalTime": return firstRecord instanceof ContestRecord 
+                ? ContestRecord.sortByFinalTime(records)
+                : Record.sortByFinalTime(records);
+            case "points": return RallyRecord.sortByPoints(records);
+        }
     }
 }
 
@@ -648,6 +662,29 @@ class RecordStatus{
             return new RecordStatus("DNS")
         }
         return new RecordStatus("DNF")
+    }
+    static countNotFinishedStatuses(recordStatuses){
+        return recordStatuses.filter(recordStatus => !recordStatus.didFinish).length
+    }
+    static getNotFinishedStatusesString(recordStatuses){
+        const notFinishedStatuses = recordStatuses.filter(recordStatus => !recordStatus.didFinish)
+        if(notFinishedStatuses.length <= 0){
+            return ""
+        }
+        const statusesCount = {}
+        notFinishedStatuses.forEach(notFinishedStatus => {
+            if(!(notFinishedStatus.value in statusesCount)){
+                statusesCount[notFinishedStatus.value] = 0
+            }
+            statusesCount[notFinishedStatus.value]++
+        })
+        const innerString = Object.keys(statusesCount).map(statusValue => ({
+            value: statusValue,
+            count: statusesCount[statusValue]
+        })) .sort((a, b) => b.count - a.count)
+            .map(statusObject => `${statusObject.count} ${statusObject.value}`)
+            .join(", ")
+        return `(${innerString})`
     }
 } 
 
