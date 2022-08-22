@@ -1008,9 +1008,9 @@ function contestData(){
         wr = stage.AddRecord(BrosTheTird, "DNF", "DNF", "No")
         wr = stage.AddRecord(datsun100aGTR, "07:12.00", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1mD7YLtbDueIOeUKg5WPru_G9nupKzJ9t/view?usp=sharing"
-        // wr = stage.AddRecord(Ephemeral, "08:44.78", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1jl0WDibzIhyHnHOJEqAm7vyaih3NEMQ0/view?usp=sharing"
-        // wr.proofs["replay"] = "https://drive.google.com/file/d/1Sb3GxzAujZCFhmD29twqqBYNPZdB3in6/view?usp=sharing"
+        wr = stage.AddRecord(Ephemeral, "06:50.68", "00:00.00", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1xEvpquCQT1SWEfJ84MARHnbs80yR_dmn/view?usp=sharing"
+        wr.proofs["replay"] = "https://drive.google.com/file/d/1cCGY7gpxa8hNa6VNu1a0KWnH7LX9Zrln/view?usp=sharing"
         // wr = stage.AddRecord(Erwto, "09:38.36", "00:00.00", "No")
         // wr.proofs["image"] = "https://drive.google.com/file/d/1cpjmGjjolwWePVS4pZ5heSvrIYqz9Fpt/view?usp=sharing"
         // wr = stage.AddRecord(KarelPipa, "DNS", "DNS", "No")
@@ -1040,9 +1040,8 @@ function contestData(){
         wr = stage.AddRecord(BrosTheTird, "DNF", "DNF", "No")
         wr = stage.AddRecord(datsun100aGTR, "07:06.93", "00:00.00", "No")
         wr.proofs["image"] = "https://drive.google.com/file/d/1glBbJM0XNNS1OSqfEYZa9ajNLSIDZ9T4/view?usp=sharing"
-        // wr = stage.AddRecord(Ephemeral, "08:44.78", "00:00.00", "No")
-        // wr.proofs["image"] = "https://drive.google.com/file/d/1jl0WDibzIhyHnHOJEqAm7vyaih3NEMQ0/view?usp=sharing"
-        // wr.proofs["replay"] = "https://drive.google.com/file/d/1Sb3GxzAujZCFhmD29twqqBYNPZdB3in6/view?usp=sharing"
+        wr = stage.AddRecord(Ephemeral, "DNF", "DNF", "No")
+        wr.proofs["image"] = "https://drive.google.com/file/d/1VbfzTigs3-Ej9nYB-1P2g0FgAodvmVdV/view?usp=sharing"
         // wr = stage.AddRecord(Erwto, "09:38.36", "00:00.00", "No")
         // wr.proofs["image"] = "https://drive.google.com/file/d/1cpjmGjjolwWePVS4pZ5heSvrIYqz9Fpt/view?usp=sharing"
         wr = stage.AddRecord(KarelPipa, "DNS", "DNS", "No")
