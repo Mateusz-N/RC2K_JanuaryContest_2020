@@ -1,5 +1,3 @@
-const recordTimePattern = /[0-9]{2}:[0-5][0-9].[0-9]{2}/; // Regex for correct time results
-
 class Website{
     constructor(){
         this.contests = [];
@@ -37,14 +35,34 @@ class User{
 }
 
 class Participant{
-    constructor(num, user, color, group, car){
+    constructor(num, user, color, car){
         this.num = num
         this.user = user
         this.color = color
-        this.group = group
         this.car = car
+        this.group = null
     }
-    
+}
+
+class Group{
+    constructor(number){
+        this.number = number
+        this.participants = []
+        this.name = this.getName()
+    }
+    getName(){
+        return `G${this.number}`
+    }
+    addParticipant(participant){
+        participant.group = this
+        this.participants.push(participant)
+    }
+    addParticipants(participants){
+        participants.forEach(participant => this.addParticipant(participant))
+    }
+    getPointAdvantage(otherGroup){
+        return Math.max(0, this.number - otherGroup.number)
+    }
 }
 
 class Contest{
@@ -52,12 +70,13 @@ class Contest{
         this.name = name
         this.participants = []
         this.rallies = []
+        this.groups = []
     }
     AddRally(rally){
         rally.id = this.rallies.length;
         this.rallies.push(rally);
     }
-    GetParticipantIDByName(name){
+    getParticipantIDByName(name){
         function checkName(participant){
             if(participant.user.name == name)
                 return true
@@ -65,26 +84,25 @@ class Contest{
         }
         return this.participants.findIndex(checkName)
     }
-    GetParticipantByName(name){
-        return this.participants[this.GetParticipantIDByName(name)]
+    getParticipantByName(name){
+        return this.participants[this.getParticipantIDByName(name)]
     }
-    generateFinalSummary(){
+    getFinalSummary(){
+        if(typeof this.summaryRally !== "undefined"){
+            return this.summaryRally
+        }
         this.summaryRally = new Rally("Final")
         for(let i = 0; i< this.rallies.length; i++){
             let rally = this.rallies[i];
-            let summaryRally_stage = rally.generateSummary(this.participants.length)  // Stage object
-            let direction_wr_centiseconds = {"arcade": 0, "simulation": 0}   //somar os wr de cada stage em um rally
-            for(let j = 0; j < rally.stages.length; j++){ 
-                let stage = rally.stages[j];
-                for(let k in stage.wr){    
-                    let current_direction_wr = stage.wr[k][0];
-                    direction_wr_centiseconds[k] += current_direction_wr.centiseconds;
-                }
-            }
-            summaryRally_stage.AddWorldRecord(direction_wr_centiseconds["arcade"],direction_wr_centiseconds["simulation"]);
-            summaryRally_stage.index = i
+            let summaryRally_stage = rally.getSummary()  // Stage object
             this.summaryRally.stages.push(summaryRally_stage)
         }
+        this.summaryRally.id = 6
+        return this.summaryRally
+    }
+    finish(){
+        this.rallies.forEach(rally => rally.finish())
+        this.getFinalSummary().finish()
     }
 }
 
@@ -94,109 +112,59 @@ class Rally{
         this.name = name
         this.stages = []
     }
-    generateSummary(nParticipants, sortBy = "centiseconds"){
+    getSummary(sortBy = "centiseconds"){
+        if(typeof this.summary !== "undefined"){
+            return this.summary
+        }
         this.summary = new Stage(this.name + " Summary");
         this.summary.index = 6
         this.summary.imageURL = "../../resources/rally" + this.id + ".PNG";
-        let participants = []  //name to participant object
-        let centiseconds_initial_hash = []  //Centiseconds initial = sum of time without penalties
-        let penalty_hash = [] //sum of penalties
-        let verified_hash = []  // final verification => Yes/No/DNF
-        let number_hash = []  //number of stages completed [participant_name]
-        let points_hash = []
-        for(let i = 0; i < this.stages.length; i++){
-            let stage = this.stages[i];
-            for(let j = 0; j< stage.records.length; j++){
-                let record = stage.records[j];
-                let name = record.participant.user.name;
-                if(!participants[name]){ //Setting up hashes with key = name --- Only first stage
-                    participants[name] = record.participant;
-                    centiseconds_initial_hash[name] = record.centiseconds_initial;
-                    penalty_hash[name] = record.centiseconds_penalty;
-                    verified_hash[name] = record.verified
-                    number_hash[name] = 1;
-                    if(typeof(record.points) !== "undefined"){ //This verification differs normal stages and summary stages
-                        points_hash[name] = record.points;
-                    }
+        const stageRecordsByParticipant = {}
+        this.stages.forEach(stage => {
+            stage.records.forEach(record => {
+                const participantName = record.participant.user.name
+                if(!(participantName in stageRecordsByParticipant)){
+                    stageRecordsByParticipant[participantName] = []
                 }
-                else{
-                    if(record.centiseconds_initial < 0){ //If DNF
-                        if(this.id !== 6){ //if its the normal rallies
-                            centiseconds_initial_hash[name] = -1
-                            penalty_hash[name] = -1
-                            points_hash[name] = new PointsWrapper(0,0,0);
-                        }
-                        verified_hash[name] = "DNF"
-                        number_hash[name] += 1;   
-                    }
-                    else{
-                        centiseconds_initial_hash[name] += record.centiseconds_initial;
-                        penalty_hash[name] += record.centiseconds_penalty;
-                        if(record.verified == "No"){verified_hash[name] = "No"}
-                        number_hash[name] += 1;
-                        if(typeof(record.points) !== "undefined"){  //If is an summary stage
-                            points_hash[name] = points_hash[name].add(record.points);
-                        }
-                    }
-                }
-            }
+                stageRecordsByParticipant[participantName].push(record)
+            })
+        })
+        this.summary.records = []
+        for(const participantName in stageRecordsByParticipant){
+            const stageRecords = stageRecordsByParticipant[participantName]
+            const rallyRecord = this.id === 6
+                ? ContestRecord.fromRallyRecords(stageRecords)
+                : RallyRecord.fromStageRecords(stageRecords)
+            this.summary.records.push(rallyRecord)
         }
-        for(let key in centiseconds_initial_hash){
-            if(number_hash[key] > 1 || this.id == 6){ //If participant completed one stage or its the final standings page
-                let participant = participants[key];
-                this.summary.AddRecord(participant,centiseconds_initial_hash[key],penalty_hash[key],verified_hash[key])  //write hashes = sum of results
-            }
+        this.summary.wr.arcade = [this.wr.arcade]
+        this.summary.wr.simulation = [this.wr.simulation]
+        if(this.id !== 6){
+            RallyRecord.assignPoints(this.summary.records, this.id)
         }
-        this.summary.RecordsSorted_Centiseconds()
-        for(let i = 0; i< this.summary.records.length; i++){  //"i" ordered by position
-            let record = this.summary.records[i];
-            let key = record.participant.user.name;
-            if(typeof(points_hash[key]) !== "undefined"){  //If it's the summary rally
-                record.points = points_hash[key];
-                continue;
-            }
-            let car = record.participant.car;
-            let group = record.participant.group.charAt(1);
-            
-            // Bonus points
-            let group_bonus = 0;
-            let groups_beaten = []; // Groups beaten by current player
-            const weak_car_bonus = (car == 'Mitsubishi Lancer Evo IV' || car == 'Seat Cordoba WRC' || car == 'Proton Wira/Persona') ? 1 : 0;
-            for(let j = this.summary.records.length - 1; j > i; j--) {  // Starting with the player ranked last, up to the current player
-                let group_beaten = this.summary.records[j].participant.group.charAt(1);
-                if (group_beaten < group && !groups_beaten.includes(group_beaten) && recordTimePattern.test(this.summary.records[j].time)) {    // If current player beat a better ("lower") group (and the better group's driver actually completed the rally), give a one-time bonus equal to currentGroup - beatenGroup
-                    group_bonus += (group - group_beaten);
-                    groups_beaten.push(group_beaten);
-                }
-            }
-
-            const positionPoints = nParticipants - i
-            const points = new PointsWrapper(positionPoints, weak_car_bonus, group_bonus)
-
-            // That weird multiplier for Seat JCMR based on the group
-            let seatMultiplier;
-            if(this.id == 3) { // Rally.id == Seat JCMR
-                switch(group) {
-                    case '3':
-                        seatMultiplier = 2;
-                        break;
-                    case '4':
-                        seatMultiplier = 2.5;
-                        break;
-                    default:
-                        seatMultiplier = 1.5;
-                        break;
-                }
-                Object.keys(points).forEach(function(key) { // Multiply each type of points
-                    points[key] *= seatMultiplier;
-                })
-            }
-
-            record.points = points;
-        }
-        this.summary.AssignRanks()
-        this.summary.RecordsSorted_SortBy(sortBy)
+        RallyRecord.assignRanks(this.summary.records)
+        RallyRecord.sortBy(this.summary.records, sortBy);
         return this.summary;
+    }
+    getWorldRecords(){
+        if(typeof this.wr !== "undefined"){
+            return this.wr
+        }
+        this.wr = {}
+        const directions = ["arcade", "simulation"]
+        directions.forEach(direction => {
+            const recordTime = this.stages.map(stage => {
+                stage.sortWorldRecords()
+                return stage.wr[direction][0].finalTime  //If some wr for one stage misses, raise exception
+            }).reduce((acc, time) => acc.add(time), new Time(0))
+            this.wr[direction] = new WorldRecord(new User("RecordHolder", "unknown"), recordTime, direction, "Mitsubishi Lancer Evo V")
+        })
+        return this.wr
+    }
+    finish(){
+        this.stages.forEach(stage => stage.finish())
+        this.getWorldRecords()
+        this.getSummary()
     }
 }
 
@@ -207,54 +175,52 @@ class Stage{
         this.records = []
         this.imageURL = undefined;
         this.wr = {
-            "arcade": [],
-            "simulation": []
+            arcade: [],
+            simulation: []
         };
     }
     AddRecord(participant, time, penalty, verified){
-        let newRecord = new Record(participant,time,penalty,verified)
+        let newRecord = Record.fromUserInput(participant,time,penalty,verified)
         this.records.push(newRecord)
         return newRecord;
     }
-    AddWorldRecord(ArcadeTime, SimulationTime){
-        if(ArcadeTime){
-            this.wr["arcade"].push(new Record(new Participant(1, new User("RecordHolder", ""), "#000000",""), ArcadeTime,"00:00.00", "yes"));
-        }
-        if(SimulationTime){
-            this.wr["simulation"].push(new Record(new Participant(1, new User("RecordHolder", ""), "#000000",""), SimulationTime,"00:00.00", "yes"));
-        }
-    }
     AddArcadeWorldRecord(user, time, carName = "Mitsubishi Lancer Evo V"){
-        let record = new Record(new Participant(1, user, "#000000", "",carName), time, "00:00.00", "yes")
+        let record = WorldRecord.fromUserInput(user, time, "arcade", carName)
         this.wr["arcade"].push(record);
         return record;
     }
     AddSimulationWorldRecord(user, time, carName = "Mitsubishi Lancer Evo V"){
-        let record = new Record(new Participant(1, user, "#000000", "", carName), time, "00:00.00", "yes")
+        let record = WorldRecord.fromUserInput(user, time, "simulation", carName)
         this.wr["simulation"].push(record);
         return record;
+    }
+    sortWorldRecords(){
+        const directions = Object.keys(this.wr)
+        directions.forEach(direction => {
+            this.wr[direction] = Record.sortByFinalTime(this.wr[direction])
+        })
     }
     // The next two functions need some refactoring!
     RecordsAddGapsToLeader(records) {
         const leader = records[0];
         for (const rec of records) {
-            rec.gapToLeader = "+" + rec.CentisecondsToTime(rec.centiseconds_initial - leader.centiseconds_initial);
+            rec.gapToLeader = "+" + Time.centisecondsToTime(rec.initialTime.centiseconds - leader.initialTime.centiseconds);
         }
     }
     RecordsAddMoreGaps(rank, records) {
-        if(!recordTimePattern.test(records[rank].time)) return `<span class="gapToLeader">N/A</span>`;
+        if(!records[rank].status.didFinish) return `<span class="gapToLeader">N/A</span>`;
         let gapToRankAboveMessage = ``;
         let gapToRankBelowMessage = ``;
         if(rank > 0) {
             const rankAbove = rank-1;
             const rankAboveOrdinal = this.ToOrdinalRank(rankAbove);
-            const gapToRankAbove = records[rank].CentisecondsToTime(records[rank].centiseconds_initial - records[rankAbove].centiseconds_initial);
+            const gapToRankAbove = Time.centisecondsToTime(records[rank].initialTime.centiseconds - records[rankAbove].initialTime.centiseconds);
             gapToRankAboveMessage = `<span class="gapToRankAbove">Gap to ${rankAboveOrdinal}: +${gapToRankAbove}</span><br/>`;
         }
-        if(rank < records.length-1 && recordTimePattern.test(records[rank+1].time)) {
+        if(rank < records.length-1 && records[rank+1].status.didFinish) {
             const rankBelow = rank+1;
             const rankBelowOrdinal = this.ToOrdinalRank(rankBelow);
-            const gapToRankBelow = records[rank].CentisecondsToTime(records[rankBelow].centiseconds_initial - records[rank].centiseconds_initial);
+            const gapToRankBelow = Time.centisecondsToTime(records[rankBelow].initialTime.centiseconds - records[rank].initialTime.centiseconds);
             gapToRankBelowMessage = `<span class="gapToRankBelow">Gap to ${rankBelowOrdinal}: -${gapToRankBelow}</span>`;
         }
         return `<span class="gapToLeader">${records[rank].gapToLeader}<div class="gapsHint">${gapToRankAboveMessage}${gapToRankBelowMessage}</div></span>`;
@@ -278,69 +244,20 @@ class Stage{
     RecordsSetLastColumn(rank, records, finalLevel) {
         return finalLevel==0 ? this.RecordsAddMoreGaps(rank, records) : records[rank].points.toDiv();
     }
-    RecordsSorted_SortBy(sortBy, records = this.records){
-        switch(sortBy){
-            case "centiseconds": return this.RecordsSorted_Centiseconds(records);
-            case "points": return this.RecordsSorted_Points(records);
-        }
-    }
-    RecordsSorted_Points(records = this.records){
-        return records.sort((a,b) => b.points.getTotalPoints() - a.points.getTotalPoints())
-    }
-    RecordsSorted_Centiseconds(records = this.records){  //compare centiseconds
-        return records.sort(function (a,b){
-            if(a.centiseconds < 0)
-                return Number.POSITIVE_INFINITY
-            if(b.centiseconds < 0)
-                return Number.NEGATIVE_INFINITY
-            return (a.centiseconds - b.centiseconds)
-        })
-    }
-    AssignRanks(records = this.records){ //Caution: This can change the record order
-        if(records.length <= 0){
-            return;
-        }
-        const isBasedOnPoints = typeof records[0].points !== "undefined"
-        if(isBasedOnPoints){
-            this.RecordsSorted_Points(records)
-            for(let i = 0; i< records.length; i++){
-                let record = records[i];
-                if(i == 0){
-                    record.rank = 1;
-                    continue;
-                }
-                let lastRecord = records[i-1]
-                if(record.points.getTotalPoints() === lastRecord.points.getTotalPoints()){
-                    record.rank = lastRecord.rank;
-                    continue;
-                }
-                record.rank = i + 1
-            }
-        }
-        else{
-            this.RecordsSorted_Centiseconds(records)
-            for(let i = 0; i < records.length; i++){
-                records[i].rank = i+1
-            }
-        } 
-    }
-    CreateContestEntireStageTable(div, finalLevel){
-        this.AssignRanks()
+    CreateContestEntireStageTable(div, finalLevel){ //finalLevel 0: Normal Stages, 1: RallySummaries, 2:Rally Summaries on their page, 3: Final Contest Summary
         const baseDiv = this.CreateStageTable(div)
         const stageTablesDiv = document.createElement('div')
         stageTablesDiv.className = "divStageTables"
-        let orders = ["centiseconds"]
-        if(finalLevel != 0){
-            if(this.index == 6){
-                orders = ["centiseconds", "points"]
-            }
-            else{
-                orders = ["points"]
-            }
+        let orders = ["finalTime"]
+        switch(finalLevel) {
+            case 0: orders = ["finalTime"]; break;
+            case 1: orders = ["finalTime", "points"]; break;
+            case 2: orders = ["points"]; break;
+            case 3: orders = ["finalTime", "points"]; break;
         }
         for(const order of orders){
-            this.RecordsSorted_SortBy(order);
-            if(this.index == 6){
+            RallyRecord.sortBy(this.records, order);
+            if(orders.length > 1){
                 let orderText = "Results ordered by time"
                 if(order == "points"){
                     orderText = "Results ordered by number of points"
@@ -355,11 +272,11 @@ class Stage{
         baseDiv.appendChild(stageTablesDiv)
     }
     CreateWorldRecordEntireStageTable(div, direction){
-        this.AssignRanks(this.wr["arcade"])
-        this.AssignRanks(this.wr["simulation"])
+        Record.AssignStageRanks(this.wr["arcade"])
+        Record.AssignStageRanks(this.wr["simulation"])
         this.CreateWorldRecordStageTable(this.CreateStageTable(div), direction);
     }
-    CreateStageTable(div){  //div = space for the table  //finalLevel 0: Normal Stages, 1: RallySummaries, 2:Final Contest Summary
+    CreateStageTable(div){  //div = space for the table
         let divStage = document.createElement('div')
         divStage.className = "divStage"
         let divTitleImage = document.createElement('div')
@@ -415,6 +332,7 @@ class Stage{
                 let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;"/ >`;
                 let value_lastColumn = this.RecordsSetLastColumn(j, records, finalLevel);
                 let proofRow = finalLevel==0 ? `<td>${this.proofsToDiv(records[j].proofs)}</td>` : ``
+                let finalTimeToDisplay = records[j].status.didFinish ? records[j].finalTime.formattedTime : records[j].status.value
                 let tr = newTableBody.insertRow();
                 let th = document.createElement("th");
                 th.appendChild(document.createTextNode(records[j].rank));
@@ -427,9 +345,9 @@ class Stage{
                 td = tr.insertCell();
                 td.innerHTML = flagImg;
                 td = tr.insertCell();
-                td.appendChild(document.createTextNode(records[j].participant.group));
+                td.appendChild(document.createTextNode(records[j].participant.group.name));
                 td = tr.insertCell();
-                td.appendChild(document.createTextNode(records[j].time));
+                td.appendChild(document.createTextNode(finalTimeToDisplay));
                 td = tr.insertCell();
                 td.innerHTML += value_lastColumn;
                 tr.innerHTML += proofRow;
@@ -462,7 +380,7 @@ class Stage{
             <tr>
                 <th scope="row">`+records[j].rank+`</th>
                 <td>${flagImg} `+ records[j].participant.user.name +` ${flagImg}</td>
-                <td>`+ records[j].time + `</td>
+                <td>`+ records[j].finalTime.formattedTime + `</td>
                 <td>`+ records[j].participant.car + `</td>
                 <td>`+ this.proofsToDiv(records[j].proofs) + `</td>
             </tr>
@@ -474,11 +392,11 @@ class Stage{
     }
     proofsToDiv(proofs){
         let proofsImages = "";
-        proofs.youtube !== null ? proofsImages += `<a href=${proofs.youtube}><img src="../../resources/youtube_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
-        proofs.image !== null ? proofsImages += `<a href=${proofs.image}><img src="../../resources/image_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
-        proofs.replay !== null ? proofsImages += `<a href=${proofs.replay}><img src="../../resources/replay_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
-        proofs.twitch !== null ? proofsImages += `<a href=${proofs.twitch}><img src="../../resources/twitch_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
-        proofs.link !== null ? proofsImages += `<a href=${proofs.link}><img src="../../resources/link_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.youtube != null ? proofsImages += `<a href=${proofs.youtube}><img src="../../resources/youtube_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.image != null ? proofsImages += `<a href=${proofs.image}><img src="../../resources/image_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.replay != null ? proofsImages += `<a href=${proofs.replay}><img src="../../resources/replay_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.twitch != null ? proofsImages += `<a href=${proofs.twitch}><img src="../../resources/twitch_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
+        proofs.link != null ? proofsImages += `<a href=${proofs.link}><img src="../../resources/link_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
         return proofsImages;
     }
     getImageUrl(){
@@ -487,42 +405,276 @@ class Stage{
         }
         return this.imageURL;
     }
+    finish(){
+        this.sortWorldRecords()
+        Record.sortByFinalTime(this.records)
+        if(typeof this.id !== "undefined"){  //refactor
+            Record.assignStageRanks(this.records)
+        }
+    }
 }
 
 class Record{
-    constructor(participant, time, penalty, verified){
+    constructor(participant, initialTime, penalty, status, verified){ //User typed (Dirty fields)
         this.participant = participant;
-        if(typeof(time) == "number"){
-            this.centiseconds_initial = time;
-            this.time = this.CentisecondsToTime(this.centiseconds_initial);
-        }
-        else{
-            this.time = time; //string
-            this.centiseconds_initial = this.TimeToCentiseconds(this.time);  //int
-        }
-        if(typeof(penalty) == "number"){
-            this.centiseconds_penalty = penalty;
-            this.penalty = this.CentisecondsToTime(this.centiseconds_penalty);
-        }
-        else{
-            this.penalty = penalty; //string
-            this.centiseconds_penalty = this.TimeToCentiseconds(this.penalty);  //int
-        }
-        this.centiseconds = this.centiseconds_initial + this.centiseconds_penalty; //int
-        this.timePenalty = this.CentisecondsToTime(this.centiseconds);  //string
+        this.initialTime = initialTime;
+        this.penalty = penalty;
+        this.status = status;
+        this.finalTime = this.initialTime.add(this.penalty)
         this.gapToLeader = 0;
         this.verified = verified;
-        this.proofs = {
-            "youtube": null,
-            "image": null,
-            "replay": null,
-            "twitch": null,
-            "link": null,
+        this.proofs = {}
+    }
+    static fromUserInput(participant, timeString, penaltyString, verified){
+        let initialTime = new Time(0)
+        let status = new RecordStatus(timeString)
+        let penalty = new Time(0)
+        if(Time.isValidTimeString(timeString)){
+            initialTime = Time.fromFormattedTime(timeString)
+            status = new RecordStatus("FINISHED")
+            if(Time.isValidTimeString(penaltyString)){
+                penalty = Time.fromFormattedTime(penaltyString)
+            }
+            else{
+                penalty = new Time(0)
+            }
+        }
+        return new Record(participant, initialTime, penalty, status, verified)
+    }
+    static sortByFinalTime(records){ //compare centiseconds
+        return records.sort(function (a,b){
+            if(!a.status.didFinish)
+                return Number.POSITIVE_INFINITY
+            if(!b.status.didFinish)
+                return Number.NEGATIVE_INFINITY
+            return (a.finalTime.centiseconds - b.finalTime.centiseconds)
+        })
+    }
+    static assignStageRanks(stageRecords){
+        const sortedStageRecords = Record.sortByFinalTime(stageRecords)
+        sortedStageRecords.forEach((stageRecord, index) => {
+            stageRecord.rank = index + 1
+        })
+        return sortedStageRecords
+    }
+}
+
+class RallyRecord extends Record{
+    constructor(record, points){
+        super(record.participant, record.initialTime, record.penalty, record.status, record.verified)
+        this.points = points
+    }
+    static fromStageRecords(stageRecords, isFinalSummary = false){
+        if(stageRecords.length <= 0){
+            return null;
+        }
+        const firstStageRecord = stageRecords[0]
+        const initialTime = Time.addMany(stageRecords.map(stageRecord => stageRecord.initialTime))
+        const penalty = Time.addMany(stageRecords.map(stageRecord => stageRecord.penalty))
+        const participant = firstStageRecord.participant
+        const verified = stageRecords.reduce((acc, stageRecord) => acc && stageRecord, true)
+        const status = RecordStatus.getRallyStatus(stageRecords.map(stageRecord => stageRecord.status)) 
+        const record = new Record(participant, initialTime, penalty, status, verified)
+        return new RallyRecord(record, null)
+    }
+    static assignPoints(rallyRecords, rallyNumber){
+        const sortedRallyRecords = Record.sortByFinalTime(rallyRecords.slice())
+        const numberOfParticipants = rallyRecords.length
+        //Base Points
+        sortedRallyRecords.forEach((record, index) =>{
+            record.points = new PointsWrapper(numberOfParticipants-index, 0, 0)
+        })
+        //Car Points
+        sortedRallyRecords.forEach(record => {
+            const carName = record.participant.car
+            const carBonus = [
+                'Mitsubishi Lancer Evo IV',
+                'Seat Cordoba WRC',
+                'Proton Wira/Persona'
+            ].indexOf(carName) !== -1 ? 1 : 0
+            record.points.add(new PointsWrapper(0, carBonus, 0))
+        })
+        //Group Points
+        sortedRallyRecords.forEach((record, index) => {
+            const recordGroup = record.participant.group
+            const beatenGroups = {}
+            const worseRecords = sortedRallyRecords.slice(index + 1).filter(record => record.status.didFinish)
+            worseRecords.forEach(worseRecord => {
+                const beatenGroup = worseRecord.participant.group
+                if(!(beatenGroup.number in beatenGroups)){
+                    beatenGroups[beatenGroup.number] = beatenGroup
+                }
+            })
+            let groupPoints = 0
+            for(const beatenGroupNumber in beatenGroups){
+                const beatenGroup = beatenGroups[beatenGroupNumber]
+                groupPoints += recordGroup.getPointAdvantage(beatenGroup)
+            }
+            record.points.add(new PointsWrapper(0, 0, groupPoints))
+        })
+        //Rally Number Points
+        if(rallyNumber === 3){
+            sortedRallyRecords.forEach(rallyRecord => {
+                const groupNumber = rallyRecord.participant.group.number
+                let groupMultiplier = 1.5;
+                switch(groupNumber){
+                    case 1: groupMultiplier = 1.5; break;
+                    case 2: groupMultiplier = 1.5; break;
+                    case 3: groupMultiplier = 2; break;
+                    case 4: groupMultiplier = 2.5; break;
+                }
+                rallyRecord.points.multiply(groupMultiplier)
+            })
+        }
+        //Did not finish points
+        sortedRallyRecords.forEach(rallyRecord => {
+            if(!rallyRecord.status.didFinish){
+                rallyRecord.points = new PointsWrapper(0, 0, 0)
+            }
+        })
+    }
+    static assignRanks(rallyRecords){
+        const sortedRallyRecords = RallyRecord.sortByPoints(rallyRecords.slice())
+        sortedRallyRecords.forEach((rallyRecord, index) => {
+            if(index == 0){
+                rallyRecord.rank = 1;
+                return;
+            }
+            let lastRallyRecord = sortedRallyRecords[index-1]
+            if(rallyRecord.points.getTotalPoints() === lastRallyRecord.points.getTotalPoints()){
+                rallyRecord.rank = lastRallyRecord.rank;
+                return;
+            }
+            rallyRecord.rank = index + 1
+        })
+        return sortedRallyRecords;
+    }
+    static sortByPoints(records){
+        return records.sort((a,b) => b.points.getTotalPoints() - a.points.getTotalPoints())
+    }
+    static sortBy(records, sortBy){
+        switch(sortBy){
+            case "finalTime": return Record.sortByFinalTime(records);
+            case "points": return RallyRecord.sortByPoints(records);
         }
     }
-    TimeToCentiseconds(time){   //string to int
-        if(!recordTimePattern.test(time))
-            return -1
+}
+
+class ContestRecord extends RallyRecord{
+    constructor(rallyRecord, rallyStatuses){
+        super(rallyRecord, rallyRecord.points)
+        this.rallyStatuses = rallyStatuses
+    }
+    static fromRallyRecords(rallyRecords){
+        const contestRecord = new ContestRecord(
+            RallyRecord.fromStageRecords(rallyRecords),
+            rallyRecords.map(rallyRecord => rallyRecord.status)
+        )
+        contestRecord.points = PointsWrapper.addMany(rallyRecords.map(rallyRecord => rallyRecord.points))
+        contestRecord.status = RecordStatus.getContestStatus(rallyRecords.map(rallyRecord => rallyRecord.status))
+        return contestRecord
+    }
+}
+
+class WorldRecord extends Record{
+    constructor(user, time, direction, carName){
+        const participant = new Participant(1, user, "#000000", carName)
+        super(participant, time, new Time(0), new RecordStatus("FINISHED"), true)
+        this.direction = direction
+    }
+    static fromUserInput(user, time, direction, carName){
+        return new WorldRecord(user, Time.fromFormattedTime(time), direction, carName)
+    }
+}
+
+class RecordStatus{
+    constructor(statusString){
+        switch(statusString){
+            case "FINISHED": this.value = "FINISHED"; break;
+            case "DNF": this.value = "DNF"; break;
+            case "DNS": this.value = "DNS"; break;
+            case "DSQ": this.value = "DSQ"; break;
+            default: this.value = "DNF"
+        }
+        this.didFinish = this.value === "FINISHED" 
+    }
+    getNextStageStatus(){
+        switch(this.value){
+            case "FINISHED": return RecordStatus("FINISHED");
+            case "DNF": return RecordStatus("DNS");
+            case "DNS": return RecordStatus("DNS");
+            case "DSQ": return RecordStatus("DSQ");
+            default: return RecordStatus(this.value)
+        }
+    }
+    static getRallyStatus(stageStatuses){
+        if(stageStatuses.length <= 0 || stageStatuses[0].value === "DNS"){
+            return new RecordStatus("DNS")
+        }
+        for(const stageStatus of stageStatuses){
+            if(stageStatus.value === "DSQ"){
+                return new RecordStatus("DSQ")
+            }
+            if(stageStatus.value === "DNS" || stageStatus.value === "DNF"){
+                return new RecordStatus("DNF")
+            }
+        }
+        return new RecordStatus("FINISHED")
+    }
+    static getContestStatus(rallyStatuses){
+        console.log(rallyStatuses)
+        if(rallyStatuses.length <= 0){
+            return new RecordStatus("DNS")
+        }
+        let didStart = false;
+        let ralliesNotFinished = 0; //Includes DNF, DNS, DSQ
+        for(const rallyStatus of rallyStatuses){
+            if(rallyStatus.value === "DSQ"){
+                return new RecordStatus("DSQ")
+            }
+            if(rallyStatus.value === "DNF"){
+                return new RecordStatus("DNF")
+            }
+            if(rallyStatus.value === "FINISHED"){
+                didStart = true;
+            }
+            else{
+                ralliesNotFinished++;
+            }
+        }
+        console.log(ralliesNotFinished)
+        if(ralliesNotFinished === 0){
+            return new RecordStatus("FINISHED")
+        }
+        if(!didStart){
+            return new RecordStatus("DNS")
+        }
+        return new RecordStatus("DNF")
+    }
+} 
+
+class Time{
+    constructor(centiseconds){
+        this.centiseconds = centiseconds;
+        this.formattedTime = Time.centisecondsToTime(centiseconds)
+    }
+    static fromFormattedTime(formattedTime){
+        if(!this.isValidTimeString(formattedTime))
+            return null
+        const centiseconds = Time.timeToCentiseconds(formattedTime)
+        return new Time(centiseconds)
+    }
+    static isValidTimeString(timeString){
+        const recordTimePattern = /[0-9]{2}:[0-5][0-9].[0-9]{2}/; // Regex for correct time results
+        return recordTimePattern.test(timeString)
+    }
+    static addMany(times){
+        return times.reduce((acc, time) => acc.add(time), new Time(0))
+    }
+    add(otherTime){
+        return new Time(this.centiseconds + otherTime.centiseconds)
+    }
+    static timeToCentiseconds(time){   //string to int
         let centiseconds = 0;
         let index = time.lastIndexOf('.')
         centiseconds += parseInt(time.slice(index+1,index+3))
@@ -537,7 +689,7 @@ class Record{
         centiseconds += 60 * 60 * 100 * parseInt(time.slice) //hours
         return centiseconds
     }
-    CentisecondsToTime(centiseconds){
+    static centisecondsToTime(centiseconds){
         if(centiseconds < 0)
             return "DNF"
         let number_string = "";
@@ -546,14 +698,14 @@ class Record{
             number_string += this.addZero(hours) + ":";
             centiseconds %= 100*60*60;
         }
-        number_string += this.addZero(~~(centiseconds/(100*60))) + ":";
+        number_string += Time.addZero(~~(centiseconds/(100*60))) + ":";
         centiseconds %= 100*60;
-        number_string += this.addZero(~~(centiseconds/100))+".";
+        number_string += Time.addZero(~~(centiseconds/100))+".";
         centiseconds %= 100;
-        number_string += this.addZero(centiseconds);
+        number_string += Time.addZero(centiseconds);
         return number_string
     }
-    addZero(number){  //int 5 turns string "05"
+    static addZero(number){  //int 5 turns string "05"
         if(number < 10){
             return "0" + number
         }
@@ -575,6 +727,14 @@ class PointsWrapper{
         this.carPoints += pointsWrapper.carPoints
         this.groupPoints += pointsWrapper.groupPoints
         return this
+    }
+    static addMany(pointsWrappers){
+        return pointsWrappers.reduce((acc, pointWrapper) => acc.add(pointWrapper), new PointsWrapper(0, 0, 0))
+    }
+    multiply(number){
+        this.positionPoints *= number
+        this.carPoints *= number
+        this.groupPoints *= number
     }
     toDiv(){
         return `${this.getTotalPoints()} (<span class="pointsHover">${this.positionPoints}<div class="pointsHint">Base</div></span> + <span class="pointsHover">${this.carPoints}<div class="pointsHint">Weaker car bonus</div></span> + <span class="pointsHover">${this.groupPoints}<div class="pointsHint">Group bonus</div></span>)`

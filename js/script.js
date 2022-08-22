@@ -17,18 +17,19 @@ document.getElementById("title").innerHTML = contest.name
 
 // Compare function for sorting participants by Group (ascending order)
 function compareGroups(participant1, participant2) {
-    if (participant1.group.charAt(1) < participant2.group.charAt(1)) {
+    if (participant1.group.number < participant2.group.number) {
         return 1;
     }
-    if (participant1.group.charAt(1) > participant2.group.charAt(1)) {
+    if (participant1.group.number > participant2.group.number) {
         return -1;
     }
     return 0;
 }
 
-function showDriverProfile(participant) {
+function showDriverProfile(participantName) {
+    const participant = contest.getParticipantByName(participantName);
     document.getElementById("modalDriverProfile").style.display = "flex";
-    let driverProfileImgFilename = `${participant.group}_${participant.user.name}`;
+    let driverProfileImgFilename = `${participant.group.name}_${participant.user.name}`;
     document.getElementById("driverProfileImg").setAttribute("src", `../../resources/driver_profiles/${driverProfileImgFilename.toLowerCase().replaceAll(' ','')}.png`);
 }
 
@@ -42,31 +43,28 @@ function closeModal(event) {
 let generateEntries = document.getElementById("generateEntries");
 contest.participants.sort(compareGroups);
 
-    for(let i=0; i<contest.participants.length; i++) {
-        let participant = contest.participants[i];
-        let flagImg = `<img src="../../resources/flags/${participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;" onerror="this.src='../../resources/flags/unknown.png'" />`;
-        if (generateEntries) {
-            generateEntries.innerHTML += 
-            `<tr>
-                <td>${participant.num}</td>
-                <td>${participant.user.name}</td>
-                <td>${flagImg}</td>
-                <td>${participant.group}</td>
-                <td>${participant.car}</td>
-                <td><button id="showModalBtn" onClick='showDriverProfile(${JSON.stringify(participant)})'>Show</button></td>
-            </tr>`
-        }
+
+for(let i=0; i<contest.participants.length; i++) {
+    let participant = contest.participants[i];
+    let flagImg = `<img src="../../resources/flags/${participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;" onerror="this.src='../../resources/flags/unknown.png'" />`;
+    if (generateEntries) {
+        generateEntries.innerHTML += 
+        `<tr>
+            <td>${participant.num}</td>
+            <td>${participant.user.name}</td>
+            <td>${flagImg}</td>
+            <td>${participant.group.getName()}</td>
+            <td>${participant.car}</td>
+            <td><button id="showModalBtn" onClick='showDriverProfile("${participant.user.name}")'>Show</button></td>
+        </tr>`
     }
+}
 // Entry list generator (END)
 
 let buttonSpace = document.getElementById("buttons");
 
 if(buttonSpace){
     for(let i=0; i< contest.rallies.length; i++){
-        // let button = document.createElement("img")
-        // button.setAttribute("onclick","loadRallyTables("+ i +")");
-        // button.setAttribute("src", `../../resources/rally${i}.png`);
-        // button.setAttribute("width", "100px");
         let button = document.createElement("button")
         button.setAttribute("onclick","loadRallyTables("+ i +")");
         button.innerHTML = contest.rallies[i].name;
@@ -75,7 +73,7 @@ if(buttonSpace){
     loadRallyTables(0)
 }
 else{
-    contest.generateFinalSummary()
+    contest.getFinalSummary()
     contest.AddRally(contest.summaryRally);
     console.log("FinalSummary")
     loadRallyTables(6);
@@ -112,13 +110,13 @@ function loadRallyTables(RallyID){
         for(let i = 0; i< stages.length; i++){
             stages[i].CreateContestEntireStageTable(tables, 0) 
         }
-        contest.rallies[RallyID].generateSummary(nParticipants).CreateContestEntireStageTable(summaryDiv, 1)
+        contest.rallies[RallyID].getSummary(nParticipants).CreateContestEntireStageTable(summaryDiv, 1)
     }
     else{
         for(let i = 0; i< stages.length; i++){
-            stages[i].CreateContestEntireStageTable(tables,1)
+            stages[i].CreateContestEntireStageTable(tables,2)
         }
-        contest.rallies[RallyID].generateSummary(nParticipants).CreateContestEntireStageTable(summaryDiv, 2)
+        contest.rallies[RallyID].getSummary(nParticipants).CreateContestEntireStageTable(summaryDiv, 3)
     }
    
     //CHART.js 
