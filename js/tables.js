@@ -228,8 +228,8 @@ class Stage{
         baseDiv.appendChild(stageTablesDiv)
     }
     CreateWorldRecordEntireStageTable(div, direction){
-        Record.AssignStageRanks(this.wr["arcade"])
-        Record.AssignStageRanks(this.wr["simulation"])
+        Record.assignStageRanks(this.wr["arcade"])
+        Record.assignStageRanks(this.wr["simulation"])
         this.CreateWorldRecordStageTable(this.CreateStageTable(div), direction);
     }
     CreateStageTable(div){  //div = space for the table
@@ -340,7 +340,7 @@ class Stage{
                 <td>${flagImg} `+ records[j].participant.user.name +` ${flagImg}</td>
                 <td>`+ records[j].finalTime.formattedTime + `</td>
                 <td>`+ records[j].participant.car + `</td>
-                <td>`+ this.proofsToDiv(records[j].proofs) + `</td>
+                <td>`+ records[j].proofs.toElement() + `</td>
             </tr>
             `
         }
