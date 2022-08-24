@@ -835,7 +835,7 @@ class Proof{
         return `../../resources/${Proof.imageNames[this.type] ?? Proof.imageNames.other}`
     }
     toElement(){
-        return `<a href=${this.link}><img src="${this.getImagePath()}" style="height: 20px; border: 1px solid #CCC;"></img></a>`
+        return `<a target="_blank" rel="noopener noreferrer" href=${this.link}><img src="${this.getImagePath()}" style="height: 20px; border: 1px solid #CCC;"></img></a>`
     }
 }
 
