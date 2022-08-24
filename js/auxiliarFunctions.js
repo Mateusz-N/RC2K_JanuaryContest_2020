@@ -28,3 +28,20 @@ const getFloorHueToRGBArray = (c, x) => [
     [x, 0, c],
     [c, 0, x]
 ]
+
+function toOrdinalRank(rank) {
+    rank++; // 0th => 1st, etc.
+    let suffix = 'th';
+    switch(rank) {
+        case 1:
+            suffix = 'st';
+            break;
+        case 2:
+            suffix = 'nd';
+            break;
+        case 3:
+            suffix = 'rd';
+            break;
+    }
+    return rank+suffix;
+}

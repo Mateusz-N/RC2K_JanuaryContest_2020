@@ -200,50 +200,6 @@ class Stage{
             this.wr[direction] = Record.sortByFinalTime(this.wr[direction])
         })
     }
-    // The next two functions need some refactoring!
-    RecordsAddGapsToLeader(records) {
-        const leader = records[0];
-        for (const rec of records) {
-            rec.gapToLeader = "+" + Time.centisecondsToTime(rec.initialTime.centiseconds - leader.initialTime.centiseconds);
-        }
-    }
-    RecordsAddMoreGaps(rank, records) {
-        if(!records[rank].status.didFinish) return `<span class="gapToLeader">N/A</span>`;
-        let gapToRankAboveMessage = ``;
-        let gapToRankBelowMessage = ``;
-        if(rank > 0) {
-            const rankAbove = rank-1;
-            const rankAboveOrdinal = this.ToOrdinalRank(rankAbove);
-            const gapToRankAbove = Time.centisecondsToTime(records[rank].initialTime.centiseconds - records[rankAbove].initialTime.centiseconds);
-            gapToRankAboveMessage = `<span class="gapToRankAbove">Gap to ${rankAboveOrdinal}: +${gapToRankAbove}</span><br/>`;
-        }
-        if(rank < records.length-1 && records[rank+1].status.didFinish) {
-            const rankBelow = rank+1;
-            const rankBelowOrdinal = this.ToOrdinalRank(rankBelow);
-            const gapToRankBelow = Time.centisecondsToTime(records[rankBelow].initialTime.centiseconds - records[rank].initialTime.centiseconds);
-            gapToRankBelowMessage = `<span class="gapToRankBelow">Gap to ${rankBelowOrdinal}: -${gapToRankBelow}</span>`;
-        }
-        return `<span class="gapToLeader">${records[rank].gapToLeader}<div class="gapsHint">${gapToRankAboveMessage}${gapToRankBelowMessage}</div></span>`;
-    }
-    ToOrdinalRank(rank) {
-        rank++; // 0th => 1st, etc.
-        let suffix = 'th';
-        switch(rank) {
-            case 1:
-                suffix = 'st';
-                break;
-            case 2:
-                suffix = 'nd';
-                break;
-            case 3:
-                suffix = 'rd';
-                break;
-        }
-        return rank+suffix;
-    }
-    RecordsSetLastColumn(rank, records, finalLevel) {
-        return finalLevel==0 ? this.RecordsAddMoreGaps(rank, records) : records[rank].points.toDiv();
-    }
     CreateContestEntireStageTable(div, finalLevel){ //finalLevel 0: Normal Stages, 1: RallySummaries, 2:Rally Summaries on their page, 3: Final Contest Summary
         const baseDiv = this.CreateStageTable(div)
         const stageTablesDiv = document.createElement('div')
@@ -326,28 +282,28 @@ class Stage{
         }
         else {
             let records = this.records;
-            this.RecordsAddGapsToLeader(records);
             for(let j = 0; j < records.length; j++)
             {
-                let flagImg = `<img src="../../resources/flags/${records[j].participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;"/ >`;
-                let value_lastColumn = this.RecordsSetLastColumn(j, records, finalLevel);
-                let proofRow = finalLevel==0 ? `<td>${this.proofsToDiv(records[j].proofs)}</td>` : ``
+                let record = records[j]
+                let flagImg = `<img src="../../resources/flags/${record.participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;"/ >`;
+                let value_lastColumn = finalLevel==0 ? record.gaps.toElement() : record.points.toElement();
+                let proofRow = finalLevel==0 ? `<td>${this.proofsToDiv(record.proofs)}</td>` : ``
                 let finalTimeToDisplay = finalLevel === 3 
-                    ? `${records[j].finalTime.formattedTime} ${RecordStatus.getNotFinishedStatusesString(records[j].rallyStatuses)}`
-                    : records[j].status.didFinish ? records[j].finalTime.formattedTime : records[j].status.value
+                    ? `${record.finalTime.formattedTime} ${RecordStatus.getNotFinishedStatusesString(record.rallyStatuses)}`
+                    : record.status.didFinish ? record.finalTime.formattedTime : record.status.value
                 let tr = newTableBody.insertRow();
                 let th = document.createElement("th");
-                th.appendChild(document.createTextNode(records[j].rank));
+                th.appendChild(document.createTextNode(record.rank));
                 th.setAttribute('scope', 'row');
                 tr.appendChild(th);
                 let td = tr.insertCell();
-                td.appendChild(document.createTextNode(records[j].participant.num));
+                td.appendChild(document.createTextNode(record.participant.num));
                 td = tr.insertCell();
-                td.appendChild(document.createTextNode(records[j].participant.user.name));
+                td.appendChild(document.createTextNode(record.participant.user.name));
                 td = tr.insertCell();
                 td.innerHTML = flagImg;
                 td = tr.insertCell();
-                td.appendChild(document.createTextNode(records[j].participant.group.name));
+                td.appendChild(document.createTextNode(record.participant.group.name));
                 td = tr.insertCell();
                 td.appendChild(document.createTextNode(finalTimeToDisplay));
                 td = tr.insertCell();
@@ -392,15 +348,6 @@ class Stage{
         
         divStage.appendChild(newTable);
     }
-    proofsToDiv(proofs){
-        let proofsImages = "";
-        proofs.youtube != null ? proofsImages += `<a href=${proofs.youtube}><img src="../../resources/youtube_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
-        proofs.image != null ? proofsImages += `<a href=${proofs.image}><img src="../../resources/image_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
-        proofs.replay != null ? proofsImages += `<a href=${proofs.replay}><img src="../../resources/replay_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
-        proofs.twitch != null ? proofsImages += `<a href=${proofs.twitch}><img src="../../resources/twitch_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
-        proofs.link != null ? proofsImages += `<a href=${proofs.link}><img src="../../resources/link_icon.png" style="height: 20px; border: 1px solid #CCC;"></img></a>`: null;
-        return proofsImages;
-    }
     getImageUrl(){
         if(typeof(this.id) !== "undefined"){
             return "../../resources/Stages/Images/stage"+ (this.id <10 ?"0":"") + this.id + ".png";
@@ -413,6 +360,7 @@ class Stage{
         if(typeof this.id !== "undefined"){  //refactor
             Record.assignStageRanks(this.records)
         }
+        Record.generateGaps(this.records)
     }
 }
 
@@ -425,7 +373,7 @@ class Record{
         this.finalTime = this.initialTime.add(this.penalty)
         this.gapToLeader = 0;
         this.verified = verified;
-        this.proofs = {}
+        this.proofs = new ProofsWrapper()
     }
     static fromUserInput(participant, timeString, penaltyString, verified){
         let initialTime = new Time(0)
@@ -459,6 +407,26 @@ class Record{
         })
         return sortedStageRecords
     }
+    static generateGaps(stageRecords){
+        if(stageRecords.length <= 0)
+            return
+        const sortedRecords = Record.sortByFinalTime(stageRecords.slice())
+        const leader = sortedRecords[0]
+        const leaderTime = leader.status.didFinish ? leader.finalTime : null
+        const numberOfRecords = sortedRecords.length
+        sortedRecords.forEach((record, index) => {
+            const rankAbove = sortedRecords[index - 1]
+            const rankBelow = sortedRecords[index + 1]
+            const rankAboveTime = index === 0 
+                ? null 
+                : rankAbove.status.didFinish ? rankAbove.finalTime : null
+            const rankBelowTime = index === numberOfRecords - 1 
+                ? null
+                : rankBelow.status.didFinish ? rankBelow.finalTime : null
+            const time = record.status.didFinish ? record.finalTime : null
+            record.gaps = GapsWrapper.fromTimes(time, index, leaderTime, rankAboveTime, rankBelowTime)
+        })
+    }
 }
 
 class RallyRecord extends Record{
@@ -466,7 +434,7 @@ class RallyRecord extends Record{
         super(record.participant, record.initialTime, record.penalty, record.status, record.verified)
         this.points = points
     }
-    static fromStageRecords(stageRecords, isFinalSummary = false){
+    static fromStageRecords(stageRecords){
         if(stageRecords.length <= 0){
             return null;
         }
@@ -692,6 +660,7 @@ class Time{
     constructor(centiseconds){
         this.centiseconds = centiseconds;
         this.formattedTime = Time.centisecondsToTime(centiseconds)
+        this.signedFormattedTime = this.centiseconds >= 0 ? `+${this.formattedTime}` : this.formattedTime
     }
     static fromFormattedTime(formattedTime){
         if(!this.isValidTimeString(formattedTime))
@@ -709,8 +678,15 @@ class Time{
     add(otherTime){
         return new Time(this.centiseconds + otherTime.centiseconds)
     }
+    sub(otherTime){
+        return new Time(this.centiseconds - otherTime.centiseconds)
+    }
     static timeToCentiseconds(time){   //string to int
         let centiseconds = 0;
+        let isNegative = time.indexOf('-') === 0
+        if(isNegative){
+            time = time.slice(1)
+        }
         let index = time.lastIndexOf('.')
         centiseconds += parseInt(time.slice(index+1,index+3))
         time = time.slice(0,index)
@@ -722,12 +698,17 @@ class Time{
         if(index === -1) return centiseconds;
         time = time.slice(0, index)
         centiseconds += 60 * 60 * 100 * parseInt(time.slice) //hours
+        if(isNegative){
+            centiseconds = -centiseconds
+        }
         return centiseconds
     }
     static centisecondsToTime(centiseconds){
-        if(centiseconds < 0)
-            return "DNF"
         let number_string = "";
+        if(centiseconds < 0){
+            number_string = "-"
+            centiseconds = -centiseconds
+        }
         let hours = ~~(centiseconds/(100*60*60))
         if(hours > 0){
             number_string += this.addZero(hours) + ":";
@@ -745,6 +726,55 @@ class Time{
             return "0" + number
         }
         return ""+number
+    }
+}
+
+class GapsWrapper{
+    constructor(baseRank, gapToLeader, gapToRankAbove, gapToRankBelow){
+        this.baseRank = baseRank;
+        this.gapToLeader = gapToLeader;
+        this.gapToRankAbove = gapToRankAbove;
+        this.gapToRankBelow = gapToRankBelow;
+    }
+    static fromTimes(baseTime, baseRank, leaderTime, rankAboveTime, rankBelowTime){
+        if(baseTime == null){
+            return new GapsWrapper(baseRank, null, null, null)
+        }
+        const gapToLeader = leaderTime ? baseTime.sub(leaderTime) : null
+        const gapToRankAbove = rankAboveTime ? baseTime.sub(rankAboveTime) : null
+        const gapToRankBelow = rankBelowTime ? baseTime.sub(rankBelowTime) : null
+        return new GapsWrapper(baseRank, gapToLeader, gapToRankAbove, gapToRankBelow)
+    }
+    static getSubsequentGapElement(gapTime, targetRank, className){
+        if(gapTime == null){
+            return null
+        }
+        const timeString = gapTime.signedFormattedTime
+        const targetRankOrdinal = toOrdinalRank(targetRank)
+        return `<span class="${className}">Gap to ${targetRankOrdinal}: ${timeString}</span>`
+    }
+    getGapToLeaderString(){
+        return this.gapToLeader ? this.gapToLeader.formattedTime : "N/A"
+    }
+    getGapToRankAboveElement(){
+        return GapsWrapper.getSubsequentGapElement(this.gapToRankAbove, this.baseRank - 1, "gapToRankAbove")
+    }
+    getGapToRankBelowElement(){
+        return GapsWrapper.getSubsequentGapElement(this.gapToRankBelow, this.baseRank + 1, "gapToRankBelow")
+    }
+    getGapsHintElement(){
+        const gapsElements = [
+            this.getGapToRankAboveElement(),
+            this.getGapToRankBelowElement(),
+        ].filter(element => element != null)
+        if(gapsElements.length <= 0){
+            return ""
+        }
+        const gapsHintString = gapsElements.join("<br/>")
+        return `<div class="gapsHint">${gapsHintString}</div>`
+    }
+    toElement(){
+        return `<span class="gapToLeader">${this.getGapToLeaderString()}${this.getGapsHintElement()}</span>`
     }
 }
 
@@ -771,8 +801,41 @@ class PointsWrapper{
         this.carPoints *= number
         this.groupPoints *= number
     }
-    toDiv(){
+    toElement(){
         return `${this.getTotalPoints()} (<span class="pointsHover">${this.positionPoints}<div class="pointsHint">Base</div></span> + <span class="pointsHover">${this.carPoints}<div class="pointsHint">Weaker car bonus</div></span> + <span class="pointsHover">${this.groupPoints}<div class="pointsHint">Group bonus</div></span>)`
+    }
+}
+
+class ProofsWrapper{
+    constructor(values){
+        this.values = values
+    }
+    add(type, link){
+        this.values.push[new Proof(type, link)]
+    }
+    toElement(){
+        return this.values.filter(value => value != null).map(value => value.toElement).join("")
+    }
+}
+
+class Proof{
+    constructor(type, link){
+        this.type = type,
+        this.link = link
+    }
+    static imageNames = {
+        youtube: "youtube_icon.png",
+        image: "image_icon.png",
+        replay: "replay_icon",
+        twitch: "twitch_icon.png",
+        link: "link_icon.png",
+        other: "link_icon.png",
+    }
+    getImagePath(){
+        return `../../resources/${Proof.imageNames[this.type] ?? Proof.imageNames.other}`
+    }
+    toElement(){
+        return `<a href=${this.link}><img src="${this.getImagePath()}" style="height: 20px; border: 1px solid #CCC;"></img></a>`
     }
 }
 
