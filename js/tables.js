@@ -287,7 +287,7 @@ class Stage{
                 let record = records[j]
                 let flagImg = `<img src="../../resources/flags/${record.participant.user.country}.png" style="height: 20px; min-width: 32px; border: 1px solid #CCC;"/ >`;
                 let value_lastColumn = finalLevel==0 ? record.gaps.toElement() : record.points.toElement();
-                let proofRow = finalLevel==0 ? `<td>${this.proofsToDiv(record.proofs)}</td>` : ``
+                let proofRow = finalLevel==0 ? `<td>${record.proofs.toElement()}</td>` : ``
                 let finalTimeToDisplay = finalLevel === 3 
                     ? `${record.finalTime.formattedTime} ${RecordStatus.getNotFinishedStatusesString(record.rallyStatuses)}`
                     : record.status.didFinish ? record.finalTime.formattedTime : record.status.value
@@ -807,14 +807,14 @@ class PointsWrapper{
 }
 
 class ProofsWrapper{
-    constructor(values){
+    constructor(values = []){
         this.values = values
     }
     add(type, link){
-        this.values.push[new Proof(type, link)]
+        this.values.push(new Proof(type, link))
     }
     toElement(){
-        return this.values.filter(value => value != null).map(value => value.toElement).join("")
+        return this.values.filter(value => value != null).map(value => value.toElement()).join("")
     }
 }
 
@@ -826,7 +826,7 @@ class Proof{
     static imageNames = {
         youtube: "youtube_icon.png",
         image: "image_icon.png",
-        replay: "replay_icon",
+        replay: "replay_icon.png",
         twitch: "twitch_icon.png",
         link: "link_icon.png",
         other: "link_icon.png",
