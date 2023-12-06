@@ -13,6 +13,7 @@ function websiteData(){
         new User('sBinnala', "pl"),
         new User('Linotrix', "hr"),
         new User('SpartaRemixerPL', "pl"),
+        new User('SpartaRemixer', "pl"),
         new User('Juraj', "hr"),
         new User('SForman135LS', "cz"),
         new User('Tornado', "unknown"),
@@ -26,6 +27,10 @@ function websiteData(){
         new User('TheKetrab', "pl"),
         new User('Komuh', "pl"),
         new User('Redchili385', "br"),
+        new User('Red_T', "fr"),
+        new User('Certare', "pl"),
+        new User('P. Klima', "pl"),
+        new User('Kryspa7', "pl")
     );
 
     let Spartax = website.GetUserByName("SpartaX18");
@@ -297,7 +302,7 @@ function websiteData(){
         wr.proofs.add("youtube", "https://www.youtube.com/watch?v=lNq-FZ3Mwgs")
         rally.stages[2] = stage;
 
-        stage = new Stage("Black loch");
+        stage = new Stage("Black Loch");
         wr = stage.AddArcadeWorldRecord(Spartax, "05:10.41")
         wr.proofs.add("youtube", "https://youtu.be/TqrXsNgk2fw")
         wr.proofs.add("replay", "https://drive.google.com/file/d/1LWRumQTu118fKkAqVcQc6Ayqf7k53B4C/view?usp=sharing")
@@ -349,7 +354,7 @@ function websiteData(){
     {
         rally = new Rally("Seat Jim Clark Memorial Rally")
 
-        stage = new Stage("Moon and star");
+        stage = new Stage("Moon and Star");
         wr = stage.AddArcadeWorldRecord(Spartax, "02:45.38")
         wr.proofs.add("image", "https://cdn.discordapp.com/attachments/199990758089031680/578638904169594919/ral_2019-05-16_19-44-05-54.png")
         wr = stage.AddArcadeWorldRecord(Komuh, "02:49.33");
@@ -573,7 +578,7 @@ function websiteData(){
         wr.proofs.add("youtube", "https://www.youtube.com/watch?v=pQOsWg3GoIM")
         rally.stages[2] = stage;
 
-        stage = new Stage("Tholt-y-will");
+        stage = new Stage("Tholt-y-Will");
         wr = stage.AddArcadeWorldRecord(Spartax, "02:51.33")
         wr.proofs.add("image", "https://cdn.discordapp.com/attachments/199990758089031680/603209347694198784/ral_2019-07-23_14-57-49-48.png")
         wr.proofs.add("replay", "https://drive.google.com/file/d/15crs4ZUl0FDpJY1BSNem_eFcAbDN23iR/view?usp=sharing")

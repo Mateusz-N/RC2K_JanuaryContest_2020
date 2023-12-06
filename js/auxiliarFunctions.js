@@ -45,3 +45,10 @@ function toOrdinalRank(rank) {
     }
     return rank+suffix;
 }
+
+// Checks if two dates are on the same day (UNIX timestamp)
+function isSameDay(date1, date2) {
+    const differenceInMilliseconds = date2 - date1
+    const differenceInDays = Math.floor(differenceInMilliseconds/1000/60/60/24);
+    return differenceInDays === 0;
+}

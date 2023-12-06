@@ -1,0 +1,679 @@
+body{
+    font-family: "Verdana", Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+@font-face{
+    font-family: "rcFont";
+    src: url('../../resources/rcfont.ttf');
+}
+
+#nav{
+    margin: 0px 150px;
+}
+
+#title{
+    padding: 2.5vh 7.5vw;
+    margin: 0;
+    font-family: "rcFont";
+    text-shadow: 0.4vw 0.4vw black;
+    font-size: 3.5vw;
+    color: gold;
+    text-align: center;
+}
+
+#title_icon{
+    line-height: 0;
+    position: absolute;
+    top: 2.5vh;
+    left: 2.5vw;
+    background-color: white;
+    border: 0.3vw solid black; 
+    border-radius: 50%;
+}
+
+#title_icon img{
+    width: 5vw;
+}
+
+#title_icon:hover {
+    opacity: 0.85;
+}
+
+#nav ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-around;
+    padding: 20px 0;
+    margin: auto;
+}
+
+#nav ul li a {
+    display: flex;
+    flex-wrap: nowrap;
+    text-decoration: none;
+}
+
+.navspan {
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    height: 29px;
+    background-image: url('../../resources/navmid.png');
+    background-size: contain;
+    font-family: "rcFont";
+    text-decoration: none;
+    color: yellow;
+}
+
+#nav button {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+#main {
+    margin: 100px 150px 120px 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#main button {
+    border: none;
+    border-radius: 50vh;
+    background-color: white;
+    padding: 0;
+    cursor: pointer;
+    margin: 30px;
+    transition: transform 0.5s;
+}
+
+#main button:focus {
+    outline: none;
+}
+
+#main button:hover i {
+    color: #333;
+}
+
+#main i {
+    font-size: 50px;
+    color: #000;
+    mix-blend-mode:darken;
+}
+
+#bookContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.book {
+    position: relative;
+    width: 595px;
+    height: 850px;
+    transition: transform 0.5s;
+}
+
+.paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    perspective: 2250px;
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.front {
+    z-index: 1;
+    backface-visibility: hidden;
+    border-left: 3px solid #3238a1;
+}
+
+.back {
+    z-index: 0;
+}
+
+.front-content, .back-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Page lighting effect */
+.front-content::after, .back-content::after {
+    content:'';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+.front-content::after {
+    background: linear-gradient(to left, rgba(255,255,255,0.1) 0%,rgba(0, 0, 0, 0.1) 100%);
+}
+
+.back-content::after {
+    background: linear-gradient(to right, rgba(255,255,255,0.1) 0%,rgba(0, 0, 0, 0.1) 100%);
+}
+
+.back-content {
+    transform: rotateY(180deg);
+}
+
+.flipped .front, .flipped .back {
+    transform: rotateY(-180deg);
+}
+
+#p1 {
+    z-index: 7;
+}
+
+#p2 {
+    z-index: 6;
+}
+
+#p3 {
+    z-index: 5;
+}
+
+#p4 {
+    z-index: 4;
+}
+
+#p5 {
+    z-index: 3;
+}
+
+#p6 {
+    z-index: 2;
+}
+
+#p7 {
+    z-index: 1;
+}
+
+#entrylist{
+    margin: 0 150px 20px 150px;
+    padding: 0 10px 10px 10px;
+    background-color: #343a40;
+}
+
+#entrylist table{
+    width: 100%;
+    margin: auto;
+}
+
+#entrylist table th{
+    background-color: #343a40;
+    color: #FFF;
+}
+
+#entrylist table tr{
+    background-color: #FFF;
+    color: black;
+    border-top: 2px #DDD solid;
+}
+
+#entrylist table tr:first-child{
+    border-top: none;
+}
+
+#entrylist table td, th{
+    padding: 10px 50px;
+}
+
+#entrylist table tr td:first-child{
+    font-weight: 600;
+}
+
+#modalDriverProfile {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+#driverProfileImg {
+    width: 640px;
+}
+
+.altBtn {
+    background-color: #EEE;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.altBtn:focus {
+    outline: none;
+}
+
+.altBtn:hover {
+    background-color: #CCC;
+}
+
+.altBtn:active {
+    
+    background-color: #AAA;
+}
+
+#closeModal {
+    font-size: 5rem;
+    line-height: 1;
+    font-weight: bolder;
+    position: absolute;
+    cursor: pointer;
+    top: 2rem;
+    right: 3rem;
+    color: white;
+}
+
+#closeModal:hover {
+    color: #CCC;
+}
+
+#buttons {
+    margin: 0 150px 10px 150px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    font-family: "Trebuchet MS";
+}
+
+#buttons button {
+    border-radius: 50vh;
+    font-weight: 600;
+    margin: 0px 3px;
+    background: linear-gradient(45deg, white 33.3%, #DDD 66.7%, #BBB 100%);
+}
+
+#buttons button:hover {
+    background: linear-gradient(45deg, #BBB 33.3%, #DDD 66.7%, white 100%);
+}
+
+.tables {
+    background-color: rgba(52,58,64,0.75);
+    padding: 10px 10px 10px 10px;
+    font-size: 1vw;
+    margin: 0px 150px 20px 150px;
+}
+
+
+.tables table {
+    background-color: #FFF;
+    margin-bottom: 0px;
+    padding-right: 10px;
+}
+
+.tables table th {
+    border-top: none;
+}
+
+.tables table td, #tables table th{
+    vertical-align: middle;
+}
+
+.tables table td:nth-child(2) {
+    position: relative;
+    background-color: rgba(0,0,0,0.03);
+}
+
+#finalboard table tr:not(#emptyFinalTable):nth-child(1) {
+    background-color: rgba(255,215,0,0.25);
+}
+
+#finalboard table tr:not(#emptyFinalTable):nth-child(1):hover {
+    background-color: rgba(205,165,0,0.25);
+}
+
+#finalboard table tr:nth-child(2) {
+    background-color: rgba(192,192,192,0.25);
+}
+
+#finalboard table tr:nth-child(2):hover {
+    background-color: rgba(142,142,142,0.25);
+}
+
+#finalboard table tr:nth-child(3) {
+    background-color: rgba(205,127,50,0.25);
+}
+
+#finalboard table tr:nth-child(3):hover {
+    background-color: rgba(155,77,0,0.25);
+}
+
+.gapsHint, .pointsHint {
+    font-size: 20px;
+    position: absolute;
+    visibility: hidden;
+    background-color: rgba(50,50,50,0.5);
+    padding: 0 7px;
+    border: 2px solid #333;
+    border-radius: 10px;
+}
+
+.gapsHint, .pointsHint {
+    text-shadow:
+        1px 1px 0 #333,
+        -1px -1px 0 #333,  
+         1px -1px 0 #333,
+        -1px 1px 0 #333,
+        2px 2px 1px #333;
+}
+
+.gapToRankAbove {
+    color: coral;
+}
+
+.gapToRankBelow {
+    color: lightgreen;
+}
+
+.pointsHint {
+    color: #DDD;
+}
+
+.gapToLeader, .pointsHover {
+    cursor: pointer;
+}
+
+.gapToLeader:hover .gapsHint, .pointsHover:hover .pointsHint {
+    visibility: visible;
+}
+
+.tables table tr:hover, #entrylist table tr:hover {
+    background-color: #DDD;
+}
+
+.divStage:first-of-type {
+    margin-top: 0;
+}
+
+.divStage:last-of-type {
+    margin-bottom: 0;
+}
+
+.divStage {
+    vertical-align: top;
+    display: inline-flex;
+    background: #343a40;
+    padding: 0 1em 1em 1em;
+    margin: 5px 0px;
+    width: 100%;
+}
+
+.divStageTables {
+    flex-direction: column;
+    width: 100%;
+}
+
+.orderText {
+    padding: 10px 0px 10px 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.stageName {
+    font-size: 1.7em;
+}
+
+.divTitleImage {
+    width: 30%;
+    display: inline-block;
+    padding: 1vw;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-style: italic;
+}
+
+.mapImage {
+    width: 100%;
+}
+
+canvas.tables {
+    width: 80% !important;
+    background-color: white;
+}
+
+.tables {
+    display: none;
+}
+
+.updateCollapsible {
+    background-color: #343a40;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.active, .updateCollapsible:hover {
+    background-color: #242a30;
+}
+
+.updateContent {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: white;
+}
+
+.updateCollapsible:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.updateContent > p {
+    text-align: justify;
+    margin-top: 20px;
+    color: black;
+}
+
+#updatelist {
+    margin: 0 150px 20px 150px;
+}
+
+.updateRallyWinner {
+    text-align: center;
+}
+
+/* Result submission form */
+#resultSubmissionForm {
+    width: 480px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: #fff;
+    border: 10px solid #343a40;
+}
+
+#resultSubmissionFormHeader {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #343a40;
+}
+
+#resultSubmissionFormHeader > * {
+    font-weight: bold;
+}
+
+#resultSubmissionForm > * {
+    margin: 0 auto;
+}
+
+#currentLegHeader {
+    margin: 0;
+}
+
+#currentLegSubheader {
+    margin: 10px 0;
+}
+
+.fieldset_stage {
+    width: fit-content;
+    padding: revert;
+    border: 2px double #333;
+    border-radius: 16px;
+}
+
+.fieldset_stage, #field_driver, #field_password {
+    width: 400px;
+}
+
+.legend_stage {
+    width: auto;
+    margin: 0 0 -8px 0; /* Mitigate the unwanted 8px flex gap */
+    padding: 0 8px;
+    font-weight: bold;
+}
+
+#submitResult {
+    margin-bottom: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.fieldset_stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.formField {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.formField label {
+    font-size: 0.9rem;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.formField input, #select_driver {
+    width: 100%;
+    padding: 1px 6px;
+    border: 1px solid black;
+}
+
+.formField input {
+    border-radius: 8px;
+}
+
+#select_driver {
+    border-radius: 8px 8px 0 0;
+}
+
+#select_driver option:last-of-type {
+    border-radius: 0 0 8px 8px;
+    border: 15px black solid;
+}
+
+.time {
+    width: 100%;
+    display: flex;
+    align-items: end;
+}
+
+.time > .formField {
+    margin: 0;
+}
+
+.time > span {
+    padding: 0 1px 3px 1px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.uploadBtn {
+    width: min-content;
+    cursor: pointer;
+    padding: 1px 6px;
+}
+
+.formField label:not(.uploadBtn) {
+    width: fit-content;
+    cursor: text;
+}
+
+.uploadBtnContainer {
+    text-align: left;
+}
+
+.p_fileName {
+    margin: 0 0 0 4px;
+    display: inline-block;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+#select_driver {
+    width: 100%;
+}
+
+#successMsg, #loadingIcon {
+    display: none;
+}
+
+.formField .input_dnf {
+    width: fit-content;
+}
+
+input:disabled {
+    background-color: #EEE;
+}

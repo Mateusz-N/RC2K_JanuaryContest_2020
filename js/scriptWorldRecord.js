@@ -1,4 +1,4 @@
-contest = contestData();
+let contest = contestData();
 
 currentWrDirection = "arcade";
 currentRallyId = 0;

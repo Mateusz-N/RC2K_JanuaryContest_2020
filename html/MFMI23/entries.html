@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MFMI 2023 | Entry list</title>
+        <link rel="icon" type="image/x-icon" href="../../resources/favicon.ico">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-storage-compat.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="../../js/preload.js"></script>
+    </head>
+    <body>
+        <div id="titleContainer">
+            <a id="title_icon" href="../../index.html">
+                <img src="../../resources/rc2k_Image.png">
+            </a>
+            <h1 id="title"></h1>
+        </div>
+        <div id="nav">
+            <ul>
+                <li onmouseover="turnButtonRed(this)" onmouseout="turnButtonWhite(this)"><a href="index.html"><img class="leftArrow" src='../../resources/navleft.png'><span id="overview" class="navspan">Overview</span><img class="rightArrow" src='../../resources/navright.png'></a></li>              
+                <li onmouseover="turnButtonRed(this)" onmouseout="turnButtonWhite(this)"><a href="entries.html"><img class="leftArrow" src='../../resources/navleft.png'><span id="entries" class="navspan">Entry list</span><img class="rightArrow" src='../../resources/navright.png'></a></li>             
+                <li onmouseover="turnButtonRed(this)" onmouseout="turnButtonWhite(this)"><a href="standings.html"><img class="leftArrow" src='../../resources/navleft.png'><span id="standings" class="navspan">Standings</span><img class="rightArrow" src='../../resources/navright.png'></a></li>            
+                <li onmouseover="turnButtonRed(this)" onmouseout="turnButtonWhite(this)"><a href="summaries.html"><img class="leftArrow" src='../../resources/navleft.png'><span id="summaries" class="navspan">Rally summaries</span><img class="rightArrow" src='../../resources/navright.png'></a></li>            
+                <li onmouseover="turnButtonRed(this)" onmouseout="turnButtonWhite(this)"><a href="submit_results.html"><img class="leftArrow" src='../../resources/navleft.png'><span id="submit_results" class="navspan">Submit results</span><img class="rightArrow" src='../../resources/navright.png'></a></li>   
+            </ul>
+        </div>
+        <div id="entrylist">
+            <table>
+                <thead>
+                    <th>#</th>
+                    <th>Driver</th>
+                    <th>Nationality</th>
+                    <th>Group</th>
+                    <th>Car</th>
+                    <th>Driver Profile</th>
+                </thead>
+                <tbody id="generateEntries">
+                </tbody>
+            </table>
+        </div>
+        <div id="modalDriverProfile" onClick="closeModal(event)">
+            <span id="closeModal" onClick="closeModal(event)">&times;</span>
+            <img id="driverProfileImg" src="../../resources/rally0.PNG"/>
+        </div>
+        <link rel="stylesheet" href="../../css/mfmi23/style.css">
+        <script type="text/javascript" src="../../js/auxiliarFunctions.js"></script>
+        <script type="text/javascript" src="../../js/websiteData.js"></script>
+        <script type="text/javascript" src="../../js/MFMI23/contestData.js"></script>
+        <script type="text/javascript" src="../../js/MFMI23/tables.js"></script>
+        <script type="text/javascript" src="../../js/MFMI23/firebaseSetup.js"></script>
+        <script type="text/javascript" src="../../js/script.js"></script>
+    </body>
+</html>
